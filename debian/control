@@ -1,0 +1,14 @@
+Source: mpi-latex-templates
+Maintainer: Edward Abraham <edward@dragonfly.co.nz>
+Section: TeX
+Priority: extra
+Standards-Version: 3.9.2
+Vcs-git: git@github.com:dragonfly-science/mpi-latex-templates.git
+Vcs-browser: https://github.com/dragonfly-science/mpi-latex-templates
+Build-Depends: debhelper (>= 9), devscripts, texlive-full, biber, msttcorefonts
+
+Package: mpi-latex-templates
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, texlive-full, biber, msttcorefonts
+Description: LaTeX templates for Ministry for Primary 
+ Industries fisheries reports.

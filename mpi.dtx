@@ -1,0 +1,717 @@
+% \iffalse meta-comment
+% The MIT License (MIT)
+% 
+% Copyright (c) 2014 Dragonfly Science
+% 
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+% 
+% The above copyright notice and this permission notice shall be included in all
+% copies or substantial portions of the Software.
+% 
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+% SOFTWARE.
+% \fi
+%
+% \iffalse
+%<common|mpi-aebr|mpi-far>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+%
+%<common>\ProvidesPackage{mpi}[2015/01/09 v0.1 Common formatting requirements for MPI reports]
+%<mpi-aebr>\ProvidesClass{mpi-aebr}[2015/01/09 v0.1 MPI AEBR format]
+%<mpi-far>\ProvidesClass{mpi-far}[2015/01/09 v0.1 MPI FAR format]
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage{mpi}
+\usepackage[toc]{multitoc}
+
+\usepackage{tocloft}
+\setcounter{tocdepth}{2}
+
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+\begin{document}
+  \DocInput{mpi.dtx}
+\end{document}
+%</driver>
+%\fi
+%
+% \CheckSum{0}
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+% \changes{0.1}{2015/01/09}{Initial Version}
+%
+% \GetFileInfo{mpi.dtx}
+%
+% \title{formatting Ministry for Primary Industries reports}
+% \author{Dragonfly Science}
+% \maketitle
+%
+% \begin{abstract}
+%  This is a set of classes that are used to format \LaTeX\ documents according the 
+%  Ministry for Primary Industries formatting requirements. There are two document
+%  classes provided: 'mpi-aebr', for formatting Aquatic Environment and Biodiversity
+%  Reports, and 'mpi-far', for formatting Fisheries Assessment Reports. Using these
+%  packages allows for producing publication ready documents.
+% \end{abstract}
+% \clearpage
+% \tableofcontents
+%  \clearpage
+% \section{Class and Package Options}
+%
+% All options are passed down to the common layer. 
+%
+% Since we intend on manually hiding certain options we need a command to 
+% clear it from the global options list. This is taken from 
+% \url{http://tex.stackexchange.com/questions/33245/disabling-the-draft-option-in-a-package}.
+% The package needs to recognise the draft option, and just
+% give it to ifdraft. The rest are just default behaviour. 
+%
+%    \begin{macrocode}
+%<*common>
+\def\@clearglobaloption#1{%
+  \def\@tempa{#1}%
+  \def\@tempb{\@gobble}%
+  \@for\next:=\@classoptionslist\do
+    {\ifx\next\@tempa
+       \message{Cleared  option \next\space from global list}%
+     \else
+       \edef\@tempb{\@tempb,\next}%
+     \fi}%
+  \let\@classoptionslist\@tempb
+  \expandafter\ifx\@tempb\@gobble
+    \let\@classoptionslist\@empty
+  \fi}
+
+\DeclareOption{draft}{
+  \PassOptionsToPackage{\CurrentOption}{ifdraft}
+}
+\ProcessOptions\relax
+
+\DeclareOption{draft}{
+  \PassOptionsToPackage{\CurrentOption}{mpi}
+  \@clearglobaloption{draft}
+}
+\ProcessOptions\relax
+%</common>
+%    \end{macrocode}
+%
+% \section{Templates}
+% Each different class is based on a different template. The following
+% styles have classes implemented:
+%
+% \begin{itemize}
+% \item Aquatic Environment and Biodiversity Report
+% \item Fisheries Assessment Report Report
+% \end{itemize}
+%
+% The basic structure is the same as the base latex article class
+% with small changes to the theme. All of the classes
+% use a commmon style to share general definitions.
+% This is provided by the mpi style.
+%
+%    \begin{macrocode}
+%<mpi-aebr|mpi-far>\LoadClass[a4paper,twoside,final,11pt]{article}
+%<mpi-aebr|mpi-far>\RequirePackage{mpi}
+%    \end{macrocode}
+%
+% \section{Page Layout}
+%
+% The MPI styles use margins based on existing reports.
+%
+%    \begin{macrocode}
+%<common>\RequirePackage[margin=2.5cm]{geometry}
+%    \end{macrocode}
+%
+% \section{Fonts}
+%
+% MPI reports use standard times like fonts.
+%    
+%    \begin{macrocode}
+%<*common>
+\RequirePackage{fontspec}
+\setmainfont[Mapping=tex-text,
+    ItalicFont     = {Times New Roman Italic},
+    BoldFont       = {Times New Roman Bold},
+    BoldItalicFont = {Times New Roman Bold Italic}]{Times New Roman}
+\setsansfont[Mapping=tex-text,
+  ItalicFont = {Arial Italic},
+  BoldFont = {Arial Bold},
+  BoldItalicFont = {Arial Bold Italic}]{Arial}
+\setmathrm[Mapping=tex-text,
+    Numbers=Monospaced,
+    ItalicFont     = {Times New Roman Italic},
+    BoldFont       = {Times New Roman Bold},
+    BoldItalicFont = {Times New Roman Bold Italic}]{Times New Roman}
+\setmathsf[Mapping=tex-text,
+    Numbers=Monospaced,
+    ItalicFont     = {Times New Roman Italic},
+    BoldFont       = {Times New Roman Bold},
+    BoldItalicFont = {Times New Roman Bold Italic}]{Times New Roman}
+\setmathtt[Mapping=tex-text, 
+    Numbers=Monospaced,
+    ItalicFont     = {Times New Roman Italic},
+    BoldFont       = {Times New Roman Bold},
+    BoldItalicFont = {Times New Roman Bold Italic}]{Times New Roman}
+%</common>
+%    \end{macrocode}
+%
+% We also set the fontsize to be 11pt.
+%    \begin{macrocode}
+%<common>\renewcommand{\normalsize}{\fontsize{11pt}{13pt}\selectfont}
+%    \end{macrocode}
+%
+% Paragraphs are not indented, but there is extra spacing between them. 
+%    \begin{macrocode}
+%<common>\setlength{\parskip}{3mm}
+%<common>\setlength{\parindent}{0mm}
+%    \end{macrocode}
+%
+% \section{Headings}
+%    \begin{macrocode}
+%<*common>
+\RequirePackage{titlesec}
+\titleformat{\section}{\normalfont\bfseries\sffamily\uppercase}{\thesection.}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries\sffamily}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\bfseries\sffamily}{\thesubsubsection}{1em}{}
+\titlespacing{\section}{0pt}{\baselineskip}{0pt}
+\titlespacing{\subsection}{0pt}{\baselineskip}{0pt}
+\titlespacing{\subsubsection}{0pt}{\baselineskip}{0pt}
+%</common>
+%    \end{macrocode}
+%
+% \section{Header and Footer}
+%
+%    Page footers must contain the report name, page and publisher. 
+%
+%    \begin{macrocode}
+%<*common>
+\usepackage{fancyhdr}
+
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyfoot[LO,RE]{\sffamily\scriptsize Ministry for Primary Industries}
+    \fancyfoot[LE]{\sffamily\scriptsize\thepage\ {\normalsize$\bullet$}\ \footertitle}
+    \fancyfoot[RO]{\sffamily\scriptsize\footertitle\ {\normalsize$\bullet$}\ \thepage}
+    \renewcommand{\footrulewidth}{0.3pt} 
+    \renewcommand{\headrulewidth}{0pt} 
+  }
+%</common>
+%   \end{macrocode}
+%
+% \section{Bibliography}
+%
+% Since we are using biblatex with apa we need to use polyglossia to tell
+% biblatex which language we are using. Actually polyglossia doesn't support 
+% british directly so we need a slight hack. We also need the bibliography to be
+% a proper section. We also define some helper cite commands for familiarity. 
+%
+%    \begin{macrocode}
+%<*common>
+\RequirePackage{csquotes}
+\RequirePackage{polyglossia}
+\setdefaultlanguage[variant=newzealand]{english}
+\RequirePackage[style=mfish,backend=biber]{biblatex}
+\DeclareLanguageMapping{english}{english-mfish}
+\defbibheading{bibliography}[References]{\section{#1}}
+\newcommand{\citet}{\cite}
+\newcommand{\citep}{\parencite}
+%</common>
+%    \end{macrocode}
+%
+%
+% \section{Title page}
+%
+% Each kind of document has a different kind of header. 
+% Each one shall be addressed separately. Additionally,
+% each title page section for a class will be split into two parts:
+% the first defines new commands for entering metadata into the titlepage
+% and the second defines the actual creation of the title page. 
+%
+% Since some of the headings require absolute positioning,
+% we load the textpos package, and a number of other packages to help with the
+% title pages. We also set the graphics path so we can find common images.
+%
+%    \begin{macrocode}
+%<*common>
+\RequirePackage[absolute,overlay]{textpos}
+\RequirePackage{etoolbox}
+\RequirePackage{xparse}
+\RequirePackage{hyphenat}
+\RequirePackage{graphicx}
+\graphicspath{{./}{/usr/share/texlive/texmf-dist/tex/latex/mpi/}}
+%</common>
+%    \end{macrocode}
+
+% \subsubsection{Meta Data}
+%
+% The document has two titles. The first is the main title which goes on
+% the cover of the document, while the second is a short title that goes 
+% in the page footer. Both are required.  
+%
+%    \begin{macrocode}
+%<*common>
+    \renewcommand\title[2]{%
+    \renewcommand\@title{#2}%
+    \renewcommand\footertitle{#1}%
+}
+\newcommand{\footertitle}{\ClassError{mpi-aebr}{No Footer title defined}{Use \noexpand\title}}
+%</common>
+%    \end{macrocode}
+%
+%
+% Like in a standard document |\date| is allowed. However, it is only used for
+% creating citations, and as such should contain only the year. The 
+% default is changed from |\today| to the current year. There
+% is also a reportmonth command to set the month. 
+%
+%    \begin{macrocode}
+%<*common>
+  \renewcommand{\@date}{\the\year}
+\newcommand{\reportmonth}[1]{\renewcommand{\@month}{#1}}
+\newcommand{\@month}{MMM}
+%</common>
+%    \end{macrocode}
+%  
+%
+% AEBR documens require ISSN, ISBN and report numbers. All of these must have 
+% sensible defaults before they are finished.
+%    \begin{macrocode}
+%<*mpi-aebr>
+\newcommand{\@reportwallpaper}{AEBR.jpg}
+\newcommand{\@issn}{1179-6480}
+\newcommand{\@reportseries}{New Zealand Aquatic Environment and Biodiversity Report}
+%</mpi-aebr>
+%<*mpi-far>
+\newcommand{\@reportwallpaper}{FAR.jpg}
+\newcommand{\@issn}{1179-5352}
+\newcommand{\@reportseries}{New Zealand Fisheries Assessment Report}
+%</mpi-far>
+%<*common>
+\newcommand{\issn}[1]{\renewcommand{\@issn}{#1}}
+\newcommand{\isbn}[1]{\renewcommand{\@isbn}{#1}}
+\newcommand{\@isbn}{XX-XXXXX-XX}
+\newcommand{\@reportno}{??}
+\newcommand{\reportno}[1]{\renewcommand{\@reportno}{#1}}
+\newcommand{\reportseries}[1]{\renewcommand{\@reportseries}{#1}}
+\newcommand{\reportwallpaper}[1]{\renewcommand{\@reportpaper}{#1}}
+%</common>
+%    \end{macrocode}
+%
+% The report also has a customisable citation note that goes at the end of the 
+% citation. This defaults to the subtitle. 
+%
+%
+% \subsubsection{Maketitle}
+%
+% We use the wallpaper package to support background images, and 
+% redefine the maketitle command to generate the right content. 
+%    \begin{macrocode}
+%<*common>
+\RequirePackage{wallpaper}
+\renewcommand{\maketitle}{
+%</common>
+%    \end{macrocode}
+%
+% We start by generating metadata for the pdf. We need to at least set the pdf
+% author and title. 
+%    \begin{macrocode}
+%<*common>
+  {
+    \renewcommand{\and}{ and }
+    \hypersetup{  
+      pdfinfo={  
+        Title={\footertitle},  
+        Author={\@author}
+      }  
+    }
+  }
+%</common>
+%    \end{macrocode}
+%
+% The first page is fully covered by the special title image used by AEBRs. 
+%
+%    \begin{macrocode}
+%<*common>
+\pagestyle{empty}
+\clearpage
+\ThisCenterWallPaper{1.0}{\@reportwallpaper}
+%</common>
+%    \end{macrocode}
+%
+% The text is overlayed into a small box over the image, such that is it over the 
+% white part of the image. 
+%
+%    \begin{macrocode}
+%<*common>
+\begin{textblock*}{0.7\textwidth}(86.1mm,61.5mm)
+%</common>
+%    \end{macrocode}
+%
+% The entire titlepage is written in sans serif font. 
+%
+%    \begin{macrocode}
+%<*common>  
+  {\sffamily
+%</common>
+%    \end{macrocode}
+%
+% The title is written in large bold font. It is ragged right rather than justified
+% and should avoid hyphenation. 
+%
+%    \begin{macrocode}
+%<*common>
+  {
+    \raggedright 
+    \fontsize{18pt}{22pt}
+    \bfseries
+    \selectfont
+    \nohyphens{\@title}\par
+  }
+
+%</common>
+%    \end{macrocode}
+%
+% Each report then states that is an AEBR and its number.
+%
+%    \begin{macrocode}
+%<*common>  
+  {\@reportseries} {\@reportno}
+ 
+%</common>
+%    \end{macrocode}
+%
+% The authors are printed in a slightly indented list. 
+%
+%    \begin{macrocode}
+%<*common>
+  {
+    \renewcommand{\and}{\\}
+    \hspace{3em}
+    \begin{tabular}{l}
+    \@author
+  \end{tabular}
+}
+%</common>
+%    \end{macrocode}
+%
+% This is followed by the reports ISSN and ISBN numbers.
+%
+%    \begin{macrocode}
+%<*common>
+
+ISSN \@issn{} (online)\\
+ISBN \@isbn{} (online)
+
+%</common>
+%    \end{macrocode}
+%
+% Finally the report text block (and page) finishes with the date (month year).
+%    \begin{macrocode}
+%<*common>
+\textbf{\@month{} \@date}
+}
+\end{textblock*}
+\mbox{}
+\clearpage
+%</common>
+%    \end{macrocode}
+%
+% The inside page contains a standard set of text.
+%
+%    \begin{macrocode}
+%<*common>
+{
+  \setlength{\parskip}{4ex}
+  \vspace*{4ex}
+Requests for further copies should be directed to:
+
+
+Publications Logistics Officer\\
+Ministry for Primary Industries\\
+PO Box 2526\\
+WELLINGTON 6140
+
+Email: brand@mpi.govt.nz\\
+Telephone: 0800 00 83 33\\
+Facsimile: 04-894 0300
+
+This publication is also available on the Ministry for Primary Industries websites at:\\
+\url{http://www.mpi.govt.nz/news-resources/publications.aspx}\\
+\url{http://fs.fish.govt.nz} go to Document library/Research reports
+
+\textbf{\copyright{} Crown Copyright - Ministry for Primary Industries}
+}
+\clearpage
+%</common>
+%    \end{macrocode}
+%
+% Finally we turn the header and footer off. These get turned on by the summary command.
+%
+%    \begin{macrocode}
+%<*common>
+\pagestyle{empty}
+}
+%</common>
+%    \end{macrocode}
+%
+% \section{Table of Contents}
+%
+% Reports requires a table of contents that is formatted in a very specific way.
+%
+%    \begin{macrocode}
+%<common>\RequirePackage{tocloft}
+%    \end{macrocode}
+%
+%
+% Dection heading are always shown in capitals
+% in the contents page. This involves rebinding contents line, so that when the 
+% title is used to construct a hyperref url, it doesn't break the url. This is
+% used in report and AEBR.
+%
+%    \begin{macrocode}
+%<*common>
+\let\dfly@contentsline=\contentsline
+\renewcommand\contentsline[4]{\dfly@contentsline{#1}{\ifstrequal{#1}{section}{\MakeUppercase{#2}}{#2}}{#3}{#4}}
+%</common>
+%    \end{macrocode}
+%
+% The table of contents should have it's own page. And since it is printed it should
+% clear a double page. It should be called the TABLE OF CONTENTS. 
+%    \begin{macrocode}
+%<*common>
+\RequirePackage{tocloft}
+\renewcommand{\cfttoctitlefont}{\bfseries\sffamily}
+\addto\captionsenglish{%
+  \renewcommand{\contentsname}{TABLE OF CONTENTS}
+} 
+\g@addto@macro\@cfttocfinish{\cleardoublepage}
+\tocloftpagestyle{empty}
+%</common>
+%    \end{macrocode}
+%
+% Section lines should be sans serif.
+%    \begin{macrocode}
+%<*common>
+\g@addto@macro\cftsecpagefont{\sffamily}
+\g@addto@macro\cftsecfont{\sffamily}
+%</common>
+%    \end{macrocode}
+%
+% \section{Floats}
+% 
+%
+% Captions are all bold.
+%    \begin{macrocode}
+%<common>\usepackage[font={small,bf},labelsep=colon,singlelinecheck=false]{caption}
+%    \end{macrocode}
+%
+% \section{Draft mode}
+%
+% Draft mode should create a watermark accross every page to make them as draft.
+% It should also turn on double spacing and some line numbering for ease of editing.
+% For clarity line numbers and double spacing will only start \emph{after} the title
+% page.
+%    \begin{macrocode}
+%<*common>
+\RequirePackage{setspace}
+\RequirePackage{ifdraft}
+\ifdraft{
+\RequirePackage{draftwatermark}
+\usepackage[modulo]{lineno}
+\SetWatermarkColor{black!15}
+\SetWatermarkFontSize{62pt}
+\SetWatermarkText{\sffamily DRAFT - Not to be quoted}
+
+\AtEndPreamble{
+\g@addto@macro\maketitle{
+\linenumbers
+\doublespacing
+}
+}
+}{}
+%</common>
+%    \end{macrocode}
+%
+%  \section{Additional Packages}
+% The hyperref package must be the last one loaded, so we load it here.
+% We also load booktabs as that is expected to be used for all tables. 
+%
+%    \begin{macrocode}
+%<*common>
+\RequirePackage{booktabs}
+\RequirePackage{hyperref}
+%</common>
+%    \end{macrocode}
+%
+%    Hyperref should be used, but the links should not be coloured or have boxes around
+% them. 
+%    \begin{macrocode}
+%<*common>
+\hypersetup{
+  colorlinks=true,
+  urlcolor=black,
+  citecolor=black,
+  anchorcolor=black,
+  pagecolor=black,
+  menucolor=black,
+  linkcolor=black
+}
+%</common>
+%    \end{macrocode}
+%
+% \section{Self Citing}
+%
+% In order to automatically generate the citation using biblatex, we
+% write out a generated bib file that contains an entry for the current document.
+% This must happen at the end of the prelude, so that the title and so on are defined.
+% Note that new lines have the be suppressed while doing this, and |\emph| commands
+% need to print out the command rather than actually do emphasis. 
+%
+%    \begin{macrocode}
+%<*common>
+\RequirePackage{lastpage}
+\AtBeginDocument{
+{
+\renewcommand{\and}{ and }
+\renewcommand{\emph}[1]{\@backslashchar emph\@charlb #1\@charrb}
+\renewcommand{\\}{}
+\edef\text{@article\@charlb this,^^J%
+options = \@charlb skipbib \@charrb,^^J%
+year = \@charlb \@date \@charrb,^^J%
+title = \@charlb \@title \@charrb,^^J%
+author = \@charlb \@author \@charrb,^^J%
+%</common>
+%<*common>
+journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
+%</common>
+%<*common>
+\@charrb
+}
+\newwrite\tempfile
+\immediate\openout\tempfile=\jobname-self.bib
+\immediate\write\tempfile{\text}
+\immediate\closeout\tempfile
+}
+}
+%</common>
+%    \end{macrocode}
+%
+% We then inform biblatex about this document. 
+%
+%    \begin{macrocode}
+%<*common>
+\addbibresource{\jobname-self.bib}
+%</common>
+%    \end{macrocode}
+%
+% 
+%
+%
+%    There is space for an executive summary, or some other
+% unnumbered starting section. 
+%
+%    \begin{macrocode}
+%<*common>
+ \NewDocumentCommand{\summary}{O {Executive Summary}}{
+  \pagestyle{plain}
+  \setcounter{page}{1}
+  \phantomsection
+  \addcontentsline{toc}{section}{\hspace{1.4em}#1}
+  \section*{#1}
+} 
+%</common>
+%    \end{macrocode}
+%
+%
+% We also need a facility to cite the paper that is currently being written (for AEBR). 
+%    \begin{macrocode}
+%<*common>
+\newcommand{\citeself}{
+  \renewcommand*{\multinamedelim}{;\space}
+  \renewcommand*{\finalnamedelim}{;\space}%
+  \textbf{\citename{this}{author}\ (\citefield{this}{year}).\ \citefield{this}{title}.}
+  
+  \textbf{\emph{\citefield{this}{journaltitle}}. \pageref{LastPage}\ p.}
+}
+%</common>
+%    \end{macrocode}
+% 
+% \section{Appendicies}
+%
+%
+% We require appendicies to be printed as ``Appendix X'' in the table of 
+% contents. This is accomplished by using a the appendix package with the
+% titletoc option. 
+%    \begin{macrocode}
+%<*common>
+\RequirePackage[titletoc]{appendix}
+%</common>
+%    \end{macrocode}
+%
+% In the appendix we also wish to customize a number of properties. To do this
+% we simply add these to the |\appendics| command.  These are:
+% \begin{itemize}
+%\item Section headings printed as Appendix X 
+%\item Tables, equations and figures get the appendix letter before their number
+%\item Counters are reset to set
+% \end{itemize}
+%    \begin{macrocode}
+%<*common>
+\g@addto@macro\appendices{
+%</common>
+%<common>\titleformat{\section}{\normalfont\bfseries\sffamily\uppercase}{APPENDIX \thesection }{1em}{}
+%<*common>
+\titleformat{\section}{\bfseries\sffamily}{APPENDIX \thesection }{1em}{}
+\renewcommand{\theequation}{\thesection-\arabic{equation}}
+\renewcommand{\thetable}{\thesection-\arabic{table}}
+\renewcommand{\thefigure}{\thesection-\arabic{figure}}
+\setcounter{section}{0}  % reset counter 
+\setcounter{figure}{0}  % reset counter 
+\setcounter{table}{0}  % reset counter 
+\setcounter{equation}{0}  % reset counter 
+}
+%</common>
+%    \end{macrocode}
+
+% \section{Integration}
+%
+% We overwrite commands used in Dragonfly report templates, so that we are able to reformat documents simply by changing
+% the document class
+%    \begin{macrocode}
+%<*common>
+\newcommand{\middleimage}[2]{}
+\newcommand{\rightimage}[2]{}
+\newcommand{\leftimage}[2]{}
+\newcommand{\singleimage}[2]{}
+\newcommand{\subtitle}[1]{}
+\newcommand{\titleimage}[1]{}
+\newcommand{\licence}[1]{}
+%</common>
+%    \end{macrocode}
+
+\endinput

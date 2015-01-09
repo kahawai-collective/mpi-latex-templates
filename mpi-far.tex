@@ -1,0 +1,131 @@
+% This is the document class for FARs, derived from the latex article
+% class
+
+\documentclass{mpi-far}
+
+%If a document is  typeset as draft it will be double spaced, with
+%linenumbers, and with a watermark \documentclass[draft]{aebr}
+
+% The FAR requires two titles. The first is the short title which
+% goes on the page footers. The second is the long title which goes on
+% the cover page.  You are only allowed to use the LaTeX macros \\
+% and \emph inside of titles safely. Others may result in
+% unpredictable behaviour. 
+
+\title{Example report}{An example Fisheries Assessment Report (FAR)}
+
+% Each FAR has a subtitle
+\subtitle{A report for testing purposes}
+
+%The date must be split into two parts for compatibility with reports. 
+% The year is specified with \date, and the month is specified with \reportmonth
+\date{2015}
+\reportmonth{January}
+
+% Authors must be listed with their full names separated by \and.
+\author{John Smith \and Jane E. Smith}
+
+% The subcaption package is used to create subfigures in this example.
+\usepackage{subcaption}
+
+% The lipsum package is used to generate filler text. This won't be
+% needed in your actual report.
+\usepackage{lipsum}
+
+% Each report has an ISBN and report number. If any of these are not 
+% included a place holder value will be used.
+\isbn{XX-XXXXX-XX}
+\reportno{XX}
+
+% This specified the location of the bibliography file
+\addbibresource{test.bib}
+
+% The document begins here
+\begin{document}
+
+% Generate the title page
+\maketitle
+
+% Generate the table of contents.
+\tableofcontents
+
+% An FAR must contain an executive summary. Which \summary will generate a 
+% title and contents entry for. 
+
+\summary
+
+% The summary must start with a citation for the current document which can be 
+% automatically generated using \citeself.
+\citeself
+
+\lipsum[1]
+\clearpage
+
+
+\section{Introduction}
+
+%filler text
+\lipsum[1]
+
+
+\begin{figure}[h]
+  \begin{center}  
+  \includegraphics[width=40mm,height=40mm]{FAR}
+  \end{center}  
+  \caption{This is a caption that is longer than one line. We are just
+  making sure that it wraps successfully. The figure is the cover of
+  the report.}
+\end{figure}
+
+\section{Methods}
+
+\subsection{Details}
+
+\lipsum[2]
+
+% An example of how to do subfigures using subcaption.
+\begin{figure}[h]
+\begin{center}
+  \begin{subfigure}{0.45\textwidth}
+  \includegraphics[width=40mm]{FAR}
+  \caption{Cover of a Fisheries Assessment Report (FAR).}
+\end{subfigure}\qquad
+  \begin{subfigure}{0.45\textwidth}
+  \includegraphics[width=40mm]{FAR}
+  \caption{Cover of an Aquatic Environment and Biodiversity Report
+  (AEBR).}
+\end{subfigure}
+\end{center}
+\end{figure}
+
+
+\section{Results}
+\section{Discussion}
+
+\subsection{A first level subsection}
+\subsubsection{A second level subsection}
+\lipsum[3] 
+\paragraph{A minor heading}
+\lipsum[5] 
+
+Examples of how citations can be used in different ways
+
+% Examples of how to do citations. Note the cite, citet and citep work as standard. 
+\begin{itemize}
+  \item citet \citet{baker_nzclassification_2010}
+  \item citep \citep{doc_sealion_2009}
+  \item parencite \parencite{gales_phocarctos_2008}
+  \item nptextcite \nptextcite{ mpi_review_2012}
+  \item fullcite \fullcite{mpi_review_2012}
+  \item fullcitebib \fullcitebib{mpi_review_2012}
+  \item citeyear \citeyear{robertson_population_2011}
+  %\item \footcite{mpi_review_2012}
+  \item textcite \textcite{roe_necropsy_2007}
+\end{itemize}
+
+% Bibliography should be printed starting on a new page.
+\clearpage
+\printbibliography
+
+%End of document
+\end{document}
