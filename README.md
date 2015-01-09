@@ -1,8 +1,9 @@
-Dragonfly Latex Templates
+MPI Latex Templates
 =========================
 
-This package generates LaTeX class and style files to create documents in the 
-format needed for Ministry of Primary Industries fisheries reports.
+This package generates LaTeX class and style files to create New Zealand  Ministry of Primary Industries (MPI) 
+fisheries reports. The  style files can be built and installed manually, or can be installed using debian on
+Linux systems.
 
 ## Installing the package
 
