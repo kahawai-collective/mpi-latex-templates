@@ -1,5 +1,4 @@
 SHELL := /bin/bash
-PREFIX := TEXINPUTS=.///:
 LATEXMK_VERSION=$(strip $(patsubst Version,,$(shell latexmk -v | grep -oi "version.*")))
 ifeq ($(LATEXMK_VERSION),4.24)
 	LATEXMK_OPTIONS=-pdflatex=xelatex -latex=xelatex -pdf 
@@ -10,7 +9,7 @@ endif
 all: mpi-far.pdf
 
 mpi-far.pdf: mpi-far.tex test.bib mpi.sty FAR.jpg biblatex-mpi/mpi.bbx biblatex-mpi/mpi.cbx biblatex-mpi/english-mpi.lbx
-	$(PREFIX) latexmk $(LATEXMK_OPTIONS) mpi-far.tex
+	latexmk $(LATEXMK_OPTIONS) mpi-far.tex
 
 mpi.sty: mpi.ins mpi.dtx 
 	latex mpi.ins
