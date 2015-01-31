@@ -41,7 +41,7 @@ In order to use the package you will need to have the following fonts installed:
 To check if the font is present run `fc-list` and see if the font name is present
 in the output.
 
-All of the font files must be places in an appropriate location 
+All of the font files must be placed in an appropriate location 
 where the fonts can be seen by the system. Two possible locations for Linux 
 systems are `~/.fonts` and `/usr/local/share/fonts`.
 
@@ -84,7 +84,7 @@ location for these would be
  * /usr/share/texlive/texmf-dist/tex/latex/mpi
  * /usr/share/texlive/texmf-dist/tex/latex/biblatex-mpi
 
-**Tell latex about the new package**
+**Tell LaTeX about the new package**
 
 To ensure that LaTeX is aware of the new package you will need to run: `texhash`.
 
