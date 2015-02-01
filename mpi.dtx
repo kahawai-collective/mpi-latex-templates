@@ -63,19 +63,19 @@
 %   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %   Right brace   \}     Tilde         \~}
 %
-% \changes{0.1}{2015/01/09}{Initial Version}
+% \changes{0.2}{2015/02/01}{Initial Version + fixes}
 %
 % \GetFileInfo{mpi.dtx}
 %
-% \title{formatting Ministry for Primary Industries reports}
+% \title{Formatting Ministry for Primary Industries reports}
 % \author{Dragonfly Science}
 % \maketitle
 %
 % \begin{abstract}
-%  This is a set of classes that are used to format \LaTeX\ documents according the 
+%  This is a set of classes that are used to format \LaTeX documents according the 
 %  Ministry for Primary Industries formatting requirements. There are two document
-%  classes provided: 'mpi-aebr', for formatting Aquatic Environment and Biodiversity
-%  Reports, and 'mpi-far', for formatting Fisheries Assessment Reports. Using these
+%  classes provided: ``mpi-aebr'', for formatting Aquatic Environment and Biodiversity
+%  Reports, and ``mpi-far'', for formatting Fisheries Assessment Reports. Using these
 %  packages allows for producing publication ready documents.
 % \end{abstract}
 % \clearpage
@@ -126,7 +126,7 @@
 %
 % \begin{itemize}
 % \item Aquatic Environment and Biodiversity Report
-% \item Fisheries Assessment Report Report
+% \item Fisheries Assessment Report
 % \end{itemize}
 %
 % The basic structure is the same as the base latex article class
@@ -152,7 +152,7 @@
 % MPI reports use standard times like fonts.
 %    
 %    \begin{macrocode}
-%<*common>
+%<*mpi-aebr|mpi-far>
 \RequirePackage{fontspec}
 \setmainfont[Mapping=tex-text,
     ItalicFont     = {Times New Roman Italic},
@@ -177,7 +177,7 @@
     ItalicFont     = {Times New Roman Italic},
     BoldFont       = {Times New Roman Bold},
     BoldItalicFont = {Times New Roman Bold Italic}]{Times New Roman}
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 % We also set the fontsize to be 11pt.
@@ -193,7 +193,7 @@
 %
 % \section{Headings}
 %    \begin{macrocode}
-%<*common>
+%<*mpi-aebr|mpi-far>
 \RequirePackage{titlesec}
 \titleformat{\section}{\normalfont\bfseries\sffamily\uppercase}{\thesection.}{1em}{}
 \titleformat{\subsection}{\normalfont\bfseries\sffamily}{\thesubsection}{1em}{}
@@ -201,7 +201,7 @@
 \titlespacing{\section}{0pt}{\baselineskip}{0pt}
 \titlespacing{\subsection}{0pt}{\baselineskip}{0pt}
 \titlespacing{\subsubsection}{0pt}{\baselineskip}{0pt}
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 % \section{Header and Footer}
@@ -209,7 +209,7 @@
 %    Page footers must contain the report name, page and publisher. 
 %
 %    \begin{macrocode}
-%<*common>
+%<*mpi-aebr|mpi-far>
 \usepackage{fancyhdr}
 
 \fancypagestyle{plain}{
@@ -220,7 +220,7 @@
     \renewcommand{\footrulewidth}{0.3pt} 
     \renewcommand{\headrulewidth}{0pt} 
   }
-%</common>
+%</mpi-aebr|mpi-far>
 %   \end{macrocode}
 %
 % \section{Bibliography}
@@ -231,7 +231,7 @@
 % a proper section. We also define some helper cite commands for familiarity. 
 %
 %    \begin{macrocode}
-%<*common>
+%<*mpi-aebr|mpi-far>
 \RequirePackage{csquotes}
 \RequirePackage{polyglossia}
 \setdefaultlanguage[variant=newzealand]{english}
@@ -240,7 +240,7 @@
 \defbibheading{bibliography}[References]{\section{#1}}
 \newcommand{\citet}{\cite}
 \newcommand{\citep}{\parencite}
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 %
@@ -274,13 +274,13 @@
 % in the page footer. Both are required.  
 %
 %    \begin{macrocode}
-%<*common>
-    \renewcommand\title[2]{%
-    \renewcommand\@title{#2}%
-    \renewcommand\footertitle{#1}%
+%<*mpi-aebr|mpi-far>
+\renewcommand\title[2]{%
+  \renewcommand\@title{#2}%
+  \renewcommand\footertitle{#1}%
 }
-\newcommand{\footertitle}{\ClassError{mpi-aebr}{No Footer title defined}{Use \noexpand\title}}
-%</common>
+\newcommand{\footertitle}{\ClassError{mpi}{No Footer title defined}{Use \noexpand\title}}
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 %
@@ -290,15 +290,15 @@
 % is also a reportmonth command to set the month. 
 %
 %    \begin{macrocode}
-%<*common>
+%<*mpi-aebr|mpi-far>
   \renewcommand{\@date}{\the\year}
 \newcommand{\reportmonth}[1]{\renewcommand{\@month}{#1}}
 \newcommand{\@month}{MMM}
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %  
 %
-% AEBR documens require ISSN, ISBN and report numbers. All of these must have 
+% AEBR and FAR documents require ISSN, ISBN and report numbers. All of these must have 
 % sensible defaults before they are finished.
 %    \begin{macrocode}
 %<*mpi-aebr>
@@ -311,7 +311,7 @@
 \newcommand{\@issn}{1179-5352}
 \newcommand{\@reportseries}{New Zealand Fisheries Assessment Report}
 %</mpi-far>
-%<*common>
+%<*mpi-aebr|mpi-far>
 \newcommand{\issn}[1]{\renewcommand{\@issn}{#1}}
 \newcommand{\isbn}[1]{\renewcommand{\@isbn}{#1}}
 \newcommand{\@isbn}{XX-XXXXX-XX}
@@ -319,7 +319,7 @@
 \newcommand{\reportno}[1]{\renewcommand{\@reportno}{#1}}
 \newcommand{\reportseries}[1]{\renewcommand{\@reportseries}{#1}}
 \newcommand{\reportwallpaper}[1]{\renewcommand{\@reportpaper}{#1}}
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 % The report also has a customisable citation note that goes at the end of the 
@@ -331,16 +331,14 @@
 % We use the wallpaper package to support background images, and 
 % redefine the maketitle command to generate the right content. 
 %    \begin{macrocode}
-%<*common>
-\RequirePackage{wallpaper}
-\renewcommand{\maketitle}{
-%</common>
+%<common>\RequirePackage{wallpaper}
+%<mpi-aebr|mpi-far>\renewcommand{\maketitle}{
 %    \end{macrocode}
 %
 % We start by generating metadata for the pdf. We need to at least set the pdf
 % author and title. 
 %    \begin{macrocode}
-%<*common>
+%<*mpi-aebr|mpi-far>
   {
     \renewcommand{\and}{ and }
     \hypersetup{  
@@ -350,41 +348,41 @@
       }  
     }
   }
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 % The first page is fully covered by the special title image used by AEBRs. 
 %
 %    \begin{macrocode}
-%<*common>
+%<*mpi-aebr|mpi-far>
 \pagestyle{empty}
 \clearpage
 \ThisCenterWallPaper{1.0}{\@reportwallpaper}
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 % The text is overlayed into a small box over the image, such that is it over the 
 % white part of the image. 
 %
 %    \begin{macrocode}
-%<*common>
+%<*mpi-aebr|mpi-far>
 \begin{textblock*}{0.7\textwidth}(86.1mm,61.5mm)
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 % The entire titlepage is written in sans serif font. 
 %
 %    \begin{macrocode}
-%<*common>  
+%<*mpi-aebr|mpi-far>  
   {\sffamily
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 % The title is written in large bold font. It is ragged right rather than justified
 % and should avoid hyphenation. 
 %
 %    \begin{macrocode}
-%<*common>
+%<*mpi-aebr|mpi-far>
   {
     \raggedright 
     \fontsize{18pt}{22pt}
@@ -393,22 +391,22 @@
     \nohyphens{\@title}\par
   }
 
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 % Each report then states that is an AEBR and its number.
 %
 %    \begin{macrocode}
-%<*common>  
+%<*mpi-aebr|mpi-far>  
   {\@reportseries} {\@reportno}
  
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 % The authors are printed in a slightly indented list. 
 %
 %    \begin{macrocode}
-%<*common>
+%<*mpi-aebr|mpi-far>
   {
     \renewcommand{\and}{\\}
     \hspace{3em}
@@ -416,35 +414,35 @@
     \@author
   \end{tabular}
 }
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 % This is followed by the reports ISSN and ISBN numbers.
 %
 %    \begin{macrocode}
-%<*common>
+%<*mpi-aebr|mpi-far>
 
 ISSN \@issn{} (online)\\
 ISBN \@isbn{} (online)
 
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 % Finally the report text block (and page) finishes with the date (month year).
 %    \begin{macrocode}
-%<*common>
+%<*mpi-aebr|mpi-far>
 \textbf{\@month{} \@date}
 }
 \end{textblock*}
 \mbox{}
 \clearpage
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 % The inside page contains a standard set of text.
 %
 %    \begin{macrocode}
-%<*common>
+%<*mpi-aebr|mpi-far>
 {
   \setlength{\parskip}{4ex}
   \vspace*{4ex}
@@ -467,16 +465,18 @@ This publication is also available on the Ministry for Primary Industries websit
 \textbf{\copyright{} Crown Copyright - Ministry for Primary Industries}
 }
 \clearpage
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 % Finally we turn the header and footer off. These get turned on by the summary command.
 %
 %    \begin{macrocode}
-%<*common>
+%<*mpi-aebr|mpi-far>
+\pagestyle{plain}
+\addtocounter{page}{-2}
 \pagestyle{empty}
 }
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 % \section{Table of Contents}
@@ -484,26 +484,26 @@ This publication is also available on the Ministry for Primary Industries websit
 % Reports requires a table of contents that is formatted in a very specific way.
 %
 %    \begin{macrocode}
-%<common>\RequirePackage{tocloft}
+%<mpi-aebr|mpi-far>\RequirePackage{tocloft}
 %    \end{macrocode}
 %
 %
-% Dection heading are always shown in capitals
+% Section heading are always shown in capitals
 % in the contents page. This involves rebinding contents line, so that when the 
 % title is used to construct a hyperref url, it doesn't break the url. This is
 % used in report and AEBR.
 %
 %    \begin{macrocode}
-%<*common>
+%<*mpi-aebr|mpi-far>
 \let\dfly@contentsline=\contentsline
 \renewcommand\contentsline[4]{\dfly@contentsline{#1}{\ifstrequal{#1}{section}{\MakeUppercase{#2}}{#2}}{#3}{#4}}
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 % The table of contents should have it's own page. And since it is printed it should
 % clear a double page. It should be called the TABLE OF CONTENTS. 
 %    \begin{macrocode}
-%<*common>
+%<*mpi-aebr|mpi-far>
 \RequirePackage{tocloft}
 \renewcommand{\cfttoctitlefont}{\bfseries\sffamily}
 \addto\captionsenglish{%
@@ -511,15 +511,15 @@ This publication is also available on the Ministry for Primary Industries websit
 } 
 \g@addto@macro\@cfttocfinish{\cleardoublepage}
 \tocloftpagestyle{empty}
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 % Section lines should be sans serif.
 %    \begin{macrocode}
-%<*common>
+%<*mpi-aebr|mpi-far>
 \g@addto@macro\cftsecpagefont{\sffamily}
 \g@addto@macro\cftsecfont{\sffamily}
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 % \section{Floats}
@@ -527,7 +527,7 @@ This publication is also available on the Ministry for Primary Industries websit
 %
 % Captions are all bold.
 %    \begin{macrocode}
-%<common>\usepackage[font={small,bf},labelsep=colon,singlelinecheck=false]{caption}
+%<mpi-aebr|mpi-far>\usepackage[font={small,bf},labelsep=colon,singlelinecheck=false]{caption}
 %    \end{macrocode}
 %
 % \section{Draft mode}
@@ -577,7 +577,6 @@ This publication is also available on the Ministry for Primary Industries websit
   urlcolor=black,
   citecolor=black,
   anchorcolor=black,
-  pagecolor=black,
   menucolor=black,
   linkcolor=black
 }
@@ -593,7 +592,7 @@ This publication is also available on the Ministry for Primary Industries websit
 % need to print out the command rather than actually do emphasis. 
 %
 %    \begin{macrocode}
-%<*common>
+%<*mpi-aebr|mpi-far>
 \RequirePackage{lastpage}
 \AtBeginDocument{
 {
@@ -605,11 +604,7 @@ options = \@charlb skipbib \@charrb,^^J%
 year = \@charlb \@date \@charrb,^^J%
 title = \@charlb \@title \@charrb,^^J%
 author = \@charlb \@author \@charrb,^^J%
-%</common>
-%<*common>
 journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
-%</common>
-%<*common>
 \@charrb
 }
 \newwrite\tempfile
@@ -618,15 +613,15 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
 \immediate\closeout\tempfile
 }
 }
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 % We then inform biblatex about this document. 
 %
 %    \begin{macrocode}
-%<*common>
+%<*mpi-aebr|mpi-far>
 \addbibresource{\jobname-self.bib}
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 % 
@@ -636,7 +631,7 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
 % unnumbered starting section. 
 %
 %    \begin{macrocode}
-%<*common>
+%<*mpi-aebr|mpi-far>
  \NewDocumentCommand{\summary}{O {Executive Summary}}{
   \pagestyle{plain}
   \setcounter{page}{1}
@@ -644,13 +639,13 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
   \addcontentsline{toc}{section}{\hspace{1.4em}#1}
   \section*{#1}
 } 
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 %
-% We also need a facility to cite the paper that is currently being written (for AEBR). 
+% We also need a facility to cite the paper that is currently being written. 
 %    \begin{macrocode}
-%<*common>
+%<*mpi-aebr|mpi-far>
 \newcommand{\citeself}{
   \renewcommand*{\multinamedelim}{;\space}
   \renewcommand*{\finalnamedelim}{;\space}%
@@ -658,7 +653,7 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
   
   \textbf{\emph{\citefield{this}{journaltitle}}. \pageref{LastPage}\ p.}
 }
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 % 
 % \section{Appendicies}
@@ -668,9 +663,9 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
 % contents. This is accomplished by using a the appendix package with the
 % titletoc option. 
 %    \begin{macrocode}
-%<*common>
+%<*mpi-aebr|mpi-far>
 \RequirePackage[titletoc]{appendix}
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 % In the appendix we also wish to customize a number of properties. To do this
@@ -681,11 +676,9 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
 %\item Counters are reset to set
 % \end{itemize}
 %    \begin{macrocode}
-%<*common>
+%<*mpi-aebr|mpi-far>
 \g@addto@macro\appendices{
-%</common>
-%<common>\titleformat{\section}{\normalfont\bfseries\sffamily\uppercase}{APPENDIX \thesection }{1em}{}
-%<*common>
+\titleformat{\section}{\normalfont\bfseries\sffamily\uppercase}{APPENDIX \thesection }{1em}{}
 \titleformat{\section}{\bfseries\sffamily}{APPENDIX \thesection }{1em}{}
 \renewcommand{\theequation}{\thesection-\arabic{equation}}
 \renewcommand{\thetable}{\thesection-\arabic{table}}
@@ -695,7 +688,7 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
 \setcounter{table}{0}  % reset counter 
 \setcounter{equation}{0}  % reset counter 
 }
-%</common>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 
 % \section{Integration}
