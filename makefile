@@ -6,7 +6,7 @@ else
 	LATEXMK_OPTIONS=-xelatex
 endif
 
-all: mpi-far.pdf
+all: mpi.pdf mpi-far.pdf
 
 mpi-far.pdf: mpi-far.tex test.bib mpi.sty FAR.jpg biblatex-mpi/mpi.bbx biblatex-mpi/mpi.cbx biblatex-mpi/english-mpi.lbx
 	latexmk $(LATEXMK_OPTIONS) mpi-far.tex
