@@ -1,3 +1,9 @@
+mpi-latex-templates (1.4) trusty; urgency=medium
+
+  * Updated package to work.
+
+ -- Finlay Thompson <finlay@dragonfly.co.nz>  Thu, 24 Sep 2015 14:39:17 +1200
+
 mpi-latex-templates (1.3ubuntu1) trusty; urgency=medium
 
   * Create MPI templates
