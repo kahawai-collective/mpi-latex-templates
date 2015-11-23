@@ -616,16 +616,6 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
-% We then inform biblatex about this document. 
-%
-%    \begin{macrocode}
-%<*mpi-aebr|mpi-far>
-\addbibresource{\jobname-self.bib}
-%</mpi-aebr|mpi-far>
-%    \end{macrocode}
-%
-% 
-%
 %
 %    There is space for an executive summary, or some other
 % unnumbered starting section. 
@@ -647,11 +637,13 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far>
 \newcommand{\citeself}{
+  \begin{refsection}[\jobname-self.bib]
   \renewcommand*{\multinamedelim}{;\space}
   \renewcommand*{\finalnamedelim}{;\space}%
   \textbf{\citename{this}{author}\ (\citefield{this}{year}).\ \citefield{this}{title}.}
   
   \textbf{\emph{\citefield{this}{journaltitle}}. \pageref{LastPage}\ p.}
+  \end{refsection}
 }
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}
