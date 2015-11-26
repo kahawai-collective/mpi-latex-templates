@@ -640,8 +640,9 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
   \begin{refsection}[\jobname-self.bib]
   \renewcommand*{\multinamedelim}{;\space}
   \renewcommand*{\finalnamedelim}{;\space}%
-  \textbf{\citename{this}{author}\ (\citefield{this}{year}).\ \citefield{this}{title}.}
-  
+  \AtNextCite{\defcounter{maxnames}{99}}
+  \textbf{\citename{this}[article]{author}\ (\citefield{this}{year}).\ \citefield{this}{title}.}
+
   \textbf{\emph{\citefield{this}{journaltitle}}. \pageref{LastPage}\ p.}
   \end{refsection}
 }
