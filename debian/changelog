@@ -1,3 +1,10 @@
+mpi-latex-templates (1.8) trusty; urgency=medium
+
+  * Use MPI bibliography style
+
+ -- Edward Abraham <edward@dragonfly.co.nz>  Thu, 26 Nov 2015 17:35:56 +1300
+
+
 mpi-latex-templates (1.7) trusty; urgency=medium
 
   * Version bump
