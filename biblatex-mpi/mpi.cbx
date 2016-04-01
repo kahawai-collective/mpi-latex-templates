@@ -14,25 +14,25 @@
 %%
 %% This work consists of the files:
 %%
-%% mfish.cbx (biblatex citation style)
-%% mfish.bbx (biblatex references style)
-%% mfish.dbx (biblatex style data model)
+%% mpi.cbx (biblatex citation style)
+%% mpi.bbx (biblatex references style)
+%% mpi.dbx (biblatex style data model)
 %% *.lbx (localisation files for APA-specific strings)
-%% biblatex-mfish.pdf (Style documentation)
-%% biblatex-mfish.tex (Style documentation source)
-%% biblatex-mfish-test.pdf (Style examples)
-%% biblatex-mfish-test.tex (Style examples source)
-%% biblatex-mfish-test-citations.bib (Style examples - citations)
-%% biblatex-mfish-test-references.bib (Style examples - references)
+%% biblatex-mpi.pdf (Style documentation)
+%% biblatex-mpi.tex (Style documentation source)
+%% biblatex-mpi-test.pdf (Style examples)
+%% biblatex-mpi-test.tex (Style examples source)
+%% biblatex-mpi-test-citations.bib (Style examples - citations)
+%% biblatex-mpi-test-references.bib (Style examples - references)
 
-\ProvidesFile{mfish.cbx}[2014/04/16\space v6.5\space APA biblatex citation style]
+\ProvidesFile{mpi.cbx}[2014/04/16\space v6.5\space APA biblatex citation style]
 \RequireBiber[3]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % (APA 6.16) labelyear postfix is not emphasised or italic
 %            Dashes between labelyear and non-numeric year (or pseudo-year)
 
-\DeclareFieldFormat{extrayear}{\iffieldnums{labelyear}{\mknumalph{#1}}{\mfishshortdash\mknumalph{#1}}}
+\DeclareFieldFormat{extrayear}{\iffieldnums{labelyear}{\mknumalph{#1}}{\mpishortdash\mknumalph{#1}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Need , separators
@@ -157,10 +157,10 @@
 %            their extrayear postfixes
 % (APA 6.18) Cite ORIGYEAR/YEAR if ORIGYEAR present
 % (APA 6.28) ISSUE after year when available
-\def\citeresetmfish{\global\let\cbx@mfish@names\@empty}
-\citeresetmfish
-\def\cbx@mfish@ifnamesaved{%
-  \xifinlist{\thefield{namehash}}{\cbx@mfish@names}
+\def\citeresetmpi{\global\let\cbx@mpi@names\@empty}
+\citeresetmpi
+\def\cbx@mpi@ifnamesaved{%
+  \xifinlist{\thefield{namehash}}{\cbx@mpi@names}
     {\@firstoftwo}
     {\@secondoftwo}}
 
@@ -177,7 +177,7 @@
 % Normal cite
      {\ifnameundef{shortauthor}
         {\printnames[labelname]{labelname}}%
-        {\cbx@mfish@ifnamesaved
+        {\cbx@mpi@ifnamesaved
           {\printnames{shortauthor}}
           {\printnames[labelname]{author}\addspace\printnames[sabrackets]{shortauthor}}}%
       \savefield{namehash}{\cbx@lasthash}}}%
@@ -198,7 +198,7 @@
 % Normal cite
      {\ifnameundef{shortauthor}
         {\printnames[labelname]{labelname}}%
-        {\cbx@mfish@ifnamesaved
+        {\cbx@mpi@ifnamesaved
           {\printnames{shortauthor}}
           {\printnames[labelname]{author}\addspace\printnames[sabrackets]{shortauthor}}}%
       \setunit{\nameyeardelim}%
@@ -221,7 +221,7 @@
 % Normal cite
      {\ifnameundef{shortauthor}
         {\printnames[labelname]{labelname}}%
-        {\cbx@mfish@ifnamesaved
+        {\cbx@mpi@ifnamesaved
           {\printnames{shortauthor}}
           {\printnames[labelname]{author}\addspace\printnames[sabrackets]{shortauthor}}}%
       \setunit{\nameyeardelim(}%
@@ -257,7 +257,7 @@
     % Normal full cite
          {\printnames[labelname]{labelname}}
     % Cite using short author
-         {\cbx@mfish@ifnamesaved
+         {\cbx@mpi@ifnamesaved
            {\printnames{shortauthor}}
            {\printnames[labelname]{author}}}%
   % Year
@@ -267,7 +267,7 @@
   % Put the shortauthor inside the year brackets if necessary
         \ifnameundef{shortauthor}
          {}
-         {\cbx@mfish@ifnamesaved
+         {\cbx@mpi@ifnamesaved
            {}
            {\printnames{shortauthor}\setunit{\nameyeardelim}}}%
   % Actual year printing
@@ -408,9 +408,9 @@
   \global\undef\cbx@lasthash}
 
 \newbibmacro*{cite:post}{%
-  \xifinlist{\thefield{namehash}}{\cbx@mfish@names}
+  \xifinlist{\thefield{namehash}}{\cbx@mpi@names}
     {}
-    {\listxadd{\cbx@mfish@names}{\thefield{namehash}}}}
+    {\listxadd{\cbx@mpi@names}{\thefield{namehash}}}}
 
 \newbibmacro*{cite:labelyear}{%
   \printfield{labelyear}}

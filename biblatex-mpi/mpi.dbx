@@ -14,18 +14,18 @@
 %%
 %% This work consists of the files:
 %%
-%% mfish.cbx (biblatex citation style)
-%% mfish.bbx (biblatex references style)
-%% mfish.dbx (biblatex style data model)
+%% mpi.cbx (biblatex citation style)
+%% mpi.bbx (biblatex references style)
+%% mpi.dbx (biblatex style data model)
 %% *.lbx (localisation files for APA-specific strings)
-%% biblatex-mfish.pdf (Style documentation)
-%% biblatex-mfish.tex (Style documentation source)
-%% biblatex-mfish-test.pdf (Style examples)
-%% biblatex-mfish-test.tex (Style examples source)
-%% biblatex-mfish-test-citations.bib (Style examples - citations)
-%% biblatex-mfish-test-references.bib (Style examples - references)
+%% biblatex-mpi.pdf (Style documentation)
+%% biblatex-mpi.tex (Style documentation source)
+%% biblatex-mpi-test.pdf (Style examples)
+%% biblatex-mpi-test.tex (Style examples source)
+%% biblatex-mpi-test-citations.bib (Style examples - citations)
+%% biblatex-mpi-test-references.bib (Style examples - references)
 
-\ProvidesFile{mfish.dbx}[2014/04/16\space v6.5\space APA biblatex style data model]
+\ProvidesFile{mpi.dbx}[2014/04/16\space v6.5\space APA biblatex style data model]
 \RequireBiber[3]
 
 \DeclareDatamodelEntrytypes{
