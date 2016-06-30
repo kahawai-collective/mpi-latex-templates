@@ -5,10 +5,10 @@ Priority: extra
 Standards-Version: 3.9.2
 Vcs-git: git@github.com:dragonfly-science/mpi-latex-templates.git
 Vcs-browser: https://github.com/dragonfly-science/mpi-latex-templates
-Build-Depends: debhelper (>= 9), devscripts, texlive-full, biber, msttcorefonts
+Build-Depends: debhelper (>= 9), devscripts, texlive-full,  msttcorefonts
 
 Package: mpi-latex-templates
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, texlive-full, biber, msttcorefonts
+Depends: ${shlibs:Depends}, ${misc:Depends}, texlive-full,  msttcorefonts
 Description: LaTeX templates for Ministry for Primary 
  Industries fisheries reports.
