@@ -12,7 +12,7 @@
 %% 
 %% The Current Maintainer of this work is Philip Kime.
 
-\ProvidesFile{mpi.bbx}[2014/04/16\space v6.5\space APA biblatex references style]
+\ProvidesFile{mfish.bbx}[2014/04/16\space v6.5\space APA biblatex references style]
 \RequireBiber[3]
 \RequireBibliographyStyle{standard}
 \urlstyle{rm} % APA examples all have URLs in same font as text
@@ -21,7 +21,7 @@
 %  Used to join citations/references to
 %  extrayear
 
-\newcommand{\mpishortdash}{-}
+\newcommand{\mfishshortdash}{-}
 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -33,7 +33,7 @@
 % (APA 6.22) Force roman numerals into arabic
 %            using etoolbox macros
 
-\newcommand{\mpinum}[1]{\ifrmnum{#1}{\rmntonum{#1}}{#1}}
+\newcommand{\mfishnum}[1]{\ifrmnum{#1}{\rmntonum{#1}}{#1}}
 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -65,10 +65,10 @@
 
 % Date formats. Suppress end range of less specific fields
 
-\newcommand*{\mkbibrangempilong}[1]{%
+\newcommand*{\mkbibrangemfishlong}[1]{%
   \ifthenelse{\equal{#1}{url}}
     {\printtext{%
-     \mkbibdatempilongmdy{#1year}{#1month}{#1day}%
+     \mkbibdatemfishlongmdy{#1year}{#1month}{#1day}%
      \iffieldundef{#1endyear}%
        {}%
        {\iffieldequalstr{#1endyear}{}% open-ended range?
@@ -78,11 +78,11 @@
             {\iffieldsequal{#1month}{#1endmonth}%
               {\iffieldsequal{#1day}{#1endday}%
                 {}%
-                {\mkbibdatempilongmdy{}{}{#1endday}}}%
-              {\mkbibdatempilongmdy{}{#1endmonth}{#1endday}}}%
-            {\mkbibdatempilongmdy{#1endyear}{#1endmonth}{#1endday}}}}}}
+                {\mkbibdatemfishlongmdy{}{}{#1endday}}}%
+              {\mkbibdatemfishlongmdy{}{#1endmonth}{#1endday}}}%
+            {\mkbibdatemfishlongmdy{#1endyear}{#1endmonth}{#1endday}}}}}}
     {\printtext{%
-     \mkbibdatempilong{#1year}{#1month}{#1day}%
+     \mkbibdatemfishlong{#1year}{#1month}{#1day}%
      \iffieldundef{#1endyear}%
        {}%
        {\iffieldequalstr{#1endyear}{}% open-ended range?
@@ -92,15 +92,15 @@
             {\iffieldsequal{#1month}{#1endmonth}%
               {\iffieldsequal{#1day}{#1endday}%
                 {}%
-                {\mkbibdatempilong{}{}{#1endday}}}%
-              {\mkbibdatempilong{}{#1endmonth}{#1endday}}}%
-            {\mkbibdatempilong{#1endyear}{#1endmonth}{#1endday}}}}}}}
+                {\mkbibdatemfishlong{}{}{#1endday}}}%
+              {\mkbibdatemfishlong{}{#1endmonth}{#1endday}}}%
+            {\mkbibdatemfishlong{#1endyear}{#1endmonth}{#1endday}}}}}}}
 
 
 % Only for DATE as only \printdateextra is used
-\newcommand*{\mkbibrangempilongextra}[1]{%
+\newcommand*{\mkbibrangemfishlongextra}[1]{%
     \printtext{%
-     \mkbibdatempilongextra{#1year}{#1month}{#1day}%
+     \mkbibdatemfishlongextra{#1year}{#1month}{#1day}%
      \iffieldundef{#1endyear}%
        {}%
        {\iffieldequalstr{#1endyear}{}% open-ended range?
@@ -110,9 +110,9 @@
             {\iffieldsequal{#1month}{#1endmonth}%
               {\iffieldsequal{#1day}{#1endday}%
                 {}%
-                {\mkbibdatempilongextra{}{}{#1endday}}}
-              {\mkbibdatempilongextra{}{#1endmonth}{#1endday}}}
-            {\mkbibdatempilongextra{#1endyear}{#1endmonth}{#1endday}}}}}}
+                {\mkbibdatemfishlongextra{}{}{#1endday}}}
+              {\mkbibdatemfishlongextra{}{#1endmonth}{#1endday}}}
+            {\mkbibdatemfishlongextra{#1endyear}{#1endmonth}{#1endday}}}}}}
 
 
 %
@@ -144,7 +144,7 @@
 % (APA 6.25) sorting is nyt but we need to account for PUBSTATE which comes
 %            after all normal cites for the same author
 
-\DeclareSortingScheme{mpi}{
+\DeclareSortingScheme{mfish}{                                  
   \sort{
     \field{presort}
   }
@@ -192,7 +192,7 @@
 % edge cases which can't be handled as this needs treating in the style
 % after biber has finished. Very unlikely though.
 \ExecuteBibliographyOptions{labeldate=true,%
-                            sorting=mpi,%
+                            sorting=mfish,%
                             autocite=inline,%
                             backref=true,%
                             pagetracker=true,%
@@ -207,10 +207,10 @@
                             minbibnames=25,%
                             abbreviate=true,%
                             mincrossrefs=999,%
-                            date=mpilong,%
-                            datelabel=mpilong,%
-                            origdate=mpilong,%
-                            urldate=mpilong,%
+                            date=mfishlong,%
+                            datelabel=mfishlong,%
+                            origdate=mfishlong,%
+                            urldate=mfishlong,%
                             eventdate=comp,%
                             sortcase=false}
 
@@ -236,11 +236,11 @@
 % It is not APA standard to have backrefs in the bib
 % Some users might like it though.
 
-\newbool{mpi:backref}
-\DeclareBibliographyOption{mpibackref}{%
+\newbool{mfish:backref}
+\DeclareBibliographyOption{mfishbackref}{%
   \ifstrequal{#1}{true}
-    {\global\booltrue{mpi:backref}}
-    {\global\boolfalse{mpi:backref}}}
+    {\global\booltrue{mfish:backref}}
+    {\global\boolfalse{mfish:backref}}}
 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -318,9 +318,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Set up some standard APA formats
 
-\DeclareFieldFormat{volume}{\mpinum{#1}}
+\DeclareFieldFormat{volume}{\mfishnum{#1}}
 \DeclareFieldFormat{series}{#1}
-\DeclareFieldFormat{chapter}{\bibcpstring{chapter}~\mpinum{#1}}
+\DeclareFieldFormat{chapter}{\bibcpstring{chapter}~\mfishnum{#1}}
 \DeclareFieldFormat{volumes}{\bibcpstring{volumes}~#1}
 \DeclareFieldFormat{addendum}{\mkbibparens{#1}}
 \DeclareFieldFormat{part}{#1}
@@ -331,8 +331,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % (APA 6.25) Works by the same author have the full author
 %            name, not an eliding dash. Author is always
-%            last name first.
-% (APA 6.27) Ellipsis in 7th position and then nothing until last
+%            family name first.
+% (APA 6.27) Ellipsis in 7th position and then nothing until family
 % (APA 7.10 Example 67) Unknown names and dates
 %
 
@@ -347,22 +347,27 @@
 %     to do \printnames[format][-\value{listtotal}]{field} to ensure we get
 %     all of the names in the list to work on
 
-\DeclareNameAlias{default}{mpiauthor}
+\DeclareNameAlias{default}{mfishauthor}
 
-\DeclareNameFormat{mpiauthor}{%
- \usebibmacro{name:mpi:last-first}{#1}{#3}{#4}{#5}{#7}%
-}
+\DeclareNameFormat{mfishauthor}{%
+    \nameparts{#1}%
+    \usebibmacro{name:mfish:family-first}%
+        {\namepartfamily}%
+        {\namepartgiven}%
+        {\namepartgiveni}%
+        {\namepartprefix}%
+        {\namepartsuffix}}
 
 \renewbibmacro*{author}{%
   \ifnameundef{author}
     {\usebibmacro{labeltitle}}
-    {\printnames[mpiauthor]{author}%
+    {\printnames[mfishauthor]{author}%
      \setunit*{\addspace}%
      \printfield{nameaddon}%
      \ifnameundef{with}
        {}
        {\setunit{}\addspace\mkbibparens{\printtext{\bibstring{with}\addspace}%
-        \printnames[mpiauthor]{with}}
+        \printnames[mfishauthor]{with}}
         \setunit*{\addspace}}}%
   \newunit\newblock%
   \usebibmacro{labelyear+extrayear}}
@@ -423,7 +428,7 @@
 % (APA 6.29) General format of titles.
 %            Ugly Chicago-style lowercasing of English titles
 
-\DeclareFieldFormat{mpicase}{\MakeSentenceCase*{#1}}
+\DeclareFieldFormat{mfishcase}{\MakeSentenceCase*{#1}}
 
 \DeclareFieldFormat{issuetitle}{#1\isdot}
 \DeclareFieldFormat{title}{\iffieldequalstr{titleisdescription}{true}{\mkbibbrackets{#1}}{\mkbibemph{#1}\isdot}}
@@ -489,15 +494,15 @@
     {}
     {\iffieldundef{origtitle}
       {\printtext[title]{%
-        \printfield[mpicase]{title}%
+        \printfield[mfishcase]{title}%
         \setunit{\subtitlepunct}%
-        \printfield[mpicase]{subtitle}}}
+        \printfield[mfishcase]{subtitle}}}
       {\printfield{origtitle}%
        \setunit{\addspace}%
        \printtext[brackets]{%
-        \printfield[mpicase]{title}%
+        \printfield[mfishcase]{title}%
         \setunit{\subtitlepunct}%
-        \printfield[mpicase]{subtitle}}}%
+        \printfield[mfishcase]{subtitle}}}%
      \setunit{\addspace}%
      \printfield{titleaddon}%
      \iffieldequalstr{entrytype}{book}%
@@ -517,9 +522,9 @@
   \ifthenelse{\iffieldundef{maintitle}\AND\iffieldundef{mainsubtitle}}
     {}
     {\printtext[maintitle]{%
-       \printfield[mpicase]{maintitle}%
+       \printfield[mfishcase]{maintitle}%
        \setunit{\subtitlepunct}%
-       \printfield[mpicase]{mainsubtitle}}%
+       \printfield[mfishcase]{mainsubtitle}}%
     \setunit{\addspace}}
   \printfield{maintitleaddon}%
   \addcolon}
@@ -530,8 +535,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % (APA 6.30) Format of volume and number for articles
 
-\DeclareFieldFormat[article]{volume}{\mkbibemph{\mpinum{#1}}}
-\DeclareFieldFormat[article]{number}{\mkbibemph{\mkbibparens{\mpinum{#1}}}}
+\DeclareFieldFormat[article]{volume}{\mkbibemph{\mfishnum{#1}}}
+\DeclareFieldFormat[article]{number}{\mkbibemph{\mkbibparens{\mfishnum{#1}}}}
 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -626,11 +631,11 @@
 
 \newbibmacro*{editorinauthpos}{%
     \global\booltrue{bbx:editorinauthpos}%
-    \printnames[mpiauthor]{editor}%
+    \printnames[mfishauthor]{editor}%
     \setunit{\addspace}%
     \ifnameundef{editor}
       {}
-      {\printtext[parens]{\usebibmacro{mpieditorstrg}{editor}}%
+      {\printtext[parens]{\usebibmacro{mfisheditorstrg}{editor}}%
        % need to clear editor so we don't get an "In" clause later
        % But we also need to set a flag to say we did this so we
        % don't lose sight of the fact we once had an editor for
@@ -647,26 +652,26 @@
 % (APA 6.27) Name format. Don't capitalise prefixes
 % (APA 6.27) Full name disambiguation using brackets
 
-% #1 = last name
+% #1 = family name
 % #2 = first name
 % #3 = first name (initials)
 % #4 = name prefix, a.k.a. 'von part'
 % #5 = name affix, a.k.a. 'junior part'
 \renewcommand*{\bibinitdelim}{}
 
-\newbibmacro*{name:mpi:last-first}[5]{%
+\newbibmacro*{name:mfish:family-first}[5]{%
   \ifuseprefix
     {\usebibmacro{name:delim}{#4#1}%
      \usebibmacro{name:hook}{#4#1}%
      \ifblank{#4}{}{%
        \mkbibnameprefix{#4}%
        \ifpunctmark{'}{}{\addhighpenspace}}%
-     \mkbibnamelast{#1\isdot}%
+     \mkbibnamefamily{#1\isdot}%
      \ifblank{#2}{}{\addcomma\addlowpenspace\mkbibnamefirst{#3}\isdot}%
      \ifblank{#5}{}{\addcomma\addlowpenspace\mkbibnameaffix{#5}\isdot}}
     {\usebibmacro{name:delim}{#1}%
      \usebibmacro{name:hook}{#1}%
-     \mkbibnamelast{#1}\isdot
+     \mkbibnamefamily{#1}\isdot
      \ifblank{#2#4}{}{\addcomma}%
      \ifblank{#2}{}{\addlowpenspace\mkbibnamefirst{#3}%
                     \ifthenelse{\value{uniquename}>1}
@@ -677,7 +682,7 @@
        \ifpunctmark{'}{}{\addhighpenspace}}%
      \ifblank{#5}{}{\addcomma\addlowpenspace\mkbibnameaffix{#5}\isdot}}}
 
-\newbibmacro*{name:mpi:first-last}[5]{%
+\newbibmacro*{name:mfish:first-family}[5]{%
   \ifuseprefix
     {\usebibmacro{name:delim}{#2}%
      \usebibmacro{name:hook}{#2}%
@@ -688,7 +693,7 @@
      \ifblank{#4}{}{%
        \mkbibnameprefix{#4\isdot}%
        \ifpunctmark{'}{}{\addhighpenspace}}%
-     \mkbibnamelast{#1\isdot}%
+     \mkbibnamefamily{#1\isdot}%
      \ifblank{#5}{}{\addlowpenspace\mkbibnameaffix{#5}\isdot}}
     {\usebibmacro{name:delim}{#1}%
      \usebibmacro{name:hook}{#1}%
@@ -696,7 +701,7 @@
                     \ifthenelse{\value{uniquename}>1}
                       {\addspace\mkbibbrackets{#2}}
                       {}\addspace}%
-     \mkbibnamelast{#1}\isdot
+     \mkbibnamefamily{#1}\isdot
      \ifblank{#5}{}{\addcomma\addlowpenspace\mkbibnameaffix{#5}\isdot}}}
 
 %
@@ -720,24 +725,24 @@
     {}%
     {\ifnamesequal{editor}{translator}%
        {\printtext{\bibopenparen}\global\booltrue{bbx:parens}%
-        \printnames[mpiauthor]{editor}%
+        \printnames[mfishauthor]{editor}%
         \setunit*{\addcomma\addspace}%
-        \usebibmacro{mpieditorstrg}{editor}%
+        \usebibmacro{mfisheditorstrg}{editor}%
         \setunit*{\addspace\&\space}%
         \printtext{\bibcpstring{translator}}%
         \ifbool{bbx:parens}{\printtext{\bibcloseparen}\global\boolfalse{bbx:parens}}{}}
        {\printtext{\bibopenparen}\global\booltrue{bbx:parens}%
         \ifnameundef{editor}%
           {}%
-          {\printnames[mpiauthor]{editor}%
+          {\printnames[mfishauthor]{editor}%
            \setunit{\addcomma\addspace}%
-           \usebibmacro{mpieditorstrg}{editor}%
+           \usebibmacro{mfisheditorstrg}{editor}%
            \clearname{editor}%
            \setunit{\adddot}%
            \setunit*{\addspace\&\space}}%
         \ifnameundef{translator}%
           {\setunit{}}%
-          {\printnames[mpiauthor]{translator}%
+          {\printnames[mfishauthor]{translator}%
            \setunit{\addcomma\addspace}%
            \printtext{\bibcpstring{translator}}%
            \clearname{translator}%
@@ -753,16 +758,16 @@
     {\setunit{\adddot\addspace}}%
     {\ifnamesequal{editor}{translator}%
       {\usebibmacro{in}%
-       \printnames[mpiauthor]{editor}%
+       \printnames[mfishauthor]{editor}%
        \setunit{\addspace\bibopenparen\global\booltrue{bbx:parens}}%
-       \usebibmacro{mpieditorstrg}{editor}%
+       \usebibmacro{mfisheditorstrg}{editor}%
        \setunit*{\addspace\&\space}%
        \printtext{\bibcpstring{translator}}%
        \ifbool{bbx:parens}{\printtext{\bibcloseparen}\global\boolfalse{bbx:parens}}{}}
       {\ifnameundef{translator}%
         {}%
         {\setunit{\addspace}%
-         \printtext[parens]{\printnames[mpiauthor]{translator}%
+         \printtext[parens]{\printnames[mfishauthor]{translator}%
          \setunit{\addcomma\addspace}%
          \printtext{\bibcpstring{translator}}}%
          \clearname{translator}%
@@ -784,9 +789,9 @@
   \iffieldundef{title}
     {}
     {\printtext[title]{%
-       \printfield[mpicase]{title}%
+       \printfield[mfishcase]{title}%
        \setunit{\subtitlepunct}%
-       \printfield[mpicase]{subtitle}}}}
+       \printfield[mfishcase]{subtitle}}}}
 
 \renewbibmacro*{title+issuetitle}{%
   \usebibmacro{periodical}%
@@ -861,9 +866,9 @@
   \ifthenelse{\iffieldundef{booktitle}\AND\iffieldundef{booksubtitle}}
     {}
     {\printtext[booktitle]{%
-      \iffieldundef{booktitle}{}{\printfield[mpicase]{booktitle}\addcomma}%
+      \iffieldundef{booktitle}{}{\printfield[mfishcase]{booktitle}\addcomma}%
        \setunit{\subtitlepunct}%
-       \printfield[mpicase]{booksubtitle}}%
+       \printfield[mfishcase]{booksubtitle}}%
      \setunit{\addspace}}%
   \printfield{booktitleaddon}}
 
@@ -884,8 +889,8 @@
 %            there is a maintitle (what APA calls "series") or not.
 
 \DeclareFieldFormat{volume}{\iffieldundef{maintitle}
-                              {\bibcpstring{volume}~\mpinum{#1}}
-                              {\mkbibemph{\bibcpstring{volume}~\mpinum{#1}}}}
+                              {\bibcpstring{volume}~\mfishnum{#1}}
+                              {\mkbibemph{\bibcpstring{volume}~\mfishnum{#1}}}}
 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -897,16 +902,16 @@
 
 \DeclareFieldFormat{number}{\iffieldundef{volume}
                              {\ifinteger{\thefield{number}}
-                               {\addspace\mkbibemph{\bibcpstring{number}~\mpinum{#1}}\adddot}
-                               {\mpinum{#1}}}
-                             {\mkbibemph{\mpinum{#1}}}}
+                               {\addspace\mkbibemph{\bibcpstring{number}~\mfishnum{#1}}\adddot}
+                               {\mfishnum{#1}}}
+                             {\mkbibemph{\mfishnum{#1}}}}
 
 \DeclareFieldFormat[report]{number}{\mkbibparens{\iffieldundef{type}
                                                   {}
                                                   {\printfield{type}\setunit{\addspace}}%
-                                                  \bibcpstring{number}~\mpinum{#1}}}
+                                                  \bibcpstring{number}~\mfishnum{#1}}}
 
-\newbibmacro*{mpi:reportnum}{%
+\newbibmacro*{mfish:reportnum}{%
   \iffieldundef{number}%
     {}%
     {\printfield{number}}}
@@ -929,7 +934,7 @@
 %            and pages (with no prefix)
 
 \DeclareFieldFormat[periodical]{pages}{\mkbibemph{#1}}
-\DeclareFieldFormat[periodical]{number}{\mkbibemph{\mpinum{#1}}}
+\DeclareFieldFormat[periodical]{number}{\mkbibemph{\mfishnum{#1}}}
 \DeclareListFormat[periodical]{location}{\mkbibemph{#1}}
 
 %
@@ -941,8 +946,8 @@
 
 \DeclareListFormat[proceedings]{location}{\mkbibemph{#1}}
 \DeclareFieldFormat[proceedings]{pages}{#1}
-\DeclareFieldFormat[proceedings]{number}{\mkbibemph{\mpinum{#1}}}
-\DeclareFieldFormat[proceedings]{volume}{\mkbibemph{\mpinum{#1}}}
+\DeclareFieldFormat[proceedings]{number}{\mkbibemph{\mfishnum{#1}}}
+\DeclareFieldFormat[proceedings]{volume}{\mkbibemph{\mfishnum{#1}}}
 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -971,12 +976,12 @@
 \DeclareFieldFormat[review]{title}{%
   \entrydata*{\thefield{related}}{%
     \iffieldequalstr{entrytype}{article}
-      {\mkbibemph{\printtext[mpicase]{\thefield{savedtitle}}}}
-      {\printtext[mpicase]{\thefield{savedtitle}}}}}
+      {\mkbibemph{\printtext[mfishcase]{\thefield{savedtitle}}}}
+      {\printtext[mfishcase]{\thefield{savedtitle}}}}}
 
 \DeclareFieldFormat[review]{pages}{#1}
-\DeclareFieldFormat[review]{volume}{\mkbibemph{\mpinum{#1}}}
-\DeclareFieldFormat[review]{number}{\mkbibparens{\mpinum{#1}}}
+\DeclareFieldFormat[review]{volume}{\mkbibemph{\mfishnum{#1}}}
+\DeclareFieldFormat[review]{number}{\mkbibparens{\mfishnum{#1}}}
 
 \newbibmacro*{reviewauthor}{%
   \ifnameundef{author}
@@ -992,7 +997,7 @@
 \newbibmacro*{producer}{%
   \ifnameundef{producer}
     {}
-    {\printnames[mpiauthor]{producer}%
+    {\printnames[mfishauthor]{producer}%
      \newunit
      \printtext[parens]{\bibcpstring{producer}}%
      \setunit*{\addcomma\addspace\&\addspace}}}
@@ -1000,7 +1005,7 @@
 \newbibmacro*{director}{%
   \ifnameundef{director}
     {}
-    {\printnames[mpiauthor]{director}%
+    {\printnames[mfishauthor]{director}%
      \newunit
      \printtext[parens]{\bibcpstring{director}}%
      \setunit*{\addcomma\addspace\&\addspace}}}
@@ -1008,7 +1013,7 @@
 \newbibmacro*{writer}{%
   \ifnameundef{writer}
     {}
-    {\printnames[mpiauthor]{writer}%
+    {\printnames[mfishauthor]{writer}%
      \newunit
      \printtext[parens]{\bibcpstring{writer}}%
      \setunit*{\addcomma\addspace\&\addspace}}}
@@ -1056,7 +1061,7 @@
     {\usebibmacro{in}%
      \ifnameundef{execproducer}
        {}
-       {\printnames[mpiauthor]{execproducer}%
+       {\printnames[mfishauthor]{execproducer}%
          \addspace
          \printtext[parens]{\bibcpstring{execproducer}}}
      \setunit{\addcomma\addspace}%
@@ -1067,9 +1072,9 @@
   \ifthenelse{\iffieldundef{maintitle}\AND\iffieldundef{mainsubtitle}}
     {}
     {\printtext[maintitle]{%
-       \printfield[mpicase]{maintitle}%
+       \printfield[mfishcase]{maintitle}%
        \setunit{\subtitlepunct}%
-       \printfield[mpicase]{mainsubtitle}}%
+       \printfield[mfishcase]{mainsubtitle}}%
     \setunit{\addspace}}
   \printfield{maintitleaddon}}
 
@@ -1151,11 +1156,11 @@
 \DeclareFieldFormat[software]{title}{#1}
 \DeclareFieldFormat[software]{version}{\mkbibparens{\bibcpstring{version}~#1}}
 
-\newbibmacro*{mpi:softwaretitle}{%
+\newbibmacro*{mfish:softwaretitle}{%
   \printtext[title]{%
-  \printfield[mpicase]{title}%
+  \printfield[mfishcase]{title}%
   \setunit{\subtitlepunct}%
-  \printfield[mpicase]{subtitle}}%
+  \printfield[mfishcase]{subtitle}}%
   \setunit{\addspace}%
   \iffieldundef{version}%
      {}
@@ -1169,7 +1174,7 @@
 % Hacky bits to suppress final period in some cases.
 % * If there is an ORIGYEAR field (APA 7.02:21)
 % * Unless there is a RELATED and ADDENDUM
-\newbibmacro*{mpi:finpunct}{%
+\newbibmacro*{mfish:finpunct}{%
   \iffieldundef{origyear}
     {\ifboolexpr{
        test {\iffieldundef{addendum}}
@@ -1190,13 +1195,13 @@
 
 \renewbibmacro*{related:reprintfrom}[1]{%
   \entrydata*{#1}{%
-    \printtext{\mkbibemph{\printfield[mpicase]{title}}}%
+    \printtext{\mkbibemph{\printfield[mfishcase]{title}}}%
     \setunit{\bibpagespunct}%
     \printfield{pages}%
     \setunit{\addcomma\addspace}%
     \bibstring{byauthor}\addspace
-    \printnames[mpiauthor]{editor}%
-    \printnames[mpiauthor]{author}%
+    \printnames[mfishauthor]{editor}%
+    \printnames[mfishauthor]{author}%
     \setunit{\addcomma\addspace}%
     \usebibmacro{location+publisher}%
     \newunit\newblock
@@ -1206,13 +1211,13 @@
   \setunit{}% Sanitize this in case no author
   \entrydata*{#1}{%
     \ifentrytype{article}
-      {\printtext{\printfield[mpicase]{title}}}
-      {\printtext{\mkbibemph{\printfield[mpicase]{title}}}}%
+      {\printtext{\printfield[mfishcase]{title}}}
+      {\printtext{\mkbibemph{\printfield[mfishcase]{title}}}}%
     \setunit{\addspace}%
     \bibstring{byauthor}\addspace
-    \printnames[mpiauthor]{author}%
-    \printnames[mpiauthor]{producer}%
-    \printnames[mpiauthor]{director}%
+    \printnames[mfishauthor]{author}%
+    \printnames[mfishauthor]{producer}%
+    \printnames[mfishauthor]{director}%
     \setunit{\addcomma\addspace}%
     \printdateextra
     \newunit\newblock
@@ -1245,8 +1250,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:finpunct}%
-  \usebibmacro{mpi:pageref}%
+  \usebibmacro{mfish:finpunct}%
+  \usebibmacro{mfish:pageref}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{newsarticle}{%
@@ -1272,8 +1277,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:finpunct}%
-  \usebibmacro{mpi:pageref}%
+  \usebibmacro{mfish:finpunct}%
+  \usebibmacro{mfish:pageref}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{book}{%
@@ -1301,8 +1306,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:pageref}%
-  \usebibmacro{mpi:finpunct}%
+  \usebibmacro{mfish:pageref}%
+  \usebibmacro{mfish:finpunct}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{booklet}{%
@@ -1328,8 +1333,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:pageref}%
-  \usebibmacro{mpi:finpunct}%
+  \usebibmacro{mfish:pageref}%
+  \usebibmacro{mfish:finpunct}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{proceedings}{%
@@ -1361,8 +1366,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:pageref}%
-  \usebibmacro{mpi:finpunct}%
+  \usebibmacro{mfish:pageref}%
+  \usebibmacro{mfish:finpunct}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{collection}{%
@@ -1388,8 +1393,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:pageref}%
-  \usebibmacro{mpi:finpunct}%
+  \usebibmacro{mfish:pageref}%
+  \usebibmacro{mfish:finpunct}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{inbook}{%
@@ -1421,8 +1426,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:pageref}%
-  \usebibmacro{mpi:finpunct}%
+  \usebibmacro{mfish:pageref}%
+  \usebibmacro{mfish:finpunct}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{incollection}{%
@@ -1454,8 +1459,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:pageref}%
-  \usebibmacro{mpi:finpunct}%
+  \usebibmacro{mfish:pageref}%
+  \usebibmacro{mfish:finpunct}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{inproceedings}{%
@@ -1479,7 +1484,7 @@
   \newunit\newblock
   \printlist{organization}%
   \newunit
-  \printfield[mpicase]{eventtitle}%
+  \printfield[mfishcase]{eventtitle}%
   \newunit
   \printfield{venue}%
   \newunit\newblock
@@ -1495,8 +1500,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:pageref}%
-  \usebibmacro{mpi:finpunct}%
+  \usebibmacro{mfish:pageref}%
+  \usebibmacro{mfish:finpunct}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{manual}{%
@@ -1528,8 +1533,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:pageref}%
-  \usebibmacro{mpi:finpunct}%
+  \usebibmacro{mfish:pageref}%
+  \usebibmacro{mfish:finpunct}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{online}{%
@@ -1560,8 +1565,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:pageref}%
-  \usebibmacro{mpi:finpunct}%
+  \usebibmacro{mfish:pageref}%
+  \usebibmacro{mfish:finpunct}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{patent}{%
@@ -1588,8 +1593,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:pageref}%
-  \usebibmacro{mpi:finpunct}%
+  \usebibmacro{mfish:pageref}%
+  \usebibmacro{mfish:finpunct}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{periodical}{%
@@ -1617,8 +1622,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:pageref}%
-  \usebibmacro{mpi:finpunct}%
+  \usebibmacro{mfish:pageref}%
+  \usebibmacro{mfish:finpunct}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{report}{%
@@ -1627,7 +1632,7 @@
   \usebibmacro{author/editor}%
   \setunit{\labelnamepunct}\newblock
   \usebibmacro{title}%
-  \usebibmacro{mpi:reportnum}%
+  \usebibmacro{mfish:reportnum}%
   \newunit\newblock
   \printlist{institution}%
   \newunit\newblock
@@ -1643,8 +1648,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:pageref}%
-  \usebibmacro{mpi:finpunct}%
+  \usebibmacro{mfish:pageref}%
+  \usebibmacro{mfish:finpunct}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{thesis}{%
@@ -1666,8 +1671,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:pageref}%
-  \usebibmacro{mpi:finpunct}%
+  \usebibmacro{mfish:pageref}%
+  \usebibmacro{mfish:finpunct}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{review}{%
@@ -1693,8 +1698,8 @@
   \usebibmacro{doi+eprint+url}%
   \newunit\newblock
   \printfield{addendum}%
-  \usebibmacro{mpi:pageref}%
-  \usebibmacro{mpi:finpunct}%
+  \usebibmacro{mfish:pageref}%
+  \usebibmacro{mfish:finpunct}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{misc}{%
@@ -1726,8 +1731,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:pageref}%
-  \usebibmacro{mpi:finpunct}%
+  \usebibmacro{mfish:pageref}%
+  \usebibmacro{mfish:finpunct}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{data}{%
@@ -1755,8 +1760,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:pageref}%
-  \usebibmacro{mpi:finpunct}%
+  \usebibmacro{mfish:pageref}%
+  \usebibmacro{mfish:finpunct}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{letter}{%
@@ -1782,8 +1787,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:pageref}%
-  \usebibmacro{mpi:finpunct}%
+  \usebibmacro{mfish:pageref}%
+  \usebibmacro{mfish:finpunct}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{letters}{%
@@ -1809,8 +1814,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:pageref}%
-  \usebibmacro{mpi:finpunct}%
+  \usebibmacro{mfish:pageref}%
+  \usebibmacro{mfish:finpunct}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{video}{%
@@ -1838,8 +1843,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:pageref}%
-  \usebibmacro{mpi:finpunct}%
+  \usebibmacro{mfish:pageref}%
+  \usebibmacro{mfish:finpunct}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{movie}{%
@@ -1867,8 +1872,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:pageref}%
-  \usebibmacro{mpi:finpunct}%
+  \usebibmacro{mfish:pageref}%
+  \usebibmacro{mfish:finpunct}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{audio}{%
@@ -1894,8 +1899,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:pageref}%
-  \usebibmacro{mpi:finpunct}%
+  \usebibmacro{mfish:pageref}%
+  \usebibmacro{mfish:finpunct}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{music}{%
@@ -1914,8 +1919,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:pageref}%
-  \usebibmacro{mpi:finpunct}%
+  \usebibmacro{mfish:pageref}%
+  \usebibmacro{mfish:finpunct}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{software}{%
@@ -1923,7 +1928,7 @@
   \usebibmacro{begentry}%
   \usebibmacro{author/editor}%
   \setunit{\labelnamepunct}\newblock
-  \usebibmacro{mpi:softwaretitle}%
+  \usebibmacro{mfish:softwaretitle}%
   \newunit\newblock
   \usebibmacro{location+publisher}%
   \newunit\newblock
@@ -1934,8 +1939,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:pageref}%
-  \usebibmacro{mpi:finpunct}%
+  \usebibmacro{mfish:pageref}%
+  \usebibmacro{mfish:finpunct}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{unpublished}{%
@@ -1961,8 +1966,8 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{mpi:pageref}%
-  \usebibmacro{mpi:finpunct}
+  \usebibmacro{mfish:pageref}%
+  \usebibmacro{mfish:finpunct}
   \usebibmacro{finentry}}
 
 %
@@ -1974,34 +1979,34 @@
 \newbibmacro*{editorx}{%
   \ifnameundef{editor}
     {}
-    {\printnames[mpiauthor]{editor}%
+    {\printnames[mfishauthor]{editor}%
      \setunit{\addspace}%
-     \printtext[parens]{\usebibmacro{mpieditorstrg}{editor}}
+     \printtext[parens]{\usebibmacro{mfisheditorstrg}{editor}}
      \clearname{editor}%
      \newunit}%
   \ifnameundef{editora}
     {}
-    {\printnames[mpiauthor]{editora}%
+    {\printnames[mfishauthor]{editora}%
      \setunit{\addspace}%
-     \printtext[parens]{\usebibmacro{mpieditorstrg}{editora}}
+     \printtext[parens]{\usebibmacro{mfisheditorstrg}{editora}}
      \clearname{editora}%
      \newunit}%
   \ifnameundef{editorb}
     {}
-    {\printnames[mpiauthor]{editorb}%
+    {\printnames[mfishauthor]{editorb}%
      \setunit{\addspace}%
-     \printtext[parens]{\usebibmacro{mpieditorstrg}{editorb}}
+     \printtext[parens]{\usebibmacro{mfisheditorstrg}{editorb}}
      \clearname{editorb}%
      \newunit}%
   \ifnameundef{editorc}
     {}
-    {\printnames[mpiauthor]{editorc}%
+    {\printnames[mfishauthor]{editorc}%
      \setunit{\addspace}%
-     \printtext[parens]{\usebibmacro{mpieditorstrg}{editorc}}
+     \printtext[parens]{\usebibmacro{mfisheditorstrg}{editorc}}
      \clearname{editorc}%
      \newunit}}
 
-\newbibmacro*{mpieditorstrg}[1]{%
+\newbibmacro*{mfisheditorstrg}[1]{%
   \iffieldundef{#1type}
     {\ifthenelse{\value{#1}>1\OR\ifandothers{#1}}
        {\bibcpstring{editors}}
@@ -2070,8 +2075,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Wrapper for backrefs
 
-\newbibmacro{mpi:pageref}{%
-  \ifbool{mpi:backref}{\usebibmacro{pageref}}{}}
+\newbibmacro{mfish:pageref}{%
+  \ifbool{mfish:backref}{\usebibmacro{pageref}}{}}
 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2084,13 +2089,14 @@
 \DeclareBibliographyOption{dashed}[true]{%
   \ifstrequal{#1}{true}
     {\ExecuteBibliographyOptions{pagetracker}%
-     \renewbibmacro*{bbx:savehash}{\savefield{fullhash}{\bbx@lasthash}}}
+     \renewbibmacro*{bbx:savehash}{\savefield{fullhash}{\bbx@familyhash}}}
     {\ExecuteBibliographyOptions{pagetracker=false}%
      \renewbibmacro*{bbx:savehash}{}}}
 
 \DeclareFieldFormat{shorthandwidth}{#1}
 \setlength{\bibitemsep}{0pt}
 
+%\DeclareNameAlias{sortname}{default}
 \DeclareNameAlias{author}{sortname}
 \DeclareNameAlias{editor}{sortname}
 \DeclareNameAlias{translator}{sortname}
@@ -2119,10 +2125,10 @@
   {\item}
 
 \InitializeBibliographyStyle{%
-  \global\undef\bbx@lasthash}
+  \global\undef\bbx@familyhash}
 
 \newbibmacro*{bbx:savehash}{%
-  \savefield{fullhash}{\bbx@lasthash}}
+  \savefield{fullhash}{\bbx@familyhash}}
 
 
 \newbool{bbx@inset}
