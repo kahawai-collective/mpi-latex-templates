@@ -671,8 +671,7 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far>
 \g@addto@macro\appendices{
-\titleformat{\section}{\normalfont\bfseries\sffamily\uppercase}{APPENDIX \thesection }{1em}{}
-\titleformat{\section}{\bfseries\sffamily}{APPENDIX \thesection }{1em}{}
+\titleformat{\section}{\normalfont\bfseries\sffamily\uppercase}{\thesection}{1em}{APPENDIX \thesection: }
 \renewcommand{\theequation}{\thesection-\arabic{equation}}
 \renewcommand{\thetable}{\thesection-\arabic{table}}
 \renewcommand{\thefigure}{\thesection-\arabic{figure}}
