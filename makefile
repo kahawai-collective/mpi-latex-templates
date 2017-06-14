@@ -9,7 +9,7 @@ endif
 
 all: mpi.pdf mpi-far.pdf
 
-mpi-far.pdf: mpi-far.tex test.bib mpi.sty FAR.jpg biblatex-mpi/mpi.bbx biblatex-mpi/mpi.cbx biblatex-mpi/english-mpi.lbx
+mpi-far.pdf: mpi-far.tex test.bib mpi.sty FAR.jpg 
 	$(PREFIX) latexmk $(LATEXMK_OPTIONS) mpi-far.tex
 
 mpi.sty: mpi.ins mpi.dtx 
