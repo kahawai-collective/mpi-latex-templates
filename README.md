@@ -77,12 +77,9 @@ of directories which latex will look for files in. On windows use
 **Install the mpi templates**
 
 Create a directory called `mpi` in the latex tree and place all the `.sty`,
-`.cls` and `.JPG` files into it. Copy the biblatex-mpi into the same directory as the 
-`mpi` directory. You should now have two new directories. A common 
-location for these would be 
+`.cls` and `.JPG` files into it. 
 
  * /usr/share/texlive/texmf-dist/tex/latex/mpi
- * /usr/share/texlive/texmf-dist/tex/latex/biblatex-mpi
 
 **Tell LaTeX about the new package**
 

@@ -195,9 +195,10 @@
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far>
 \RequirePackage{titlesec}
-\titleformat{\section}{\normalfont\bfseries\sffamily\uppercase}{\thesection.}{1em}{}
-\titleformat{\subsection}{\normalfont\bfseries\sffamily}{\thesubsection}{1em}{}
-\titleformat{\subsubsection}{\normalfont\bfseries\sffamily}{\thesubsubsection}{1em}{}
+\titleformat{\section}{\normalfont\bfseries\sffamily\uppercase}{\thesection}{1em}{\thesection.\hspace{0.8em}}
+\titleformat{name=\section,numberless}{\normalfont\bfseries\sffamily\uppercase}{}{0em}{}
+\titleformat{\subsection}{\normalfont\bfseries\sffamily}{\thesubsection}{1em}{\thesubsection\hspace{0.8em}}
+\titleformat{\subsubsection}{\normalfont\bfseries\sffamily}{\thesubsubsection}{1em}{\thesubsubsection\hspace{0.8em}}
 \titlespacing{\section}{0pt}{\baselineskip}{0pt}
 \titlespacing{\subsection}{0pt}{\baselineskip}{0pt}
 \titlespacing{\subsubsection}{0pt}{\baselineskip}{0pt}
@@ -235,8 +236,8 @@
 \RequirePackage{csquotes}
 \RequirePackage{polyglossia}
 \setdefaultlanguage[variant=newzealand]{english}
-\RequirePackage[style=mpi,backend=biber]{biblatex}
-\DeclareLanguageMapping{english}{english-mpi}
+\RequirePackage[style=apa,backend=biber,maxnames=20,minnames=20,uniquename=false]{biblatex}
+\DeclareLanguageMapping{english}{english-apa}
 \defbibheading{bibliography}[References]{\section{#1}}
 \newcommand{\citet}{\cite}
 \newcommand{\citep}{\parencite}
