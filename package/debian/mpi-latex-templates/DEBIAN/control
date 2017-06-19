@@ -1,0 +1,10 @@
+Package: mpi-latex-templates
+Version: 1.11
+Architecture: all
+Maintainer: Edward Abraham <edward@dragonfly.co.nz>
+Installed-Size: 2597
+Depends: texlive-full, biber, msttcorefonts
+Section: TeX
+Priority: extra
+Description: LaTeX templates for Ministry for Primary
+ Industries fisheries reports.

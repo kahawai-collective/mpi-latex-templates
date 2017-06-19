@@ -1,0 +1,5 @@
+../latex/*.cls /usr/share/texlive/texmf-dist/tex/latex/mpi
+../latex/*.sty /usr/share/texlive/texmf-dist/tex/latex/mpi
+../graphics/* /usr/share/texlive/texmf-dist/tex/latex/mpi
+
+
