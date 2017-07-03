@@ -14,7 +14,7 @@ RUN ?= docker run -it --rm --net=host --user=$$(id -u):$$(id -g) -e RUN= -e TEXI
 all: package/.build
 
 examples/mpi-far.pdf: examples/mpi-far.tex examples/test.bib latex/mpi.pdf graphics/FAR.jpg clean_examples
-	$(RUN) bash -c "cd examples && xelatex mpi-far && biber mpi-far && xelatex mpi-far"
+	$(RUN) bash -c "cd examples && xelatex mpi-far && biber mpi-far && xelatex mpi-far && xelatex mpi-far"
 
 latex/mpi.pdf: latex/mpi.dtx latex/mpi.ins clean_latex
 	$(RUN) bash -c "cd latex && latex mpi.ins"

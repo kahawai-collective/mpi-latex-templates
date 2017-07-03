@@ -235,12 +235,39 @@
 %<*mpi-aebr|mpi-far>
 \RequirePackage{csquotes}
 \RequirePackage{polyglossia}
+\RequirePackage{xpatch}
 \setdefaultlanguage[variant=newzealand]{english}
-\RequirePackage[style=apa,backend=biber,sortcites,sorting=ynt,uniquename=false]{biblatex}
+\RequirePackage[style=apa,
+    backend=biber,
+    sortcites,
+    sorting=nyt,
+    uniquename=false,
+    apamaxprtauth=999]{biblatex}
 \DeclareLanguageMapping{english}{english-apa}
 \defbibheading{bibliography}[References]{\section{#1}}
-\newcommand{\citet}{\cite}
+\newcommand{\citet}{\textcite}
 \newcommand{\citep}{\parencite}
+\renewcommand{\cite}{\textcite}
+
+% Use semicolons in the bibliography:
+\renewcommand{\multinamedelim}{;\addspace}
+\AtBeginBibliography{%
+  \renewcommand*{\finalnamedelim}{;\addspace}
+}
+
+% A maximum of two authors in citation commands:
+% Patches https://github.com/plk/biblatex-apa/blob/v6.8/tex/latex/biblatex-apa/cbx/apa.cbx
+\xpatchnameformat{labelname}{\ifciteseen}{\ifnumcomp{\value{listtotal}}{>}{2}}{}{Patch of labelname failed}
+
+% Redefine the nameyeardelim command, to put a space between the authors and the year
+% in citations, updates https://github.com/plk/biblatex-apa/blob/v6.8/tex/latex/biblatex-apa/cbx/apa.cbx 
+\renewcommand*{\nameyeardelim}{\space}
+
+% Update the author macro so that there is no period after the authors, for authors without initials
+% Patches https://github.com/plk/biblatex-apa/blob/v6.8/tex/latex/biblatex-apa/bbx/apa.bbx
+\xpatchbibmacro{author}{\newunit\newblock}{}{}{Patch of author macro failed}
+
+
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %

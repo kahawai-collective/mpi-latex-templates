@@ -1,3 +1,10 @@
+mpi-latex-templates (1.12) zesty; urgency=medium
+
+  * Patch the APA templates to 
+
+ -- Edward Abraham <edward@dragonfly.co.nz>  Mon, 3 Jul 2017 11:35:56 +1300
+
+
 mpi-latex-templates (1.11) zesty; urgency=medium
 
   * Switch to APA templates
