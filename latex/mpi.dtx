@@ -239,7 +239,6 @@
 \setdefaultlanguage[variant=newzealand]{english}
 \RequirePackage[style=apa,
     backend=biber,
-    sortcites,
     sorting=nyt,
     uniquename=false,
     apamaxprtauth=999]{biblatex}
@@ -254,6 +253,8 @@
 \AtBeginBibliography{%
   \renewcommand*{\finalnamedelim}{;\addspace}
 }
+% Use a comma between multiple citations:
+\renewcommand*{\multicitedelim}{,\addspace}
 
 % A maximum of two authors in citation commands:
 % Patches https://github.com/plk/biblatex-apa/blob/v6.8/tex/latex/biblatex-apa/cbx/apa.cbx
