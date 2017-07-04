@@ -1,6 +1,6 @@
 IMAGE := docker.dragonfly.co.nz/texlive-17.04:2017-07-03
 
-TEXINPUTS := .///:..//latex//:..//graphics//:..//biblatex-mpi//:
+TEXINPUTS := .///:..//latex//:..//graphics//:
 RUN ?= docker run -it --rm --net=host --user=$$(id -u):$$(id -g) -e RUN= -e TEXINPUTS=$(TEXINPUTS) -v$$(pwd):/work -w /work $(IMAGE)
 
 #SHELL := /bin/bash

@@ -1,6 +1,7 @@
 #!/bin/bash
 set -ex
-RUN=
+export RUN= 
+export TEXINPUTS=.///:..//latex//:..//graphics//: 
 make
 cp mpi-latex-templates*.deb /output/
 
