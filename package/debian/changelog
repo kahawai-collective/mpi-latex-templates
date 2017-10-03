@@ -1,9 +1,14 @@
-mpi-latex-templates (1.13) zesty; urgency=medium
+mpi-latex-templates (1.14) zesty; urgency=medium
 
   * Fix ambiguous multiple author references 
 
  -- Edward Abraham <edward@dragonfly.co.nz>  Mon, 4 Oct 2017 08:35:56 +1300
 
+mpi-latex-templates (1.13) xenial; urgency=medium
+
+  * Updated the MPI news and resources link (see issue #5)
+
+ -- Finlay Thompson <finlay@dragonfly.co.nz>  Tue, 12 Sep 2017 10:34:04 +1200
 
 mpi-latex-templates (1.12) zesty; urgency=medium
 
