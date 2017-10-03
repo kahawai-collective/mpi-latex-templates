@@ -1,3 +1,10 @@
+mpi-latex-templates (1.13) zesty; urgency=medium
+
+  * Fix ambiguous multiple author references 
+
+ -- Edward Abraham <edward@dragonfly.co.nz>  Mon, 4 Oct 2017 08:35:56 +1300
+
+
 mpi-latex-templates (1.12) zesty; urgency=medium
 
   * Patch the APA templates to 
