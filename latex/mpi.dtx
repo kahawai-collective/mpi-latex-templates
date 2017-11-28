@@ -253,6 +253,12 @@
 \AtBeginBibliography{%
   \renewcommand*{\finalnamedelim}{;\addspace}
 }
+
+% Remove space beteeen initials:
+\AtBeginBibliography{%
+  \renewcommand*{\bibinitdelim}{}
+}
+
 % Use a comma between multiple citations:
 \renewcommand*{\multicitedelim}{,\addspace}
 
@@ -268,6 +274,22 @@
 % Patches https://github.com/plk/biblatex-apa/blob/v6.8/tex/latex/biblatex-apa/bbx/apa.bbx
 \xpatchbibmacro{author}{\newunit\newblock}{}{}{Patch of author macro failed}
 
+\xpatchbibmacro{date+extrayear}{%
+  \printtext[parens]%
+  }{%
+    \setunit{\addperiod\space}%
+      \printtext%
+      }{}{}
+
+\xpatchbibmacro{location+publisher}{%
+  \printlist[default][1-1]{location}%
+  \setunit*{\addcolon\space}%
+  \printlist{publisher}%
+  \newunit}{%
+  \printlist[default][1-1]{publisher}%
+  \setunit*{\addcomma\space}%
+  \printlist{location}%
+  \newunit}{}{Patch of location+publisher macro failed}
 
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}
