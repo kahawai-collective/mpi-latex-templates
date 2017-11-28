@@ -259,6 +259,11 @@
   \renewcommand*{\bibinitdelim}{}
 }
 
+% Use a colon, rather than a comma, between the volume and the pages:
+\AtBeginBibliography{%
+  \renewcommand*{\bibpagespunct}{\addcolon\addspace}
+}
+
 % Use a comma between multiple citations:
 \renewcommand*{\multicitedelim}{,\addspace}
 
@@ -287,9 +292,12 @@
   \printlist{publisher}%
   \newunit}{%
   \printlist[default][1-1]{publisher}%
-  \setunit*{\addcomma\space}%
+  \setunit*{\addcolon\space}%
   \printlist{location}%
   \newunit}{}{Patch of location+publisher macro failed}
+
+\DeclareFieldFormat{title}{\iffieldequalstr{titleisdescription}{true}{\mkbibbrackets{#1}}{#1\isdot}}
+
 
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}

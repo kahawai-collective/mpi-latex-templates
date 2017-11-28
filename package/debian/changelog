@@ -1,3 +1,9 @@
+mpi-latex-templates (1.15) zesty; urgency=medium
+
+  * Change the formatting of the references
+
+ -- Edward Abraham <edward@dragonfly.co.nz>  Mon, 28 Nov 2017 08:35:56 +1300
+
 mpi-latex-templates (1.14) zesty; urgency=medium
 
   * Fix ambiguous multiple author references 
