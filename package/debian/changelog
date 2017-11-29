@@ -1,3 +1,9 @@
+mpi-latex-templates (1.16) zesty; urgency=medium
+
+  * More adjustments to the formatting of the references
+
+ -- Edward Abraham <edward@dragonfly.co.nz>  Tue, 29 Nov 2017 08:35:56 +1300
+
 mpi-latex-templates (1.15) zesty; urgency=medium
 
   * Change the formatting of the references

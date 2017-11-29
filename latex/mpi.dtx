@@ -302,6 +302,8 @@
 \DeclareFieldFormat{title}{\iffieldequalstr{titleisdescription}{true}{\mkbibbrackets{#1}}{#1\isdot}}
 \DeclareFieldFormat{booktitle}{#1} %Overriding definition in biblatex.def
 \DeclareFieldFormat{maintitle}{#1} %Overriding definition in biblatex.def
+\DeclareFieldFormat[thesis]{title}{#1}
+\DeclareFieldFormat[unpublished]{title}{#1}
 
 % Italicise the "In:" in collections in the bibliography:
 \xpatchbibmacro{in}{\bibcpstring{in}\setunit{\space}}{\mkbibemph{\bibcpstring{in}}\addcolon\setunit{\space}}{}{Patch of 'in' macro failed}
