@@ -37,3 +37,10 @@ The MPI package will not work correctly with the following packages:
     to build without using docker. You will neeed to have the `texlive-full` and `biber`
     packages installed.
 
+## Example references from the MPI style guide
+
+Cooke, J.G. (1994). Nutrient transformations in a natural wetland receiving sewage effluent and the implications for waste treatment. *Water Science and Technology 29 (4)*: 209–217.
+
+Constable, J.D.; Scott, P.H.; Connor, M.A. (1989). Fixed bed nitrification as a potential means of enhancing nitrogen removal rates in a sewage lagoon. *In*: Australian Water and Wastewater Association, Proceedings of the 13th Federal Convention. pp 192–196. 6–10 March 1989, Canberra.
+ 
+Ayling, T.; Cox, G. (1982). Collins guide to the sea fishes of New Zealand. Collins, Auckland. 343 p. 
