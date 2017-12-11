@@ -311,6 +311,12 @@
 % No comma after the journal title in the bibliography:
 \xpatchbibmacro{journal+issuetitle}{\addcomma}{}{}{}
 
+% Italicise the number in articles
+\DeclareFieldFormat[article]{number}{\mkbibemph{\mkbibparens{\apanum{#1}}}}
+
+% Space between the volume and the number in articles
+\xpatchbibmacro{journal+issuetitle}{\printfield{number}}{\setunit{\addspace}\printfield{number}}{}{}
+
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
