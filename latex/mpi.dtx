@@ -254,7 +254,7 @@
   \renewcommand*{\finalnamedelim}{;\addspace}
 }
 
-% Remove space beteeen initials in the names in the bibliography:
+% Remove space between initials in the names in the bibliography:
 \AtBeginBibliography{%
   \renewcommand*{\bibinitdelim}{}
 }
@@ -316,6 +316,9 @@
 
 % Space between the volume and the number in articles
 \xpatchbibmacro{journal+issuetitle}{\printfield{number}}{\setunit{\addspace}\printfield{number}}{}{}
+
+% Always finish with a period
+\renewbibmacro*{apa:finpunct}{\addperiod}
 
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}
