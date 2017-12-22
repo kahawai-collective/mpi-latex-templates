@@ -1,3 +1,9 @@
+mpi-latex-templates (1.19) zesty; urgency=medium
+
+  * Updated citet to only use & between author names
+
+ -- Finlay Thompson <finlay@dragonfly.co.nz>  Fri, 22 Dec 2017 14:08:00 +1300
+
 mpi-latex-templates (1.18) zesty; urgency=medium
 
   * Reference formats

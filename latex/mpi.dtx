@@ -320,6 +320,12 @@
 % Always finish with a period
 \renewbibmacro*{apa:finpunct}{\addperiod}
 
+% Use '&' instead of 'and' in citations for two authors.
+% https://tex.stackexchange.com/questions/28529/using-ampersand-symbols-instead-of-the-word-and-for-bibliography-style-apa
+\renewcommand*{\finalnamedelim}{%
+   \ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}%
+   \addspace\&\space}
+
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
