@@ -1,3 +1,9 @@
+mpi-latex-templates (1.20) zesty; urgency=medium
+
+  * Thesis formatting - no parentheses around type+institution
+
+ -- David Middleton <david.middleton@tridentsystems.co.nz>  Wed, 24 Jan 2018 14:00:00 +1300
+
 mpi-latex-templates (1.19) zesty; urgency=medium
 
   * Updated citet to only use & between author names
@@ -31,7 +37,7 @@ mpi-latex-templates (1.15) zesty; urgency=medium
 
 mpi-latex-templates (1.14) zesty; urgency=medium
 
-  * Fix ambiguous multiple author references 
+  * Fix ambiguous multiple author references
 
  -- Edward Abraham <edward@dragonfly.co.nz>  Mon, 4 Oct 2017 08:35:56 +1300
 
@@ -43,7 +49,7 @@ mpi-latex-templates (1.13) xenial; urgency=medium
 
 mpi-latex-templates (1.12) zesty; urgency=medium
 
-  * Patch the APA templates to 
+  * Patch the APA templates to
 
  -- Edward Abraham <edward@dragonfly.co.nz>  Mon, 3 Jul 2017 11:35:56 +1300
 
@@ -102,4 +108,3 @@ mpi-latex-templates (1.3ubuntu1) trusty; urgency=medium
   * Create MPI templates
 
  -- Edward Abraham <edward@dragonfly.co.nz>  Wed, 09 Jan 2015 11:36:12 +1300
-
