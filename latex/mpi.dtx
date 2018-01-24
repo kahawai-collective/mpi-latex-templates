@@ -1,18 +1,18 @@
 % \iffalse meta-comment
 % The MIT License (MIT)
-% 
+%
 % Copyright (c) 2014 Dragonfly Science
-% 
+%
 % Permission is hereby granted, free of charge, to any person obtaining a copy
 % of this software and associated documentation files (the "Software"), to deal
 % in the Software without restriction, including without limitation the rights
 % to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 % copies of the Software, and to permit persons to whom the Software is
 % furnished to do so, subject to the following conditions:
-% 
+%
 % The above copyright notice and this permission notice shall be included in all
 % copies or substantial portions of the Software.
-% 
+%
 % THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 % IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 % FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -72,7 +72,7 @@
 % \maketitle
 %
 % \begin{abstract}
-%  This is a set of classes that are used to format \LaTeX documents according the 
+%  This is a set of classes that are used to format \LaTeX documents according the
 %  Ministry for Primary Industries formatting requirements. There are two document
 %  classes provided: ``mpi-aebr'', for formatting Aquatic Environment and Biodiversity
 %  Reports, and ``mpi-far'', for formatting Fisheries Assessment Reports. Using these
@@ -83,13 +83,13 @@
 %  \clearpage
 % \section{Class and Package Options}
 %
-% All options are passed down to the common layer. 
+% All options are passed down to the common layer.
 %
-% Since we intend on manually hiding certain options we need a command to 
-% clear it from the global options list. This is taken from 
+% Since we intend on manually hiding certain options we need a command to
+% clear it from the global options list. This is taken from
 % \url{http://tex.stackexchange.com/questions/33245/disabling-the-draft-option-in-a-package}.
 % The package needs to recognise the draft option, and just
-% give it to ifdraft. The rest are just default behaviour. 
+% give it to ifdraft. The rest are just default behaviour.
 %
 %    \begin{macrocode}
 %<*common>
@@ -150,7 +150,7 @@
 % \section{Fonts}
 %
 % MPI reports use standard times like fonts.
-%    
+%
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far>
 \RequirePackage{fontspec}
@@ -172,7 +172,7 @@
     ItalicFont     = {Times New Roman Italic},
     BoldFont       = {Times New Roman Bold},
     BoldItalicFont = {Times New Roman Bold Italic}]{Times New Roman}
-\setmathtt[Mapping=tex-text, 
+\setmathtt[Mapping=tex-text,
     Numbers=Monospaced,
     ItalicFont     = {Times New Roman Italic},
     BoldFont       = {Times New Roman Bold},
@@ -185,7 +185,7 @@
 %<common>\renewcommand{\normalsize}{\fontsize{11pt}{13pt}\selectfont}
 %    \end{macrocode}
 %
-% Paragraphs are not indented, but there is extra spacing between them. 
+% Paragraphs are not indented, but there is extra spacing between them.
 %    \begin{macrocode}
 %<common>\setlength{\parskip}{3mm}
 %<common>\setlength{\parindent}{0mm}
@@ -207,7 +207,7 @@
 %
 % \section{Header and Footer}
 %
-%    Page footers must contain the report name, page and publisher. 
+%    Page footers must contain the report name, page and publisher.
 %
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far>
@@ -218,8 +218,8 @@
     \fancyfoot[LO,RE]{\sffamily\scriptsize Ministry for Primary Industries}
     \fancyfoot[LE]{\sffamily\scriptsize\thepage\ {\normalsize$\bullet$}\ \footertitle}
     \fancyfoot[RO]{\sffamily\scriptsize\footertitle\ {\normalsize$\bullet$}\ \thepage}
-    \renewcommand{\footrulewidth}{0.3pt} 
-    \renewcommand{\headrulewidth}{0pt} 
+    \renewcommand{\footrulewidth}{0.3pt}
+    \renewcommand{\headrulewidth}{0pt}
   }
 %</mpi-aebr|mpi-far>
 %   \end{macrocode}
@@ -227,9 +227,9 @@
 % \section{Bibliography}
 %
 % Since we are using biblatex with apa we need to use polyglossia to tell
-% biblatex which language we are using. Actually polyglossia doesn't support 
+% biblatex which language we are using. Actually polyglossia doesn't support
 % british directly so we need a slight hack. We also need the bibliography to be
-% a proper section. We also define some helper cite commands for familiarity. 
+% a proper section. We also define some helper cite commands for familiarity.
 %
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far>
@@ -272,7 +272,7 @@
 \xpatchnameformat{labelname}{\ifciteseen}{\ifnumcomp{\value{listtotal}}{>}{2}}{}{Patch of labelname failed}
 
 % Redefine the nameyeardelim command, to put a space between the authors and the year in citations
-% in citations, updates https://github.com/plk/biblatex-apa/blob/v6.8/tex/latex/biblatex-apa/cbx/apa.cbx 
+% in citations, updates https://github.com/plk/biblatex-apa/blob/v6.8/tex/latex/biblatex-apa/cbx/apa.cbx
 \renewcommand*{\nameyeardelim}{\space}
 
 % Update the author macro so that there is no period after the authors, for authors without initials, in the bibliography
@@ -326,17 +326,20 @@
    \ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}%
    \addspace\&\space}
 
+% No parentheses around type+institution for theses
+\xpatchbibmacro{type+institution}{[parens]}{}{}{Patch of 'type+institution' macro failed}
+
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 %
 % \section{Title page}
 %
-% Each kind of document has a different kind of header. 
+% Each kind of document has a different kind of header.
 % Each one shall be addressed separately. Additionally,
 % each title page section for a class will be split into two parts:
 % the first defines new commands for entering metadata into the titlepage
-% and the second defines the actual creation of the title page. 
+% and the second defines the actual creation of the title page.
 %
 % Since some of the headings require absolute positioning,
 % we load the textpos package, and a number of other packages to help with the
@@ -356,8 +359,8 @@
 % \subsubsection{Meta Data}
 %
 % The document has two titles. The first is the main title which goes on
-% the cover of the document, while the second is a short title that goes 
-% in the page footer. Both are required.  
+% the cover of the document, while the second is a short title that goes
+% in the page footer. Both are required.
 %
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far>
@@ -371,9 +374,9 @@
 %
 %
 % Like in a standard document |\date| is allowed. However, it is only used for
-% creating citations, and as such should contain only the year. The 
+% creating citations, and as such should contain only the year. The
 % default is changed from |\today| to the current year. There
-% is also a reportmonth command to set the month. 
+% is also a reportmonth command to set the month.
 %
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far>
@@ -382,9 +385,9 @@
 \newcommand{\@month}{MMM}
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}
-%  
 %
-% AEBR and FAR documents require ISSN, ISBN and report numbers. All of these must have 
+%
+% AEBR and FAR documents require ISSN, ISBN and report numbers. All of these must have
 % sensible defaults before they are finished.
 %    \begin{macrocode}
 %<*mpi-aebr>
@@ -408,36 +411,36 @@
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
-% The report also has a customisable citation note that goes at the end of the 
-% citation. This defaults to the subtitle. 
+% The report also has a customisable citation note that goes at the end of the
+% citation. This defaults to the subtitle.
 %
 %
 % \subsubsection{Maketitle}
 %
-% We use the wallpaper package to support background images, and 
-% redefine the maketitle command to generate the right content. 
+% We use the wallpaper package to support background images, and
+% redefine the maketitle command to generate the right content.
 %    \begin{macrocode}
 %<common>\RequirePackage{wallpaper}
 %<mpi-aebr|mpi-far>\renewcommand{\maketitle}{
 %    \end{macrocode}
 %
 % We start by generating metadata for the pdf. We need to at least set the pdf
-% author and title. 
+% author and title.
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far>
   {
     \renewcommand{\and}{ and }
-    \hypersetup{  
-      pdfinfo={  
-        Title={\footertitle},  
+    \hypersetup{
+      pdfinfo={
+        Title={\footertitle},
         Author={\@author}
-      }  
+      }
     }
   }
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
-% The first page is fully covered by the special title image used by AEBRs. 
+% The first page is fully covered by the special title image used by AEBRs.
 %
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far>
@@ -447,8 +450,8 @@
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
-% The text is overlayed into a small box over the image, such that is it over the 
-% white part of the image. 
+% The text is overlayed into a small box over the image, such that is it over the
+% white part of the image.
 %
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far>
@@ -456,21 +459,21 @@
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
-% The entire titlepage is written in sans serif font. 
+% The entire titlepage is written in sans serif font.
 %
 %    \begin{macrocode}
-%<*mpi-aebr|mpi-far>  
+%<*mpi-aebr|mpi-far>
   {\sffamily
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 % The title is written in large bold font. It is ragged right rather than justified
-% and should avoid hyphenation. 
+% and should avoid hyphenation.
 %
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far>
   {
-    \raggedright 
+    \raggedright
     \fontsize{18pt}{22pt}
     \bfseries
     \selectfont
@@ -483,13 +486,13 @@
 % Each report then states that is an AEBR and its number.
 %
 %    \begin{macrocode}
-%<*mpi-aebr|mpi-far>  
+%<*mpi-aebr|mpi-far>
   {\@reportseries} {\@reportno}
- 
+
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
-% The authors are printed in a slightly indented list. 
+% The authors are printed in a slightly indented list.
 %
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far>
@@ -575,7 +578,7 @@ This publication is also available on the Ministry for Primary Industries websit
 %
 %
 % Section heading are always shown in capitals
-% in the contents page. This involves rebinding contents line, so that when the 
+% in the contents page. This involves rebinding contents line, so that when the
 % title is used to construct a hyperref url, it doesn't break the url. This is
 % used in report and AEBR.
 %
@@ -587,14 +590,14 @@ This publication is also available on the Ministry for Primary Industries websit
 %    \end{macrocode}
 %
 % The table of contents should have it's own page. And since it is printed it should
-% clear a double page. It should be called the TABLE OF CONTENTS. 
+% clear a double page. It should be called the TABLE OF CONTENTS.
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far>
 \RequirePackage{tocloft}
 \renewcommand{\cfttoctitlefont}{\bfseries\sffamily}
 \addto\captionsenglish{%
   \renewcommand{\contentsname}{TABLE OF CONTENTS}
-} 
+}
 \g@addto@macro\@cfttocfinish{\cleardoublepage}
 \tocloftpagestyle{empty}
 %</mpi-aebr|mpi-far>
@@ -609,7 +612,7 @@ This publication is also available on the Ministry for Primary Industries websit
 %    \end{macrocode}
 %
 % \section{Floats}
-% 
+%
 %
 % Captions are all bold.
 %    \begin{macrocode}
@@ -645,7 +648,7 @@ This publication is also available on the Ministry for Primary Industries websit
 %
 %  \section{Additional Packages}
 % The hyperref package must be the last one loaded, so we load it here.
-% We also load booktabs as that is expected to be used for all tables. 
+% We also load booktabs as that is expected to be used for all tables.
 %
 %    \begin{macrocode}
 %<*common>
@@ -655,7 +658,7 @@ This publication is also available on the Ministry for Primary Industries websit
 %    \end{macrocode}
 %
 %    Hyperref should be used, but the links should not be coloured or have boxes around
-% them. 
+% them.
 %    \begin{macrocode}
 %<*common>
 \hypersetup{
@@ -675,7 +678,7 @@ This publication is also available on the Ministry for Primary Industries websit
 % write out a generated bib file that contains an entry for the current document.
 % This must happen at the end of the prelude, so that the title and so on are defined.
 % Note that new lines have the be suppressed while doing this, and |\emph| commands
-% need to print out the command rather than actually do emphasis. 
+% need to print out the command rather than actually do emphasis.
 %
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far>
@@ -704,7 +707,7 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
 %
 %
 %    There is space for an executive summary, or some other
-% unnumbered starting section. 
+% unnumbered starting section.
 %
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far>
@@ -714,12 +717,12 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
   \phantomsection
   \addcontentsline{toc}{section}{\hspace{1.4em}#1}
   \section*{#1}
-} 
+}
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 %
-% We also need a facility to cite the paper that is currently being written. 
+% We also need a facility to cite the paper that is currently being written.
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far>
 \newcommand{\citeself}{
@@ -735,13 +738,13 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
 }
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}
-% 
+%
 % \section{Appendicies}
 %
 %
-% We require appendicies to be printed as ``Appendix X'' in the table of 
+% We require appendicies to be printed as ``Appendix X'' in the table of
 % contents. This is accomplished by using a the appendix package with the
-% titletoc option. 
+% titletoc option.
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far>
 \RequirePackage[titletoc]{appendix}
@@ -751,7 +754,7 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
 % In the appendix we also wish to customize a number of properties. To do this
 % we simply add these to the |\appendics| command.  These are:
 % \begin{itemize}
-%\item Section headings printed as Appendix X 
+%\item Section headings printed as Appendix X
 %\item Tables, equations and figures get the appendix letter before their number
 %\item Counters are reset to set
 % \end{itemize}
@@ -762,10 +765,10 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
 \renewcommand{\theequation}{\thesection-\arabic{equation}}
 \renewcommand{\thetable}{\thesection-\arabic{table}}
 \renewcommand{\thefigure}{\thesection-\arabic{figure}}
-\setcounter{section}{0}  % reset counter 
-\setcounter{figure}{0}  % reset counter 
-\setcounter{table}{0}  % reset counter 
-\setcounter{equation}{0}  % reset counter 
+\setcounter{section}{0}  % reset counter
+\setcounter{figure}{0}  % reset counter
+\setcounter{table}{0}  % reset counter
+\setcounter{equation}{0}  % reset counter
 }
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}
