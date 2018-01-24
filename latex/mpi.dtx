@@ -328,7 +328,7 @@
 
 % No parentheses around type+institution for theses, and add full stop after title
 \xpatchbibmacro{type+institution}{[parens]}{}{}{Patch of 'type+institution' macro failed}
-\DeclareFieldFormat[thesis]{title}{\mkbibemph{#1}\isdot}
+\DeclareFieldFormat[thesis]{title}{#1\isdot}
 
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}
