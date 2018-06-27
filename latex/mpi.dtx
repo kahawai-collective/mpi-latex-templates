@@ -248,9 +248,9 @@
 \newcommand{\citep}{\parencite}
 \renewcommand{\cite}{\textcite}
 
-\DefineBibliographyExtras{english-apa}{%
-  \restorecommand\lbx@finalnamedelim
-}
+%\DefineBibliographyExtras{english-apa}{%
+%  \restorecommand\lbx@finalnamedelim
+%}
 
 % Use a comma between multiple citations:
 \renewcommand*{\multicitedelim}{,\addspace}
@@ -318,11 +318,6 @@
 % Always finish with a period
 \renewbibmacro*{apa:finpunct}{\addperiod}
 
-% Use '&' instead of 'and' in citations for two authors.
-% https://tex.stackexchange.com/questions/28529/using-ampersand-symbols-instead-of-the-word-and-for-bibliography-style-apa
-\renewcommand*{\finalnamedelim}{%
-   \ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}%
-   \addspace\&\space}
 
 % No parentheses around type+institution for theses, and add full stop after title
 \xpatchbibmacro{type+institution}{[parens]}{}{}{Patch of 'type+institution' macro failed}
