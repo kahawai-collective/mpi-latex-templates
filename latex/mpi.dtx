@@ -248,29 +248,18 @@
 \newcommand{\citep}{\parencite}
 \renewcommand{\cite}{\textcite}
 
-% Use semicolons between names in the bibliography:
-\renewcommand*{\multinamedelim}{\addsemicolon\addspace}
-\AtBeginBibliography{%
-  \let\multinamedelim{\addsemicolon\addspace}
-}
-
-\AtBeginBibliography{%
-  \let\finalnamedelim{\addsemicolon\addspace}
-}
-
-
-% Remove space between initials in the names in the bibliography:
-\AtBeginBibliography{%
-  \renewcommand*{\bibinitdelim}{}
-}
-
-% Use a colon, rather than a comma, between the volume and the pages in the bibliography:
-\AtBeginBibliography{%
-  \renewcommand*{\bibpagespunct}{\addcolon\addspace}
-}
-
 % Use a comma between multiple citations:
 \renewcommand*{\multicitedelim}{,\addspace}
+% Use a semicolon between multiple names in text citations:
+\renewcommand*{\multinamedelim}{\addsemicolon\addspace}
+% in bibligraphy:
+\AtBeginBibliography{%
+  \renewcommand*{\finalnamedelim}{\addsemicolon\addspace}
+  \renewcommand*{\finallistdelim}{\addsemicolon\addspace}% Use semicolons between names in the bibliography:
+  \renewcommand*{\bibinitdelim}{}% Remove space between initials in the names in the bibliography
+  \renewcommand*{\bibpagespunct}{\addcolon\addspace}% Use a colon, rather than a comma, between the volume and the pages in the bibliography
+}
+
 
 % Have a maximum of two authors in citation commands:
 % Patches https://github.com/plk/biblatex-apa/blob/v6.8/tex/latex/biblatex-apa/cbx/apa.cbx
