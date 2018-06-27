@@ -249,10 +249,9 @@
 \renewcommand{\cite}{\textcite}
 
 % Use semicolons between names in the bibliography:
-\renewcommand*{\multinamedelim}{;\addspace}
-\renewcommand*{\finalnamedelim}{;\addspace}
+\renewcommand*{\multinamedelim}{\addsemicolon\addspace}
 \AtBeginBibliography{%
-  \renewcommand*{\finalnamedelim}{;\addspace}
+  \renewcommand*{\finalnamedelim}{\addsemicolon\addspace}
 }
 
 % Remove space between initials in the names in the bibliography:
@@ -729,8 +728,8 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
 %<*mpi-aebr|mpi-far>
 \newcommand{\citeself}{
   \begin{refsection}[\jobname-self.bib]
-  \renewcommand*{\multinamedelim}{;\space}
-  \renewcommand*{\finalnamedelim}{;\space}%
+  \renewcommand*{\multinamedelim}{\addsemicolon\space}
+  \renewcommand*{\finalnamedelim}{\addsemicolon\space}%
   \renewcommand*{\bibinitdelim}{}
   \AtNextCite{\defcounter{maxnames}{99}}
   \textbf{\citename{this}[apaauthor]{author}\ (\citefield{this}{year}).\ \citefield{this}{title}.}
