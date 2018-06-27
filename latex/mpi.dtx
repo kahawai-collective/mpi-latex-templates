@@ -250,8 +250,8 @@
 
 % Use a comma between multiple citations:
 \renewcommand*{\multicitedelim}{,\addspace}
-% Use a semicolon between multiple names in text citations:
-\renewcommand*{\multinamedelim}{\addsemicolon\addspace}
+\DeclareDelimFormat*{finalnamedelim}{\addsemicolon\addspace}
+\DeclareDelimFormat*{finalnamedelim:apa:family-given}{\addsemicolon\addspace}
 % in bibligraphy:
 \AtBeginBibliography{%
   \renewcommand*{\finalnamedelim}{\addsemicolon\addspace}% Use semicolon for multiple names in the bibliography:
