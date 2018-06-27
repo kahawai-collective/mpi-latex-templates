@@ -248,6 +248,9 @@
 \newcommand{\citep}{\parencite}
 \renewcommand{\cite}{\textcite}
 
+\DefineBibliographyExtras{english}{%
+  \restorecommand\lbx@finalnamedelim
+}
 % Use semicolons between names in the bibliography:
 \renewcommand*{\multinamedelim}{\addsemicolon\addspace}
 \AtBeginBibliography{%
