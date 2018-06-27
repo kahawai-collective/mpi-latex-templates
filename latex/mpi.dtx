@@ -253,20 +253,16 @@
 % Use a semicolon between multiple names in text citations:
 \renewcommand*{\multinamedelim}{\addsemicolon\addspace}
 % in bibligraphy:
-\AtBeginBibliography{\renewcommand*{\finalnamedelim}{%
-  \ifthenelse{\value{listcount}>\maxprtauth}
-    {}
-    {\ifthenelse{\value{liststop}>2}
-       {\finalandcomma\addsemicolon\addspace}
-       {\addspace\addsemicolon\addspace}}}
+\AtBeginBibliography{
+	\renewcommand*{\finalnamedelim}{%
+	  \ifthenelse{\value{listcount}>\maxprtauth}
+	    {}{\addsemicolon\addspace}
+	}
+ 	\renewcommand*{\bibinitdelim}{}% Remove space between initials in the names in the bibliography
+	\renewcommand*{\bibpagespunct}{\addcolon\addspace}% Use a colon, rather than a comma, between the volume and the pages in the bibliography
+
 }
 
-\AtBeginBibliography{%
-  %\renewcommand*{\finalnamedelim}{\addsemicolon\addspace}% Use semicolon for multiple names in the bibliography:
-  \renewcommand*{\revsdnamedelim}{\addsemicolon\addspace}% Use semicolon for multiple names in the bibliography:
-  \renewcommand*{\bibinitdelim}{}% Remove space between initials in the names in the bibliography
-  \renewcommand*{\bibpagespunct}{\addcolon\addspace}% Use a colon, rather than a comma, between the volume and the pages in the bibliography
-}
 
 
 % Have a maximum of two authors in citation commands:
