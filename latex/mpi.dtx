@@ -248,15 +248,16 @@
 \newcommand{\citep}{\parencite}
 \renewcommand{\cite}{\textcite}
 
-\DefineBibliographyExtras{english}{%
-  \restorecommand\lbx@finalnamedelim
-}
 % Use semicolons between names in the bibliography:
 \renewcommand*{\multinamedelim}{\addsemicolon\addspace}
 \AtBeginBibliography{%
-  \renewcommand*{\finalnamedelim}{\addsemicolon\addspace}
-  \renewcommand*{\finallistdelim}{\addsemicolon\addspace}
+  \let\multinamedelim{\addsemicolon\addspace}
 }
+
+\AtBeginBibliography{%
+  \let\finalnamedelim{\addsemicolon\addspace}
+}
+
 
 % Remove space between initials in the names in the bibliography:
 \AtBeginBibliography{%
