@@ -252,9 +252,10 @@
 \renewcommand*{\multicitedelim}{,\addspace}
 % Use a semicolon between multiple names in text citations:
 \renewcommand*{\multinamedelim}{\addsemicolon\addspace}
-\renewcommand*{\finalnamedelim}{\addsemicolon\addspace}% Use semicolon for multiple names in the bibliography:
 % in bibligraphy:
 \AtBeginBibliography{%
+  \renewcommand*{\finalnamedelim}{\addsemicolon\addspace}% Use semicolon for multiple names in the bibliography:
+  \renewcommand*{\finalnamedelim:apa:family-given}{\addsemicolon\addspace}% Use semicolon for multiple names in the bibliography:
   \renewcommand*{\bibinitdelim}{}% Remove space between initials in the names in the bibliography
   \renewcommand*{\bibpagespunct}{\addcolon\addspace}% Use a colon, rather than a comma, between the volume and the pages in the bibliography
 }
