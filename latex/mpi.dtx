@@ -254,7 +254,7 @@
 \renewcommand*{\multinamedelim}{\addsemicolon\addspace}
 % in bibligraphy:
 \AtBeginBibliography{%
-  \renewcommand*{\finalnamedelim}{\addsemicolon\addspace}% Use semicolon for multiple names in the bibliography:
+  \renewcommand[bib,biblist]{\finalnamedelim}{\addsemicolon\addspace}% Use semicolon for multiple names in the bibliography:
   \renewcommand*{\revsdnamedelim}{\addsemicolon\addspace}% Use semicolon for multiple names in the bibliography:
   \renewcommand*{\bibinitdelim}{}% Remove space between initials in the names in the bibliography
   \renewcommand*{\bibpagespunct}{\addcolon\addspace}% Use a colon, rather than a comma, between the volume and the pages in the bibliography
