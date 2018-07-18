@@ -1,3 +1,9 @@
+mpi-latex-templates (1.21) bionic; urgency=medium
+
+  * Tweaking the references
+ 
+ -- Edward Abraham <edward@dragonfly.co.nz>  Wed, 18 Jul 2018 08:35:56 +1300
+
 mpi-latex-templates (1.20) zesty; urgency=medium
 
   * Thesis formatting - no parentheses around type+institution
