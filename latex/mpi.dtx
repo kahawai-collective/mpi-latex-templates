@@ -388,11 +388,16 @@
 \newcommand{\@issn}{1179-6480}
 \newcommand{\@reportseries}{New Zealand Aquatic Environment and Biodiversity Report}
 %</mpi-aebr>
-%<*mpi-far|mpi-plenary>
-\newcommand{\@reportwallpaper}{FAR_FNZ.jpg}
+%<*mpi-far>
+\newcommand{\@reportwallpaper}{FAR.jpg}
 \newcommand{\@issn}{1179-5352}
 \newcommand{\@reportseries}{New Zealand Fisheries Assessment Report}
-%</mpi-far|mpi-plenary>
+%</mpi-far>
+%<*mpi-plenary>
+\newcommand{\@reportwallpaper}{PLENARY.jpg}
+\newcommand{\@issn}{1179-5352}
+\newcommand{\@reportseries}{}
+%</mpi-plenary>
 %<*mpi-aebr|mpi-far|mpi-plenary>
 \newcommand{\issn}[1]{\renewcommand{\@issn}{#1}}
 \newcommand{\isbn}[1]{\renewcommand{\@isbn}{#1}}
@@ -479,10 +484,10 @@
 % Each report then states that is an AEBR and its number.
 %
 %    \begin{macrocode}
-%<*mpi-aebr|mpi-far|mpi-plenary>
+%<*mpi-aebr|mpi-far>
   {\@reportseries} {\@reportno}
 
-%</mpi-aebr|mpi-far|mpi-plenary>
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 % The authors are printed in a slightly indented list.
