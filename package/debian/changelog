@@ -1,13 +1,19 @@
+mpi-latex-templates (1.23) bionic; urgency=medium
+
+  * Removed parenthesis from addendum in bibliography
+
+ -- Nikki Wilkinson <nikki@dragonfly.co.nz>  Fri Jun 28 13:55:27 NZST 2019
+
 mpi-latex-templates (1.22) bionic; urgency=medium
 
   * Fisheries New Zealand
- 
+
  -- Edward Abraham <edward@dragonfly.co.nz>  Wed, 16 Jan 2019 08:35:56 +1300
 
 mpi-latex-templates (1.21) bionic; urgency=medium
 
   * Tweaking the references
- 
+
  -- Edward Abraham <edward@dragonfly.co.nz>  Wed, 18 Jul 2018 08:35:56 +1300
 
 mpi-latex-templates (1.20) zesty; urgency=medium
