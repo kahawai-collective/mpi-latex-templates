@@ -322,6 +322,9 @@
 \xpatchbibmacro{type+institution}{[parens]}{}{}{Patch of 'type+institution' macro failed}
 \DeclareFieldFormat[thesis]{title}{#1\addperiod}
 
+% Gets rid of parentheses around page number
+\DeclareFieldFormat{addendum}{{#1}}
+
 %</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
 %
