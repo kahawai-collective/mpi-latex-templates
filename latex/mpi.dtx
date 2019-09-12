@@ -617,6 +617,18 @@ This publication is also available on the Ministry for Primary Industries websit
 %<mpi-aebr|mpi-far|mpi-plenary>\usepackage[font={small,bf},labelsep=colon,singlelinecheck=false]{caption}
 %    \end{macrocode}
 %
+% We adjust the fptop and fpbot lengths to so that floats which are on a page on their own are 
+% pushed to the top.
+%
+%    \begin{macrocode}
+%<*common>
+\makeatletter
+\setlength{\@fptop}{0pt}
+\setlength{\@fpbot}{0pt plus 1fil}
+\makeatother
+%</common>
+%    \end{macrocode}
+%
 % \section{Draft mode}
 %
 % Draft mode should create a watermark accross every page to make them as draft.
