@@ -1,3 +1,9 @@
+mpi-latex-templates (1.25) bionic; urgency=medium
+
+  * Fix the draft mode
+
+ -- Edward Abraham <edward@dragonfly.co.nz>  Wed, 22 Apr 2020 08:35:56 +1300
+
 mpi-latex-templates (1.24) bionic; urgency=medium
 
   * Make floats on single pages float to the top

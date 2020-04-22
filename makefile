@@ -13,18 +13,15 @@ RUN ?= docker run -it --rm --net=host --user=$$(id -u):$$(id -g) -e RUN= -e TEXI
 #
 all: package/.build
 
-examples/mpi-far.pdf: examples/mpi-far.tex examples/test.bib latex/mpi.pdf graphics/FAR.jpg clean_examples
-	$(RUN) bash -c "cd examples && xelatex mpi-far && biber mpi-far && xelatex mpi-far && xelatex mpi-far"
-
-examples/mpi-plenary.pdf: examples/mpi-plenary.tex examples/test.bib latex/mpi.pdf graphics/PLENARY.jpg clean_examples
-	$(RUN) bash -c "cd examples && xelatex mpi-plenary && biber mpi-plenary && xelatex mpi-plenary && xelatex mpi-plenary"
+examples/%.pdf: examples/%.tex examples/test.bib latex/mpi.pdf graphics/FAR.jpg clean_examples
+	$(RUN) bash -c "cd examples && xelatex $(*) && biber $(*) && xelatex $(*) && xelatex $(*)"
 
 latex/mpi.pdf: latex/mpi.dtx latex/mpi.ins clean_latex
 	$(RUN) bash -c "cd latex && latex mpi.ins"
 	$(RUN) bash -c "cd latex && xelatex mpi.dtx"
 
 .PRECIOUS: package/.build
-package/.build: examples/mpi-far.pdf examples/mpi-plenary.pdf
+package/.build: examples/mpi-far.pdf examples/mpi-plenary.pdf examples/mpi-far-draft.pdf
 	$(RUN) bash -c "cd package && debuild -us -uc && mv ../mpi-latex*{.dsc,.changes,.build,tar.xz} . && touch .build"
 
 .PHONY: clean

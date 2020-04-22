@@ -565,6 +565,10 @@ This publication is also available on the Ministry for Primary Industries websit
 \pagestyle{plain}
 \addtocounter{page}{-2}
 \pagestyle{empty}
+\ifdraft{
+\linenumbers
+\doublespacing
+}
 }
 %</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
@@ -645,16 +649,10 @@ This publication is also available on the Ministry for Primary Industries websit
 \ifdraft{
 \RequirePackage{draftwatermark}
 \usepackage[modulo]{lineno}
+\modulolinenumbers[2]
 \SetWatermarkColor{black!15}
 \SetWatermarkFontSize{62pt}
 \SetWatermarkText{\sffamily DRAFT - Not to be quoted}
-
-\AtEndPreamble{
-\g@addto@macro\maketitle{
-\linenumbers
-\doublespacing
-}
-}
 }{}
 %</common>
 %    \end{macrocode}
