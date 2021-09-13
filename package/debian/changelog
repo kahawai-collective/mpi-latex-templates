@@ -1,3 +1,9 @@
+mpi-latex-templates (1.27) bionic; urgency=medium
+
+  * Expand front cover info to fill space
+
+ -- David Middleton <david@pisces.nz>  Mon, 13 Sep 2021 21:33:47 +1200
+
 mpi-latex-templates (1.26) bionic; urgency=medium
 
   * Left align Executive Summary in TOC
