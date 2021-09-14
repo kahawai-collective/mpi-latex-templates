@@ -256,7 +256,7 @@
 \renewcommand*{\multinamedelim}{\addcomma\addspace}
 \renewcommand*{\finalnamedelim}{\addspace\&\addspace}
 % in bibliography:
-\AtNextBibliography{%
+\AtBeginBibliography{%
   \DeclareDelimFormat*{finalnamedelim}{\addsemicolon\addspace}
   \renewcommand{\multinamedelim}{\addsemicolon\addspace}% Use semicolon for multiple names in the bibliography:
   \renewcommand*{\revsdnamedelim}{\addsemicolon\addspace}% Use semicolon for multiple names in the bibliography:
@@ -775,15 +775,20 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
 % \end{itemize}
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far|mpi-plenary>
+\RequirePackage{chngcntr}
 \g@addto@macro\appendices{
 \titleformat{\section}{\normalfont\bfseries\sffamily\uppercase}{}{0em}{APPENDIX \thesection: }
 \renewcommand{\theequation}{\thesection-\arabic{equation}}
 \renewcommand{\thetable}{\thesection-\arabic{table}}
 \renewcommand{\thefigure}{\thesection-\arabic{figure}}
 \setcounter{section}{0}  % reset counter
-\setcounter{figure}{0}  % reset counter
-\setcounter{table}{0}  % reset counter
-\setcounter{equation}{0}  % reset counter
+\counterwithin{figure}{section} % Figures numbered within appendix
+\counterwithin{table}{section} % Figures numbered within appendix
+\counterwithin{equation}{section} % Figures numbered within appendix
+% Restore citation delimiters that were changed for the bibliography
+\renewcommand*{\multicitedelim}{,\addspace}
+\renewcommand*{\multinamedelim}{\addcomma\addspace}
+\renewcommand*{\finalnamedelim}{\addspace\&\addspace}
 }
 %</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
