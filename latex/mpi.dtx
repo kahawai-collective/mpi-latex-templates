@@ -706,6 +706,8 @@ This publication is also available on the Ministry for Primary Industries websit
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far|mpi-plenary>
 \RequirePackage{lastpage}
+\newcommand{\newaffiliation}[2]{}
+\newcommand{\useaffiliation}[1]{}
 \AtBeginDocument{
 {
 \renewcommand{\and}{ and }
@@ -750,6 +752,14 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
 %<*mpi-aebr|mpi-far|mpi-plenary>
 \newcommand{\citeself}{
   \begin{refsection}[\jobname-self.bib]
+  \renewcommand{\newaffiliation}[2]{%
+      \footnote{#2}
+      \newcounter{#1}
+      \setcounter{#1}{\value{footnote}}%
+  }
+  \renewcommand{\useaffiliation}[1]{%
+      \footnotemark[\value{#1}]%
+  }
   \renewcommand*{\multinamedelim}{\addsemicolon\space}
   \renewcommand*{\finalnamedelim}{\addsemicolon\space}%
   \renewcommand*{\bibinitdelim}{}
@@ -758,6 +768,8 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
   \textbf{\citename{this}[apaauthor]{author}\ (\citefield{this}{year}).\ \citefield{this}{title}.}
 
   \textbf{\emph{\citefield{this}{journaltitle}}. \pageref{LastPage}\ p.}
+  \renewcommand{\newaffiliation}[2]{}
+  \renewcommand{\useaffiliation}[1]{}
   \end{refsection}
 }
 %</mpi-aebr|mpi-far|mpi-plenary>
