@@ -706,14 +706,6 @@ This publication is also available on the Ministry for Primary Industries websit
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far|mpi-plenary>
 \RequirePackage{lastpage}
-\newcommand{\newaffiliation}[2]{%
-    \footnote{#2}
-    \newcounter{#1}
-    \setcounter{#1}{\value{footnote}}%
-}
-\newcommand{\useaffiliation}[1]{%
-    \footnotemark[\value{#1}]%
-}
 \AtBeginDocument{
 {
 \renewcommand{\and}{ and }
@@ -731,8 +723,6 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
 \immediate\openout\tempfile=\jobname-self.bib
 \immediate\write\tempfile{\text}
 \immediate\closeout\tempfile
-\renewcommand{\newaffiliation}[2]{}
-\renewcommand{\useaffiliation}[1]{}
 }
 }
 %</mpi-aebr|mpi-far|mpi-plenary>
