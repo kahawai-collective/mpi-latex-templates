@@ -256,7 +256,7 @@
 \renewcommand*{\multinamedelim}{\addcomma\addspace}
 \renewcommand*{\finalnamedelim}{\addspace\&\addspace}
 % in bibliography:
-\AtBeginBibliography{%
+\AtNextBibliography{%
   \DeclareDelimFormat*{finalnamedelim}{\addsemicolon\addspace}
   \renewcommand{\multinamedelim}{\addsemicolon\addspace}% Use semicolon for multiple names in the bibliography:
   \renewcommand*{\revsdnamedelim}{\addsemicolon\addspace}% Use semicolon for multiple names in the bibliography:
