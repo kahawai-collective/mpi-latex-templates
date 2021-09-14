@@ -189,8 +189,16 @@
 %
 % Paragraphs are not indented, but there is extra spacing between them.
 %    \begin{macrocode}
-%<common>\setlength{\parskip}{3mm}
+%<common>\setlength{\parskip}{11pt}
 %<common>\setlength{\parindent}{0mm}
+%    \end{macrocode}
+%
+% Hyphenation is discouraged.
+%    \begin{macrocode}
+%<common>\tolerance=1
+%<common>\emergencystretch=\maxdimen
+%<common>\hyphenpenalty=10000
+%<common>\hbadness=10000
 %    \end{macrocode}
 %
 % \section{Headings}
@@ -778,13 +786,13 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
 \RequirePackage{chngcntr}
 \g@addto@macro\appendices{
 \titleformat{\section}{\normalfont\bfseries\sffamily\uppercase}{}{0em}{APPENDIX \thesection: }
-\renewcommand{\theequation}{\thesection-\arabic{equation}}
-\renewcommand{\thetable}{\thesection-\arabic{table}}
-\renewcommand{\thefigure}{\thesection-\arabic{figure}}
 \setcounter{section}{0}  % reset counter
 \counterwithin{figure}{section} % Figures numbered within appendix
 \counterwithin{table}{section} % Figures numbered within appendix
 \counterwithin{equation}{section} % Figures numbered within appendix
+\renewcommand{\theequation}{\thesection-\arabic{equation}}
+\renewcommand{\thetable}{\thesection-\arabic{table}}
+\renewcommand{\thefigure}{\thesection-\arabic{figure}}
 % Restore citation delimiters that were changed for the bibliography
 \renewcommand*{\multicitedelim}{,\addspace}
 \renewcommand*{\multinamedelim}{\addcomma\addspace}
