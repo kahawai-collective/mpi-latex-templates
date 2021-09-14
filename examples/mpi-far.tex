@@ -10,14 +10,14 @@
 % goes on the page footers. The second is the long title which goes on
 % the cover page.  You are only allowed to use the LaTeX macros \\
 % and \emph inside of titles safely. Others may result in
-% unpredictable behaviour. 
+% unpredictable behaviour.
 
 \title{Example report}{An example Fisheries Assessment Report (FAR)}
 
 % Each FAR has a subtitle
 \subtitle{A report for testing purposes}
 
-%The date must be split into two parts for compatibility with reports. 
+%The date must be split into two parts for compatibility with reports.
 % The year is specified with \date, and the month is specified with \reportmonth
 \date{2015}
 \reportmonth{January}
@@ -32,7 +32,7 @@
 % needed in your actual report.
 \usepackage{lipsum}
 
-% Each report has an ISBN and report number. If any of these are not 
+% Each report has an ISBN and report number. If any of these are not
 % included a place holder value will be used.
 \isbn{XX-XXXXX-XX}
 \reportno{XX}
@@ -49,12 +49,12 @@
 % Generate the table of contents.
 \tableofcontents
 
-% An FAR must contain an executive summary. Which \summary will generate a 
-% title and contents entry for. 
+% An FAR must contain an executive summary. Which \summary will generate a
+% title and contents entry for.
 
 \summary
 
-% The summary must start with a citation for the current document which can be 
+% The summary must start with a citation for the current document which can be
 % automatically generated using \citeself.
 \citeself
 
@@ -69,9 +69,9 @@
 
 
 \begin{figure}[h]
-  \begin{center}  
+  \begin{center}
   \includegraphics[width=40mm,height=40mm]{FAR}
-  \end{center}  
+  \end{center}
   \caption{This is a caption that is longer than one line. We are just
   making sure that it wraps successfully. The figure is the cover of
   the report.}
@@ -110,22 +110,22 @@ $$
 1,\ 2,\ 3,\ 4 .
 $$
 
-\lipsum[3] 
+\lipsum[3]
 
 
 \paragraph{A minor heading}
-\lipsum[5] 
+\lipsum[5]
 
 Examples of how citations can be used in different ways
 
-% Examples of how to do citations. Note the cite, citet and citep work as standard. 
+% Examples of how to do citations. Note the cite, citet and citep work as standard.
 \begin{itemize}
   \item Citet: \citet{baker_nzclassification_2010}
   \item Citep: \citep{doc_sealion_2009}
   \item Two authors: \citet{abraham_summary_98-09}
   \item Three authors: \citep{thompson_dolphin_2013}
   \item Many authors: \citep{baker_global_2007}
-  \item Multiple citations: \citep{baker_global_2007, abraham_summary_98-09, thompson_dolphin_2013} 
+  \item Multiple citations: \citep{baker_global_2007, abraham_summary_98-09, thompson_dolphin_2013}
   \item Parencite: \parencite{gales_phocarctos_2008}
   \item Nptextcite: \nptextcite{ mpi_review_2012}
   %\item Fullcite: \fullcite{mpi_review_2012}
@@ -140,7 +140,7 @@ Test citations with the same authors: \citep{ono2015marine,ono2015think,ono2015s
 \citet{ono2015marine,ono2015think,ono2015space}.
 
 Test unpublished reports \citep{baker_census_2010},  theses \citep{carroll_rightwhale_2011},
-proceedings \citep{bratten_working_1997}, 
+proceedings \citep{bratten_working_1997},
 collections \citep{gales_phocarctos_2008, sharp_sefra_2017},
 miscellaneous \citep{delevie_hot_2014},
 technical report \citep{helidoniotis_testing_2015}, conference \citep{newman_population_2008}.
@@ -155,6 +155,24 @@ technical report \citep{helidoniotis_testing_2015}, conference \citep{newman_pop
 \newpage
 \appendices
 \section{Example appendix}
+
+Appendix citations
+
+\begin{itemize}
+  \item Citet: \citet{baker_nzclassification_2010}
+  \item Citep: \citep{doc_sealion_2009}
+  \item Two authors: \citet{abraham_summary_98-09}
+  \item Three authors: \citep{thompson_dolphin_2013}
+  \item Many authors: \citep{baker_global_2007}
+  \item Multiple citations: \citep{baker_global_2007, abraham_summary_98-09, thompson_dolphin_2013}
+  \item Parencite: \parencite{gales_phocarctos_2008}
+  \item Nptextcite: \nptextcite{ mpi_review_2012}
+  %\item Fullcite: \fullcite{mpi_review_2012}
+  %\item Fullcitebib: \fullcitebib{mpi_review_2012}
+  \item Citeyear: \citeyear{robertson_population_2011}
+  %\item \footcite{mpi_review_2012}
+  \item Textcite: \textcite{roe_necropsy_2007}
+\end{itemize}
 
 \begin{table}[h]
 \caption{Appendix table}
