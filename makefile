@@ -1,6 +1,6 @@
 IMAGE := docker.dragonfly.co.nz/texlive-18.04
 
-#TEXINPUTS := .///:..//latex//:..//graphics//:
+TEXINPUTS := .///:..//latex//:..//graphics//:
 RUN ?= docker run -it --rm --net=host --user=$$(id -u):$$(id -g) -e RUN= -e TEXINPUTS=$(TEXINPUTS) -v$$(pwd):/work -w /work $(IMAGE)
 
 #SHELL := /bin/bash
@@ -13,7 +13,7 @@ RUN ?= docker run -it --rm --net=host --user=$$(id -u):$$(id -g) -e RUN= -e TEXI
 #
 all: package/.build
 
-examples/%.pdf: examples/%.tex examples/test.bib latex/mpi.pdf graphics/FAR.jpg clean_examples
+examples/%.pdf: examples/%.tex examples/test.bib latex/mpi.pdf graphics/FAR.jpg latex/affiliation.dbx clean_examples
 	$(RUN) bash -c "cd examples && xelatex $(*) && biber $(*) && xelatex $(*) && xelatex $(*)"
 
 latex/mpi.pdf: latex/mpi.dtx latex/mpi.ins latex/affiliation.dbx clean_latex
