@@ -22,10 +22,13 @@
 \date{2015}
 \reportmonth{January}
 
-% Authors must be listed with their full names separated by \and.
-%\author{John A. G. Smith\newaffiliation{repro}{Reproducible University, City, Country} \and Jane E. Smith\newaffiliation{uni}{Unique University, Another, Planet} \and Adam Smith\useaffiliation{reprod}}
-\author{\authaffil{John A. G. Smith\newaffiliation{blank}{not blank}} \and Jane E. Smith \and Adam Smith}
-
+% Authors must be listed in the order in which they should appear in the citation
+% separated by \and. For each author, give the family and given name, and an affiliation.
+% New affiliations are created using \newaffiliation{<tag>}{<description>}. Authors who
+% have the same affiliation as a pervious authors should use \useaffiliation{<tag>}.
+\author{given=John A. G., family=Smith, affiliation=\newaffiliation{repro}{Reproducible University - City - Country}, nametemplates=affiliation \and
+        given=Jane E., family=Smith, affiliation=\newaffiliation{uni}{Unique University - Another - Planet}, nametemplates=affiliation \and
+        given=Adam, family=Smith, affiliation=\useaffiliation{repro}, nametemplates=affiliation}
 
 
 % The subcaption package is used to create subfigures in this example.

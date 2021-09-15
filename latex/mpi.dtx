@@ -325,7 +325,6 @@
 % Always finish with a period
 \renewbibmacro*{apa:finpunct}{\addperiod}
 
-
 % No parentheses around type+institution for theses, and add full stop after title
 \xpatchbibmacro{type+institution}{[parens]}{}{}{Patch of 'type+institution' macro failed}
 \DeclareFieldFormat[thesis]{title}{#1\addperiod}
@@ -507,25 +506,24 @@
 %
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far|mpi-plenary>
-  {
-    \renewcommand{\and}{\\}
-    \hspace{3em}
-    \begin{tabular}{l}
-    \@author
-  \end{tabular}
+\DeclareNameFormat{titlename}{\usebibmacro{name:given-family}%
+   {\namepartfamily}%
+   {\namepartgiveni}%
+   {\namepartprefix}%
+   {\namepartsuffix}}
+\newcommand{\getauthors}{
+  \begin{refsection}[\jobname-self.bib]
+  \renewcommand*{\multinamedelim}{\\}
+  \renewcommand*{\finalnamedelim}{\\}%
+  \AtNextCite{\defcounter{maxnames}{99}}
+  \citename{this}[]{author}
+  \end{refsection}
+}
+{
+  \hspace{3em}
+  \parbox{10cm}{\getauthors}
   \vfill
 }
-%</mpi-aebr|mpi-far|mpi-plenary>
-%    \end{macrocode}
-%
-% This is followed by the reports ISSN and ISBN numbers.
-%
-%    \begin{macrocode}
-%<*mpi-aebr|mpi-far|mpi-plenary>
-
-ISSN \@issn{} (online)\\
-ISBN \@isbn{} (online)
-\vfill
 %</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
 %
@@ -700,17 +698,22 @@ This publication is also available on the Ministry for Primary Industries websit
 % In order to automatically generate the citation using biblatex, we
 % write out a generated bib file that contains an entry for the current document.
 % This must happen at the end of the prelude, so that the title and so on are defined.
-% Note that new lines have the be suppressed while doing this, and |\emph| commands
-% need to print out the command rather than actually do emphasis.
+% Note that new lines have the be suppressed while doing this, and |\emph|,
+% |\newaffiliation|, and |\useaffiliation| commands
+% need to print out the command rather than actually be evaluated. As such these
+% are the only LaTeX command supported in the author list.
 %
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far|mpi-plenary>
 \RequirePackage{lastpage}
-\newcommand{\authaffil}[1]{\protect\value{#1}}
+\newcommand{\newaffiliation}[2]{}
+\newcommand{\useaffiliation}[1]{}
 \AtBeginDocument{
 {
 \renewcommand{\and}{ and }
 \renewcommand{\emph}[1]{\@backslashchar emph\@charlb #1\@charrb}
+\renewcommand{\newaffiliation}[2]{\@backslashchar newaffiliation\@charlb #1\@charrb\@charlb #2\@charrb}
+\renewcommand{\useaffiliation}[1]{\@backslashchar useaffiliation\@charlb #1\@charrb}
 \renewcommand{\\}{}
 \edef\text{@article\@charlb this,^^J%
 options = \@charlb skipbib \@charrb,^^J%
@@ -747,16 +750,78 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
 %
 %
 % We also need a facility to cite the paper that is currently being written.
+% This needs to include author affiliations as footnotes and so requires a
+% specific name format and modified apaauthor bibmacro
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far|mpi-plenary>
+\DeclareNameFormat{affiliation}{%
+  \ifuniquenametemplatename{affiliation}
+    {\usebibmacro{name:affiliation:family-given}%
+       {\namepartfamily}%
+       {\namepartgiven}%
+       {\namepartgiveni}%
+       {\namepartprefix}%
+       {\namepartsuffix}%
+       {\namepartaffiliation}}
+    {\usebibmacro{name:apa:family-given}%
+       {\namepartfamily}%
+       {\namepartgiven}%
+       {\namepartgiveni}%
+       {\namepartprefix}%
+       {\namepartsuffix}}%
+  \usebibmacro{name:andothers}}
+
+% Modified from name:apa:family-given
+\newbibmacro*{name:affiliation:family-given}[6]{%
+  \ifuseprefix
+    {\usebibmacro{name:delim}{#4#1}%
+     \usebibmacro{name:hook}{#4#1}%
+     \ifdefvoid{#4}{}{%
+       \mkbibnameprefix{#4}\isdot%
+       \ifprefchar{}{\bibnamedelimc}}%
+     \mkbibnamefamily{#1}\isdot%
+     \ifdefvoid{#2}{}{\revsdnamepunct\bibnamedelimd\mkbibnamegiven{#3}\isdot%
+                      \ifthenelse{\value{uniquename}>1}
+                        {\bibnamedelimd\mkbibbrackets{#2}}
+                        {}}%
+     \ifdefvoid{#5}{}{\addcomma\bibnamedelimd\mkbibnamesuffix{#5}\isdot}%
+     \ifdefvoid{#6}{}{#6}}
+    {\usebibmacro{name:delim}{#1}%
+     \usebibmacro{name:hook}{#1}%
+     \mkbibnamefamily{#1}\isdot
+     \ifboolexpe{%
+       test {\ifdefvoid{#2}}
+       and
+       test {\ifdefvoid{#4}}}
+       {}
+       {\revsdnamepunct}%
+     \ifdefvoid{#2}{}{\bibnamedelimd\mkbibnamegiven{#3}%
+                      \ifthenelse{\value{uniquename}>1}
+                        {\bibnamedelimd\mkbibbrackets{#2}}
+                        {}}%
+     \ifdefvoid{#4}{}{%
+       \bibnamedelimc\mkbibnameprefix{#4}%
+       \ifprefchar{}{\bibnamedelimc}}%
+     \ifdefvoid{#5}{}{\addcomma\bibnamedelimd\mkbibnamesuffix{#5}\isdot}%
+     \ifdefvoid{#6}{}{#6}}}
+
+% The |\citeself| command inserts the document citation in the MPI-specified format
 \newcommand{\citeself}{
+  \renewcommand{\newaffiliation}[2]{
+    \ifhmode\unskip\fi\footnote{##2}
+    \newcounter{##1}
+    \setcounter{##1}{\value{footnote}}
+  }
+  \renewcommand{\useaffiliation}[1]{
+    \ifhmode\unskip\fi\footnotemark[\value{##1}]
+  }
   \begin{refsection}[\jobname-self.bib]
   \renewcommand*{\multinamedelim}{\addsemicolon\space}
   \renewcommand*{\finalnamedelim}{\addsemicolon\space}%
   \renewcommand*{\bibinitdelim}{}
   \AtNextCite{\defcounter{maxnames}{99}}
   \vspace{11pt}
-  \textbf{\citename{this}[apaauthor]{author}\ (\citefield{this}{year}).\ \citefield{this}{title}.}
+  \textbf{\citename{this}[affiliation]{author}\ (\citefield{this}{year}).\ \citefield{this}{title}.}
 
   \textbf{\emph{\citefield{this}{journaltitle}}. \pageref{LastPage}\ p.}
   \end{refsection}
