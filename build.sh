@@ -7,4 +7,4 @@ cp mpi-latex-templates*.deb /output/
 cp latex/mpi.pdf /output/
 cp examples/mpi-far.pdf /output/
 cp examples/mpi-plenary.pdf /output/
-cp examples/*.bib /output/
+#cp examples/*.bib /output/
