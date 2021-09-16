@@ -1,3 +1,9 @@
+mpi-latex-templates (1.30) bionic; urgency=medium
+
+  * Add affiliation.dbx to package
+
+ -- David Middleton <david@pisces.nz>  Thu, 16 Sep 2021 22:40:27 +1200
+
 mpi-latex-templates (1.29) bionic; urgency=medium
 
   * Must apply titlename format
