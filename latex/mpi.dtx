@@ -186,8 +186,7 @@
 %    \begin{macrocode}
 %<common>\renewcommand{\normalsize}{\fontsize{11pt}{13pt}\selectfont}
 %    \end{macrocode}
-%
-% Paragraphs are not indented, but there is extra spacing between them.
+%% Paragraphs are not indented, but there is extra spacing between them.
 %    \begin{macrocode}
 %<common>\setlength{\parskip}{11pt}
 %<common>\setlength{\parindent}{0mm}
@@ -251,7 +250,8 @@
     backend=biber,
     uniquename=false,
     uniquelist=false,
-    apamaxprtauth=999]{biblatex}
+    apamaxprtauth=999,
+    datamodel=affiliation]{biblatex}
 \DeclareLanguageMapping{english}{english-apa}
 \defbibheading{bibliography}[References]{\section{#1}}
 \newcommand{\citet}{\textcite}
@@ -324,6 +324,7 @@
 
 % Always finish with a period
 \renewbibmacro*{apa:finpunct}{\addperiod}
+
 
 % No parentheses around type+institution for theses, and add full stop after title
 \xpatchbibmacro{type+institution}{[parens]}{}{}{Patch of 'type+institution' macro failed}
@@ -524,6 +525,17 @@
   \parbox{10cm}{\getauthors}
   \vfill
 }
+%</mpi-aebr|mpi-far|mpi-plenary>
+%    \end{macrocode}
+%
+% This is followed by the reports ISSN and ISBN numbers.
+%
+%    \begin{macrocode}
+%<*mpi-aebr|mpi-far|mpi-plenary>
+
+ISSN \@issn{} (online)\\
+ISBN \@isbn{} (online)
+\vfill
 %</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
 %
@@ -829,10 +841,10 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
 %</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
 %
-% \section{Appendicies}
+% \section{Appendices}
 %
 %
-% We require appendicies to be printed as ``Appendix X'' in the table of
+% We require appendices to be printed as ``Appendix X'' in the table of
 % contents. This is accomplished by using a the appendix package with the
 % titletoc option.
 %    \begin{macrocode}
@@ -842,7 +854,7 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
 %    \end{macrocode}
 %
 % In the appendix we also wish to customize a number of properties. To do this
-% we simply add these to the |\appendics| command.  These are:
+% we simply add these to the |\appendices| command.  These are:
 % \begin{itemize}
 %\item Section headings printed as Appendix X
 %\item Tables, equations and figures get the appendix letter before their number
