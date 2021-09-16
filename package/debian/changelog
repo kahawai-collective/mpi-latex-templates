@@ -1,3 +1,10 @@
+mpi-latex-templates (1.28) bionic; urgency=medium
+
+  * MPI requested format tweaks, in particular author attribution
+  * Fixes for references and numbering in appendices
+
+ -- David Middleton <david@pisces.nz>  Thu, 16 Sep 2021 15:25:19 +1200
+
 mpi-latex-templates (1.27) bionic; urgency=medium
 
   * Expand front cover info to fill space
