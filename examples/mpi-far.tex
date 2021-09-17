@@ -25,9 +25,11 @@
 % Authors must be listed in the order in which they should appear in the citation
 % separated by \and. For each author, give the family and given name, and an affiliation.
 % New affiliations are created using \newaffiliation{<tag>}{<description>}. Authors who
-% have the same affiliation as a pervious authors should use \useaffiliation{<tag>}.
-\author{given=John A. G., family=Smith, affiliation=\newaffiliation{repro}{Reproducible University - City - Country}, nametemplates=affiliation \and
-        given=Jane E., family=Smith, affiliation=\newaffiliation{uni}{Unique University - Another - Planet}, nametemplates=affiliation \and
+% have the same affiliation as a previous authors should use \useaffiliation{<tag>}.
+% Within the <description> - which is expected to be an institute name and address -
+% commas must be replaced by \addrsep{} (which outputs a comma and space in the footnote)
+\author{given=John A. G., family=Smith, affiliation=\newaffiliation{repro}{Reproducible University\addrsep{}City\addrsep{}Country}, nametemplates=affiliation \and
+        given=Jane E., family=Smith, affiliation=\newaffiliation{uni}{Unique University\addrsep{}Another\addrsep{}Planet}, nametemplates=affiliation \and
         given=Adam, family=Smith, affiliation=\useaffiliation{repro}, nametemplates=affiliation}
 
 

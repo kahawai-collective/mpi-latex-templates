@@ -1,3 +1,9 @@
+mpi-latex-templates (1.31) bionic; urgency=medium
+
+  * Add \addrsep{} to insert commas in affiliation footnotes
+
+ -- David Middleton <david@pisces.nz>  Fri, 17 Sep 2021 19:36:41 +1200
+
 mpi-latex-templates (1.30) bionic; urgency=medium
 
   * Add affiliation.dbx to package

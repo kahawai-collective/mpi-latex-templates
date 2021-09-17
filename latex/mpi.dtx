@@ -711,21 +711,23 @@ This publication is also available on the Ministry for Primary Industries websit
 % write out a generated bib file that contains an entry for the current document.
 % This must happen at the end of the prelude, so that the title and so on are defined.
 % Note that new lines have the be suppressed while doing this, and |\emph|,
-% |\newaffiliation|, and |\useaffiliation| commands
+% |\newaffiliation|, |\useaffiliation| and |\addrsep| commands
 % need to print out the command rather than actually be evaluated. As such these
-% are the only LaTeX command supported in the author list.
+% are the only LaTeX command supported in the author/title.
 %
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far|mpi-plenary>
 \RequirePackage{lastpage}
 \newcommand{\newaffiliation}[2]{}
 \newcommand{\useaffiliation}[1]{}
+\newcommand{\addrsep}{}
 \AtBeginDocument{
 {
 \renewcommand{\and}{ and }
 \renewcommand{\emph}[1]{\@backslashchar emph\@charlb #1\@charrb}
 \renewcommand{\newaffiliation}[2]{\@backslashchar newaffiliation\@charlb #1\@charrb\@charlb #2\@charrb}
 \renewcommand{\useaffiliation}[1]{\@backslashchar useaffiliation\@charlb #1\@charrb}
+\renewcommand{\addrsep}{\@backslashchar addrsep}
 \renewcommand{\\}{}
 \edef\text{@article\@charlb this,^^J%
 options = \@charlb skipbib \@charrb,^^J%
@@ -820,6 +822,7 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
 % The |\citeself| command inserts the document citation in the MPI-specified format
 \newcommand{\citeself}{
   \renewcommand{\newaffiliation}[2]{
+    \renewcommand{\addrsep}{, }
     \ifhmode\unskip\fi\footnote{##2}
     \newcounter{##1}
     \setcounter{##1}{\value{footnote}}
