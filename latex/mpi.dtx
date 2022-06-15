@@ -592,7 +592,16 @@ This publication is also available on the Ministry for Primary Industries websit
 
 Please cite this report as:
 
-\citeself
+\begin{refsection}[\jobname-self.bib]
+\renewcommand*{\multinamedelim}{\addsemicolon\space}
+\renewcommand*{\finalnamedelim}{\addsemicolon\space}%
+\renewcommand*{\bibinitdelim}{}
+\AtNextCite{\defcounter{maxnames}{99}}
+\vspace{11pt}
+\citename{this}{author}\ (\citefield{this}{year}).\ \citefield{this}{title}. \emph{\citefield{this}{journaltitle}}. \pageref{LastPage}\ p.
+\end{refsection}
+
+
 
 }
 \clearpage
