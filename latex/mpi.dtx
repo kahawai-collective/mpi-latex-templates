@@ -400,7 +400,7 @@
 \newcommand{\@reportseries}{New Zealand Aquatic Environment and Biodiversity Report}
 %</mpi-aebr>
 %<*mpi-far>
-\newcommand{\@reportwallpaper}{FAR_FNZ.jpg}
+\newcommand{\@reportwallpaper}{FAR_FNZ_2022.jpg}
 \newcommand{\@issn}{1179-5352}
 \newcommand{\@reportseries}{New Zealand Fisheries Assessment Report}
 %</mpi-far>
@@ -551,6 +551,50 @@ ISBN \@isbn{} (online)
 %</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
 %
+%
+%
+% \section{Self Citing}
+%
+% In order to automatically generate the citation using biblatex, we
+% write out a generated bib file that contains an entry for the current document.
+% This must happen at the end of the prelude, so that the title and so on are defined.
+% Note that new lines have the be suppressed while doing this, and |\emph|,
+% |\newaffiliation|, |\useaffiliation| and |\addrsep| commands
+% need to print out the command rather than actually be evaluated. As such these
+% are the only LaTeX command supported in the author/title.
+%
+%    \begin{macrocode}
+%<*mpi-aebr|mpi-far|mpi-plenary>
+\RequirePackage{lastpage}
+\newcommand{\newaffiliation}[2]{}
+\newcommand{\useaffiliation}[1]{}
+\newcommand{\addrsep}{}
+\AtBeginDocument{
+{
+\renewcommand{\and}{ and }
+\renewcommand{\emph}[1]{\@backslashchar emph\@charlb #1\@charrb}
+\renewcommand{\newaffiliation}[2]{\@backslashchar newaffiliation\@charlb #1\@charrb\@charlb #2\@charrb}
+\renewcommand{\useaffiliation}[1]{\@backslashchar useaffiliation\@charlb #1\@charrb}
+\renewcommand{\addrsep}{\@backslashchar addrsep}
+\renewcommand{\\}{}
+\edef\text{@article\@charlb this,^^J%
+options = \@charlb skipbib \@charrb,^^J%
+year = \@charlb \@date \@charrb,^^J%
+title = \@charlb \@title \@charrb,^^J%
+author = \@charlb \@author \@charrb,^^J%
+journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
+\@charrb
+}
+\newwrite\tempfile
+\immediate\openout\tempfile=\jobname-self.bib
+\immediate\write\tempfile{\text}
+\immediate\closeout\tempfile
+}
+}
+%</mpi-aebr|mpi-far|mpi-plenary>
+%    \end{macrocode}
+%
+%
 % The inside page contains a standard set of text.
 %
 %    \begin{macrocode}
@@ -558,23 +602,39 @@ ISBN \@isbn{} (online)
 {
   \setlength{\parskip}{4ex}
   \vspace*{4ex}
+\textbf{Disclaimer}
+
+This document is published by Fisheries New Zealand, a business unit of the Ministry for Primary \\
+Industries (MPI). The information in this publication is not government policy. While every effort has \\
+been made to ensure the information is accurate, the Ministry for Primary Industries does not accept \\
+any responsibility or liability for error of fact, omission, interpretation, or opinion that may be present, \\
+nor for the consequence of any decisions based on this information. Any view or opinion expressed \\
+does not necessarily represent the view of Fisheries New Zealand or the Ministry for Primary \\
+Industries.
+
 Requests for further copies should be directed to:
 
-
-Publications Logistics Officer\\
+Fisheries Science Editor\\
+Fisheries New Zealand\\
 Ministry for Primary Industries\\
 PO Box 2526\\
-WELLINGTON 6140
+Wellington 6140\\
+NEW ZEALAND
 
-Email: brand@mpi.govt.nz\\
-Telephone: 0800 00 83 33\\
-Facsimile: 04-894 0300
+Email: Fisheries-Science.Editor@mpi.govt.nz\\
+Telephone: 0800 00 83 33
 
 This publication is also available on the Ministry for Primary Industries websites at:\\
 \url{http://www.mpi.govt.nz/news-and-resources/publications}\\
 \url{http://fs.fish.govt.nz} go to Document library/Research reports
 
 \textbf{\copyright{} Crown Copyright - Fisheries New Zealand}
+
+
+
+Please cite this report as:
+
+
 }
 \clearpage
 %</mpi-aebr|mpi-far|mpi-plenary>
@@ -704,48 +764,6 @@ This publication is also available on the Ministry for Primary Industries websit
 }
 %</common>
 %    \end{macrocode}
-%
-% \section{Self Citing}
-%
-% In order to automatically generate the citation using biblatex, we
-% write out a generated bib file that contains an entry for the current document.
-% This must happen at the end of the prelude, so that the title and so on are defined.
-% Note that new lines have the be suppressed while doing this, and |\emph|,
-% |\newaffiliation|, |\useaffiliation| and |\addrsep| commands
-% need to print out the command rather than actually be evaluated. As such these
-% are the only LaTeX command supported in the author/title.
-%
-%    \begin{macrocode}
-%<*mpi-aebr|mpi-far|mpi-plenary>
-\RequirePackage{lastpage}
-\newcommand{\newaffiliation}[2]{}
-\newcommand{\useaffiliation}[1]{}
-\newcommand{\addrsep}{}
-\AtBeginDocument{
-{
-\renewcommand{\and}{ and }
-\renewcommand{\emph}[1]{\@backslashchar emph\@charlb #1\@charrb}
-\renewcommand{\newaffiliation}[2]{\@backslashchar newaffiliation\@charlb #1\@charrb\@charlb #2\@charrb}
-\renewcommand{\useaffiliation}[1]{\@backslashchar useaffiliation\@charlb #1\@charrb}
-\renewcommand{\addrsep}{\@backslashchar addrsep}
-\renewcommand{\\}{}
-\edef\text{@article\@charlb this,^^J%
-options = \@charlb skipbib \@charrb,^^J%
-year = \@charlb \@date \@charrb,^^J%
-title = \@charlb \@title \@charrb,^^J%
-author = \@charlb \@author \@charrb,^^J%
-journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
-\@charrb
-}
-\newwrite\tempfile
-\immediate\openout\tempfile=\jobname-self.bib
-\immediate\write\tempfile{\text}
-\immediate\closeout\tempfile
-}
-}
-%</mpi-aebr|mpi-far|mpi-plenary>
-%    \end{macrocode}
-%
 %
 %    There is space for an executive summary, or some other
 % unnumbered starting section.
