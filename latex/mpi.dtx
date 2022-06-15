@@ -551,50 +551,6 @@ ISBN \@isbn{} (online)
 %</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
 %
-%
-%
-% \section{Self Citing}
-%
-% In order to automatically generate the citation using biblatex, we
-% write out a generated bib file that contains an entry for the current document.
-% This must happen at the end of the prelude, so that the title and so on are defined.
-% Note that new lines have the be suppressed while doing this, and |\emph|,
-% |\newaffiliation|, |\useaffiliation| and |\addrsep| commands
-% need to print out the command rather than actually be evaluated. As such these
-% are the only LaTeX command supported in the author/title.
-%
-%    \begin{macrocode}
-%<*mpi-aebr|mpi-far|mpi-plenary>
-\RequirePackage{lastpage}
-\newcommand{\newaffiliation}[2]{}
-\newcommand{\useaffiliation}[1]{}
-\newcommand{\addrsep}{}
-\AtBeginDocument{
-{
-\renewcommand{\and}{ and }
-\renewcommand{\emph}[1]{\@backslashchar emph\@charlb #1\@charrb}
-\renewcommand{\newaffiliation}[2]{\@backslashchar newaffiliation\@charlb #1\@charrb\@charlb #2\@charrb}
-\renewcommand{\useaffiliation}[1]{\@backslashchar useaffiliation\@charlb #1\@charrb}
-\renewcommand{\addrsep}{\@backslashchar addrsep}
-\renewcommand{\\}{}
-\edef\text{@article\@charlb this,^^J%
-options = \@charlb skipbib \@charrb,^^J%
-year = \@charlb \@date \@charrb,^^J%
-title = \@charlb \@title \@charrb,^^J%
-author = \@charlb \@author \@charrb,^^J%
-journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
-\@charrb
-}
-\newwrite\tempfile
-\immediate\openout\tempfile=\jobname-self.bib
-\immediate\write\tempfile{\text}
-\immediate\closeout\tempfile
-}
-}
-%</mpi-aebr|mpi-far|mpi-plenary>
-%    \end{macrocode}
-%
-%
 % The inside page contains a standard set of text.
 %
 %    \begin{macrocode}
@@ -764,6 +720,48 @@ Please cite this report as:
 }
 %</common>
 %    \end{macrocode}
+%
+% \section{Self Citing}
+%
+% In order to automatically generate the citation using biblatex, we
+% write out a generated bib file that contains an entry for the current document.
+% This must happen at the end of the prelude, so that the title and so on are defined.
+% Note that new lines have the be suppressed while doing this, and |\emph|,
+% |\newaffiliation|, |\useaffiliation| and |\addrsep| commands
+% need to print out the command rather than actually be evaluated. As such these
+% are the only LaTeX command supported in the author/title.
+%
+%    \begin{macrocode}
+%<*mpi-aebr|mpi-far|mpi-plenary>
+\RequirePackage{lastpage}
+\newcommand{\newaffiliation}[2]{}
+\newcommand{\useaffiliation}[1]{}
+\newcommand{\addrsep}{}
+\AtBeginDocument{
+{
+\renewcommand{\and}{ and }
+\renewcommand{\emph}[1]{\@backslashchar emph\@charlb #1\@charrb}
+\renewcommand{\newaffiliation}[2]{\@backslashchar newaffiliation\@charlb #1\@charrb\@charlb #2\@charrb}
+\renewcommand{\useaffiliation}[1]{\@backslashchar useaffiliation\@charlb #1\@charrb}
+\renewcommand{\addrsep}{\@backslashchar addrsep}
+\renewcommand{\\}{}
+\edef\text{@article\@charlb this,^^J%
+options = \@charlb skipbib \@charrb,^^J%
+year = \@charlb \@date \@charrb,^^J%
+title = \@charlb \@title \@charrb,^^J%
+author = \@charlb \@author \@charrb,^^J%
+journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
+\@charrb
+}
+\newwrite\tempfile
+\immediate\openout\tempfile=\jobname-self.bib
+\immediate\write\tempfile{\text}
+\immediate\closeout\tempfile
+}
+}
+%</mpi-aebr|mpi-far|mpi-plenary>
+%    \end{macrocode}
+%
 %
 %    There is space for an executive summary, or some other
 % unnumbered starting section.
