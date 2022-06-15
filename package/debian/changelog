@@ -1,3 +1,10 @@
+mpi-latex-templates (1.4) bionic; urgency=medium
+
+  * Add new FAR cover
+  * Update inside cover information
+
+ -- David Middleton <david@pisces.nz>  Wed, 15 Jun 2022 22:54:37 +1300
+
 mpi-latex-templates (1.31) bionic; urgency=medium
 
   * Add \addrsep{} to insert commas in affiliation footnotes
