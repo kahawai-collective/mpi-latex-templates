@@ -871,7 +871,7 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
 %
 %
 % We require appendices to be printed as ``Appendix X'' in the table of
-% contents. This is accomplished by using a the appendix package with the
+% contents. This is accomplished by using the appendix package with the
 % titletoc option.
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far|mpi-plenary>
@@ -903,6 +903,14 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
 \renewcommand*{\multinamedelim}{\addcomma\addspace}
 \renewcommand*{\finalnamedelim}{\addspace\&\addspace}
 }
+%</mpi-aebr|mpi-far|mpi-plenary>
+%    \end{macrocode}
+%
+% When using |\autoref| we want the appendix number to be prefixed with the
+% word Appendix:
+%    \begin{macrocode}
+%<*mpi-aebr|mpi-far|mpi-plenary>
+\newcommand*{\Appendixautorefname}{Appendix}
 %</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
 
