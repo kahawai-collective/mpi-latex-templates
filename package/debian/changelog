@@ -1,3 +1,9 @@
+mpi-latex-templates (1.43) jammy; urgency=medium
+
+  * Updated for ubuntu 22.04
+
+ -- Richard Mansfield <richard@huia>  Tue, 21 Jun 2022 16:17:28 +1200
+
 mpi-latex-templates (1.42) bionic; urgency=medium
 
   * Improve FAR cover image
