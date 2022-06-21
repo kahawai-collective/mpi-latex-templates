@@ -274,7 +274,7 @@
 
 % Have a maximum of two authors in citation commands:
 % Patches https://github.com/plk/biblatex-apa/blob/v6.8/tex/latex/biblatex-apa/cbx/apa.cbx
-\xpatchnameformat{labelname}{\ifciteseen}{\ifnumcomp{\value{listtotal}}{>}{2}}{}{Patch of labelname failed}
+% \xpatchnameformat{labelname}{\ifciteseen}{\ifnumcomp{\value{listtotal}}{>}{2}}{}{Patch of labelname failed}
 
 % Redefine the nameyeardelim command, to put a space between the authors and the year in citations
 % in citations, updates https://github.com/plk/biblatex-apa/blob/v6.8/tex/latex/biblatex-apa/cbx/apa.cbx
@@ -282,26 +282,26 @@
 
 % Update the author macro so that there is no period after the authors, for authors without initials, in the bibliography
 % Patches https://github.com/plk/biblatex-apa/blob/v6.8/tex/latex/biblatex-apa/bbx/apa.bbx
-\xpatchbibmacro{author}{\newunit\newblock}{}{}{Patch of author macro failed}
+% \xpatchbibmacro{author}{\newunit\newblock}{}{}{Patch of author macro failed}
 
-% Not sure what this one is doing!
-\xpatchbibmacro{date+extrayear}{%
-  \printtext[parens]%
-  }{%
-    \setunit{\addperiod\space}%
-      \printtext%
-      }{}{}
+% % Not sure what this one is doing!
+% \xpatchbibmacro{date+extrayear}{%
+%   \printtext[parens]%
+%   }{%
+%     \setunit{\addperiod\space}%
+%       \printtext%
+%       }{}{}
 
-% Change the order of the publisher and the location, so it is `publisher, location` rather than `location: publisher`, in the bibliography:
-\xpatchbibmacro{location+publisher}{%
-  \printlist[default][1-1]{location}%
-  \setunit*{\addcolon\space}%
-  \printlist{publisher}%
-  \newunit}{%
-  \printlist[default][1-1]{publisher}%
-  \setunit*{\addcomma\space}%
-  \printlist{location}%
-  \newunit}{}{Patch of location+publisher macro failed}
+% % Change the order of the publisher and the location, so it is `publisher, location` rather than `location: publisher`, in the bibliography:
+% \xpatchbibmacro{location+publisher}{%
+%   \printlist[default][1-1]{location}%
+%   \setunit*{\addcolon\space}%
+%   \printlist{publisher}%
+%   \newunit}{%
+%   \printlist[default][1-1]{publisher}%
+%   \setunit*{\addcomma\space}%
+%   \printlist{location}%
+%   \newunit}{}{Patch of location+publisher macro failed}
 
 % Do not italisise the title of books or collections in the bibliography:
 \DeclareFieldFormat{title}{\iffieldequalstr{titleisdescription}{true}{\mkbibbrackets{#1}}{#1\isdot}}
@@ -327,7 +327,7 @@
 
 
 % No parentheses around type+institution for theses, and add full stop after title
-\xpatchbibmacro{type+institution}{[parens]}{}{}{Patch of 'type+institution' macro failed}
+% \xpatchbibmacro{type+institution}{[parens]}{}{}{Patch of 'type+institution' macro failed}
 \DeclareFieldFormat[thesis]{title}{#1\addperiod}
 
 % Gets rid of parentheses around page number
