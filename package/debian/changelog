@@ -1,3 +1,9 @@
+mpi-latex-templates (1.44) jammy; urgency=medium
+
+  * Override apa style on installation
+
+ -- Richard Mansfield <richard@huia>  Wed, 22 Jun 2022 10:56:53 +1200
+
 mpi-latex-templates (1.43) jammy; urgency=medium
 
   * Updated for ubuntu 22.04

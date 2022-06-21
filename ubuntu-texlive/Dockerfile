@@ -21,9 +21,6 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends texlive-full biber software-properties-common devscripts && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Remove usenarrator=true from the apa style to avoid biber error
-RUN perl -pi -e 's/usenarrator=true/} % usenarrator=true/' /usr/share/texlive/texmf-dist/tex/latex/biblatex-apa/apa.bbx
-
 RUN apt-get update && \
     apt-get install -y --no-install-recommends debhelper build-essential && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -34,3 +31,10 @@ RUN apt-add-repository multiverse && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY fonts/ /usr/local/share/fonts/
+
+# texlive-bibtex-extra and biber incompatible
+# Remove usenarrator=true from the apa style to avoid biber error
+RUN mkdir -p /usr/local/share/texmf/tex/latex/
+RUN cp -r /usr/share/texlive/texmf-dist/tex/latex/biblatex-apa /usr/local/share/texmf/tex/latex/
+RUN perl -p -e 's/usenarrator=true/} % usenarrator=true/' /usr/share/texlive/texmf-dist/tex/latex/biblatex-apa/apa.bbx > /usr/local/share/texmf/tex/latex/biblatex-apa/apa.bbx
+RUN texhash
