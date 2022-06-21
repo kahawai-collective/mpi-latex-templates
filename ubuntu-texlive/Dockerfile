@@ -25,5 +25,12 @@ RUN apt-get update && \
 RUN perl -pi -e 's/usenarrator=true/} % usenarrator=true/' /usr/share/texlive/texmf-dist/tex/latex/biblatex-apa/apa.bbx
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends debhelper msttcorefonts && \
+    apt-get install -y --no-install-recommends debhelper && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN apt-add-repository multiverse && \
+    apt-get update && \
+    apt-get install -y msttcorefonts && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+COPY fonts/ /usr/local/share/fonts/
