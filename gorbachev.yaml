@@ -1,1 +1,1 @@
-docker: docker.dragonfly.co.nz/texlive-18.04
+docker: docker.dragonfly.co.nz/texlive-22.04:2022-06-21
