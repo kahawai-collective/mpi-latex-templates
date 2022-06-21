@@ -807,6 +807,13 @@ journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
        {\namepartprefix}%
        {\namepartsuffix}}%
   \usebibmacro{name:andothers}}
+\DeclareUniquenameTemplate[affiliation]{
+   \namepart{family}%
+   \namepart{given}%
+   \namepart{giveni}%
+   \namepart{prefix}%
+   \namepart{suffix}%
+   \namepart{affiliation}}
 
 % Modified from name:apa:family-given
 \newbibmacro*{name:affiliation:family-given}[6]{%
