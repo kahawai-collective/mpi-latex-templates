@@ -324,8 +324,7 @@
 % \renewbibmacro*{apa:finpunct}{\addperiod} % finpunct is gone
 
 
-% No parentheses around type+institution for theses, and add full stop after title
-% \xpatchbibmacro{type+institution}{[parens]}{}{}{Patch of 'type+institution' macro failed}
+% Add full stop after title for theses
 \DeclareFieldFormat[thesis]{title}{#1\addperiod}
 
 % Gets rid of parentheses around page number
