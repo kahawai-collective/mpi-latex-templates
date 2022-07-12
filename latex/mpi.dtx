@@ -262,14 +262,13 @@
 \renewcommand*{\multicitedelim}{,\addspace}
 % Use a semicolon between multiple names in text citations:
 \renewcommand*{\multinamedelim}{\addcomma\addspace}
-\renewcommand*{\finalnamedelim}{\addspace\&\addspace}
+\renewcommand*{\finalnamedelim}{\addsemicolon\addspace}
 % in bibliography:
+\DeclareDelimFormat[bib,biblist]{finalnamedelim}{\addsemicolon\addspace}
 \AtBeginBibliography{%
-  \DeclareDelimFormat*{finalnamedelim}{\addsemicolon\addspace}
-  \renewcommand{\multinamedelim}{\addsemicolon\addspace}% Use semicolon for multiple names in the bibliography:
-  \renewcommand*{\revsdnamedelim}{\addsemicolon\addspace}% Use semicolon for multiple names in the bibliography:
-  \renewcommand*{\bibinitdelim}{}% Remove space between initials in the names in the bibliography
-  \renewcommand*{\bibpagespunct}{\addcolon\addspace}% Use a colon, rather than a comma, between the volume and the pages in the bibliography
+  \renewcommand*{\bibinitdelim}{}%
+  \renewcommand*{\revsdnamedelim}{}%
+  \renewcommand*{\bibpagespunct}{\addcolon\addspace}%
 }
 
 % Have a maximum of two authors in citation commands:
@@ -283,6 +282,9 @@
 % Update the author macro so that there is no period after the authors, for authors without initials, in the bibliography
 % Patches https://github.com/plk/biblatex-apa/blob/v6.8/tex/latex/biblatex-apa/bbx/apa.bbx
 % \xpatchbibmacro{author}{\newunit\newblock}{}{}{Patch of author macro failed}
+
+% Turn extra commas inserted by name:apa:family-given into semicolons
+\xpatchbibmacro{name:apa:family-given}{\apablx@ifrevnameappcomma{\addcomma}}{\apablx@ifrevnameappcomma{\addsemicolon}}{}{Patch of name:apa:family-given macro failed}
 
 % Not sure what this one is doing!
 \xpatchbibmacro{date+extradate}{%
