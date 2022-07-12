@@ -285,12 +285,12 @@
 % \xpatchbibmacro{author}{\newunit\newblock}{}{}{Patch of author macro failed}
 
 % Not sure what this one is doing!
-% \xpatchbibmacro{date+extrayear}{%
-%   \printtext[parens]%
-%   }{%
-%     \setunit{\addperiod\space}%
-%       \printtext%
-%       }{}{}
+\xpatchbibmacro{date+extradate}{%
+  \printtext[parens]%
+  }{%
+    \setunit{\addperiod\space}%
+      \printtext%
+      }{}{}
 
 % Change the order of the publisher and the location, so it is `publisher, location` rather than `location: publisher`, in the bibliography:
 \xpatchbibmacro{location+publisher}{%
