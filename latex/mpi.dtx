@@ -294,6 +294,9 @@
       \printtext%
       }{}{}
 
+% Add location+publisher to book
+\xpatchbibdriver{book}{\printlist{publisher}}{\usebibmacro{location+publisher}}{}{Patch of book driver failed}
+
 % Change the order of the publisher and the location, so it is `publisher, location` rather than `location: publisher`, in the bibliography:
 \xpatchbibmacro{location+publisher}{%
   \printlist{location}%
