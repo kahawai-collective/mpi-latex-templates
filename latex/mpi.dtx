@@ -304,7 +304,6 @@
   \printlist{location}}{}{Patch of location+publisher macro failed}
 
 % Do not italisise the title of books or collections in the bibliography:
-\DeclareFieldFormat{title}{\iffieldequalstr{titleisdescription}{true}{\mkbibbrackets{#1}}{#1\isdot}}
 \DeclareFieldFormat{booktitle}{#1} %Overriding definition in biblatex.def
 \DeclareFieldFormat{maintitle}{#1} %Overriding definition in biblatex.def
 \DeclareFieldFormat[thesis]{title}{#1}
