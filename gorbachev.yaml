@@ -1,2 +1,2 @@
-docker: docker.dragonfly.co.nz/texlive-22.04:2022-06-22
+docker: docker.dragonfly.co.nz/texlive-22.04:2022-07-14
 allows: [ docker ]
