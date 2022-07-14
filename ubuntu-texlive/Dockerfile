@@ -32,9 +32,6 @@ RUN apt-add-repository multiverse && \
 
 COPY fonts/ /usr/local/share/fonts/
 
-# texlive-bibtex-extra and biber incompatible
-# Remove usenarrator=true from the apa style to avoid biber error
-RUN mkdir -p /usr/local/share/texmf/tex/latex/
-RUN cp -r /usr/share/texlive/texmf-dist/tex/latex/biblatex-apa /usr/local/share/texmf/tex/latex/
-RUN perl -p -e 's/usenarrator=true/} % usenarrator=true/' /usr/share/texlive/texmf-dist/tex/latex/biblatex-apa/apa.bbx > /usr/local/share/texmf/tex/latex/biblatex-apa/apa.bbx
-RUN texhash
+# Run the same hacks that happen on package installation
+COPY mpi-latex-templates.postinst /tmp/mpi-latex-templates.postinst
+RUN bash /tmp/mpi-latex-templates.postinst
