@@ -1,3 +1,11 @@
+mpi-latex-templates (1.46) jammy; urgency=medium
+
+  * Italics for book titles
+  * Output location for book references
+  * Output publisher field, even when it contains the author
+
+ -- richard <richard@hihi>  Thu, 14 Jul 2022 13:35:28 +1200
+
 mpi-latex-templates (1.45) jammy; urgency=medium
 
   * Reapply most MPI patches to APA
