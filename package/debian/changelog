@@ -1,4 +1,4 @@
-mpi-latex-templates (1.46ubuntu1) jammy; urgency=medium
+mpi-latex-templates (1.47) jammy; urgency=medium
 
   * Don't sort multiple refs in citep
 
