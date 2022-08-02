@@ -1,3 +1,9 @@
+mpi-latex-templates (1.46ubuntu1) jammy; urgency=medium
+
+  * Don't sort multiple refs in citep
+
+ -- richard <richard@hihi>  Tue, 02 Aug 2022 16:13:36 +1200
+
 mpi-latex-templates (1.46) jammy; urgency=medium
 
   * Italics for book titles
