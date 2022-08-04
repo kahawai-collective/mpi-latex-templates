@@ -250,7 +250,7 @@
     backend=biber,
     uniquename=false,
     uniquelist=false,
-    sortcites=false,
+    sorting=ynt, % Override apa sort; switch back below for the bibliography
     apamaxprtauth=999,
     datamodel=affiliation]{biblatex}
 \DeclareLanguageMapping{english}{english-apa}
@@ -258,6 +258,16 @@
 \newcommand{\citet}{\textcite}
 \newcommand{\citep}{\parencite}
 \renewcommand{\cite}{\textcite}
+
+% Newer versions of biblatex have better support for different sort keys
+% on citations and bibliography. Until then, override \printbibliography
+\let\oldprintbibliography\printbibliography
+\renewcommand*\printbibliography{
+  \endrefcontext
+  \begin{refcontext}[sorting=apa]
+    \oldprintbibliography
+  \end{refcontext}
+}
 
 % Use a comma between multiple citations:
 \renewcommand*{\multicitedelim}{,\addspace}
