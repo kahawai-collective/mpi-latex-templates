@@ -471,6 +471,22 @@
 %</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
 %
+% FNZ and NZ government logos
+%
+%    \begin{macrocode}
+%<common>\RequirePackage{tikz}
+%<*mpi-aebr|mpi-far>
+\begin{tikzpicture}[remember picture, overlay]
+    \node [shift={(83mm, -21.5mm)}] at (current page.north west)
+        { \includegraphics[scale=0.20]{Fisheries New Zealand - Logo - blue & black -2.jpg} };
+\end{tikzpicture}
+\begin{tikzpicture}[remember picture, overlay]
+    \node [shift={(-48mm, 13mm)}] at (current page.south east)
+        { \includegraphics[scale=0.16]{NZGovt-logo-expanded-wordmark.png} };
+\end{tikzpicture}
+%</mpi-aebr|mpi-far>
+%    \end{macrocode}
+%
 % The text is overlayed into a small box over the image, such that is it over the
 % white part of the image.
 %
