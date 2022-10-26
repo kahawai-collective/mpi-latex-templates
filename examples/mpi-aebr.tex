@@ -1,0 +1,212 @@
+% This is the document class for AEBRs, derived from the latex article
+% class
+
+\documentclass{mpi-aebr}
+
+%If a document is  typeset as draft it will be double spaced, with
+%linenumbers, and with a watermark \documentclass[draft]{aebr}
+
+% The AEBR requires two titles. The first is the short title which
+% goes on the page footers. The second is the long title which goes on
+% the cover page.  You are only allowed to use the LaTeX macros \\
+% and \emph inside of titles safely. Others may result in
+% unpredictable behaviour.
+
+\title{Example report}{An example Aquatic Environment \& Biodiversity Report (AEBR)}
+
+% Each AEBR has a subtitle
+\subtitle{A report for testing purposes}
+
+%The date must be split into two parts for compatibility with reports.
+% The year is specified with \date, and the month is specified with \reportmonth
+\date{2015}
+\reportmonth{January}
+
+% Authors must be listed in the order in which they should appear in the citation
+% separated by \and. For each author, give the family and given name, and an affiliation.
+% New affiliations are created using \newaffiliation{<tag>}{<description>}. Authors who
+% have the same affiliation as a previous authors should use \useaffiliation{<tag>}.
+% Within the <description> - which is expected to be an institute name and address -
+% commas must be replaced by \addrsep{} (which outputs a comma and space in the footnote)
+\author{given=John A. G., family=Smith, affiliation=\newaffiliation{repro}{Reproducible University\addrsep{}City\addrsep{}Country}, nametemplates=affiliation \and
+        given=Jane E., family=Smith, affiliation=\newaffiliation{uni}{Unique University\addrsep{}Another\addrsep{}Planet}, nametemplates=affiliation \and
+        given=Adam, family=Smith, affiliation=\useaffiliation{repro}, nametemplates=affiliation}
+
+
+% The subcaption package is used to create subfigures in this example.
+\usepackage{subcaption}
+
+% The lipsum package is used to generate filler text. This won't be
+% needed in your actual report.
+\usepackage{lipsum}
+
+% Each report has an ISBN and report number. If any of these are not
+% included a place holder value will be used.
+\isbn{XX-XXXXX-XX}
+\reportno{XX}
+
+% This specified the location of the bibliography file
+\addbibresource{test.bib}
+
+% The document begins here
+\begin{document}
+
+% Generate the title page
+\maketitle
+
+% Generate the table of contents.
+\tableofcontents
+
+% An AEBR must contain an executive summary. Which \summary will generate a
+% title and contents entry for.
+
+\summary
+
+% The summary must start with a citation for the current document which can be
+% automatically generated using \citeself.
+\citeself
+
+\lipsum[1]
+\clearpage
+
+
+\section{Introduction}
+
+%filler text
+\lipsum[1]
+
+
+\begin{figure}[h]
+  \begin{center}
+  \includegraphics[width=40mm,height=40mm]{AEBR}
+  \end{center}
+  \caption{This is a caption that is longer than one line. We are just
+  making sure that it wraps successfully. The figure is the cover of
+  the report.}
+\end{figure}
+
+\section{Methods}
+
+\subsection{Details}
+
+\lipsum[2]
+
+% An example of how to do subfigures using subcaption.
+\begin{figure}[h]
+\begin{center}
+  \begin{subfigure}{0.45\textwidth}
+  \includegraphics[width=40mm]{FAR}
+  \caption{Cover of a Fisheries Assessment Report (FAR).}
+\end{subfigure}\qquad
+  \begin{subfigure}{0.45\textwidth}
+  \includegraphics[width=40mm]{AEBR}
+  \caption{Cover of an Aquatic Environment and Biodiversity Report
+  (AEBR).}
+\end{subfigure}
+\end{center}
+\end{figure}
+
+
+\section{Results}
+
+Some additional results are in \autoref{app:the_appendix}.
+
+\section{Discussion}
+
+\subsection{A first level subsection}
+\subsubsection{A second level subsection}
+
+Test out the font of  numbers in text mode (1, 2, 3, 4) and in math mode $1,\ 2,\ 3,\ 4$, and:
+$$
+1,\ 2,\ 3,\ 4 .
+$$
+
+\lipsum[3]
+
+
+\paragraph{A minor heading}
+\lipsum[5]
+
+Examples of how citations can be used in different ways
+
+% Examples of how to do citations. Note the cite, citet and citep work as standard.
+\begin{itemize}
+  \item Citet: \citet{baker_nzclassification_2010}
+  \item Citep: \citep{doc_sealion_2009}
+  \item Two authors: \citet{abraham_summary_98-09}
+  \item Three authors: \citep{thompson_dolphin_2013}
+  \item Many authors: \citep{baker_global_2007}
+  \item Multiple citations: \citep{baker_global_2007, abraham_summary_98-09, gales_phocarctos_2008}
+  \item Parencite: \parencite{gales_phocarctos_2008}
+  \item Nptextcite: \nptextcite{ mpi_review_2012}
+  %\item Fullcite: \fullcite{mpi_review_2012}
+  %\item Fullcitebib: \fullcitebib{mpi_review_2012}
+  \item Citeyear: \citeyear{robertson_population_2011}
+  %\item \footcite{mpi_review_2012}
+  \item Textcite: \textcite{roe_necropsy_2007}
+\end{itemize}
+
+
+Test citations with the same authors: \citep{ono2015marine,ono2015think,ono2015space},
+\citet{ono2015marine,ono2015think,ono2015space}.
+
+Test unpublished reports \citep{baker_census_2010},  theses \citep{carroll_rightwhale_2011},
+proceedings \citep{bratten_working_1997},
+collections \citep{gales_phocarctos_2008, sharp_sefra_2017},
+miscellaneous \citep{delevie_hot_2014},
+technical report \citep{helidoniotis_testing_2015}, conference \citep{newman_population_2008}.
+
+
+
+% Bibliography should be printed starting on a new page.
+\clearpage
+\printbibliography
+
+\clearpage
+\newpage
+\appendices
+\section{Example appendix}
+\label{app:the_appendix}
+
+Appendix citations
+
+\begin{itemize}
+  \item Citet: \citet{baker_nzclassification_2010}
+  \item Citep: \citep{doc_sealion_2009}
+  \item Two authors: \citet{abraham_summary_98-09}
+  \item Three authors: \citep{thompson_dolphin_2013}
+  \item Many authors: \citep{baker_global_2007}
+  \item Multiple citations: \citep{baker_global_2007, abraham_summary_98-09, gales_phocarctos_2008}
+  \item Parencite: \parencite{gales_phocarctos_2008}
+  \item Nptextcite: \nptextcite{ mpi_review_2012}
+  %\item Fullcite: \fullcite{mpi_review_2012}
+  %\item Fullcitebib: \fullcitebib{mpi_review_2012}
+  \item Citeyear: \citeyear{robertson_population_2011}
+  %\item \footcite{mpi_review_2012}
+  \item Textcite: \textcite{roe_necropsy_2007}
+\end{itemize}
+
+\begin{table}[h]
+\caption{Appendix table}
+\begin{center}
+\begin{tabular}{rr}
+One & Two \\ \addlinespace
+1 & 2
+\end{tabular}
+\end{center}
+\end{table}
+
+\section{Another appendix}
+
+\begin{table}[h]
+\caption{Table in second appendix}
+\begin{center}
+\begin{tabular}{rr}
+Three & Four \\ \addlinespace
+3 & 4
+\end{tabular}
+\end{center}
+\end{table}
+
+%End of document
+\end{document}
