@@ -34,7 +34,6 @@
 *.backup
 *.fls
 *.pdf
-*.png
 mpi.sty
 *.cls
 *.substvars
