@@ -1,3 +1,9 @@
+mpi-latex-templates (1.49) jammy; urgency=medium
+
+  * AEBR reports
+
+ -- Richard Mansfield <richard@huia>  Thu, 27 Oct 2022 14:57:43 +1300
+
 mpi-latex-templates (1.48) jammy; urgency=medium
 
   * Sort citations by year
