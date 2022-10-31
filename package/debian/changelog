@@ -1,3 +1,9 @@
+mpi-latex-templates (1.50) jammy; urgency=medium
+
+  * Use correct font on AEBR title page
+
+ -- Richard Mansfield <richard@huia>  Mon, 31 Oct 2022 14:06:55 +1300
+
 mpi-latex-templates (1.49) jammy; urgency=medium
 
   * AEBR reports
