@@ -41,3 +41,6 @@ clean_examples:
 clean_latex:
 	rm -f latex/*.cls latex/*.idx latex/*.sty  latex/*.fdb_latexmk latex/*.log latex/*.fls latex/*.ind \
 		latex/*.out latex/*.aux latex/*.glo latex/*.pdf latex/*.toc latex/*.ilg
+
+docker:
+	docker build -t $(IMAGE) ubuntu-texlive

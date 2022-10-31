@@ -1,8 +1,10 @@
 FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update
-RUN apt-get install -y tzdata
+RUN cat /etc/apt/sources.list
+RUN sed -i 's/archive/nz.archive/' /etc/apt/sources.list
+
+RUN apt-get update && apt-get install -y tzdata
 RUN echo "Pacific/Auckland" > /etc/timezone
 RUN dpkg-reconfigure -f noninteractive tzdata
 
