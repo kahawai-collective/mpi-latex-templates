@@ -1,3 +1,9 @@
+mpi-latex-templates (1.51) jammy; urgency=medium
+
+  * Add comma between author names on front cover
+
+ -- Richard Mansfield <richard@huia>  Tue, 08 Nov 2022 08:54:28 +1300
+
 mpi-latex-templates (1.50) jammy; urgency=medium
 
   * Use correct font on AEBR title page
