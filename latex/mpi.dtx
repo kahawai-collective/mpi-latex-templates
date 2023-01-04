@@ -411,7 +411,7 @@
 \newcommand{\@reportwallpaper}{AEBR_cover.pdf}
 \newcommand{\@issn}{1179-6480}
 \newcommand{\@reportseries}{New Zealand Aquatic Environment and Biodiversity Report}
-\newcommand{\@reportnopre}{No.\ }
+\newcommand{\@reportnopre}{No.}
 %</mpi-aebr>
 %<*mpi-far>
 \newcommand{\@reportwallpaper}{FAR_cover.pdf}
@@ -535,7 +535,7 @@
 %
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far>
-  {\@reportseries} {\@reportnopre} {\unskip\@reportno}
+  {\@reportseries} {\@reportnopre} {\@reportno}
   \vfill
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}
@@ -794,7 +794,7 @@ options = \@charlb skipbib \@charrb,^^J%
 year = \@charlb \@date \@charrb,^^J%
 title = \@charlb \@title \@charrb,^^J%
 author = \@charlb \@author \@charrb,^^J%
-journal = \@charlb {\@reportseries} \@reportnopre \unskip\@reportno \@charrb,^^J%
+journal = \@charlb {\@reportseries} \@reportnopre \@reportno \@charrb,^^J%
 \@charrb
 }
 \newwrite\tempfile
@@ -895,7 +895,7 @@ journal = \@charlb {\@reportseries} \@reportnopre \unskip\@reportno \@charrb,^^J
     \setcounter{##1}{\value{footnote}}
   }
   \renewcommand{\useaffiliation}[1]{
-    \unskip\footnotemark[\value{##1}]
+    \unskip\footnotemark[\unskip\value{##1}]
   }
   \begin{refsection}[\jobname-self.bib]
   \renewcommand*{\multinamedelim}{\addsemicolon\space}
