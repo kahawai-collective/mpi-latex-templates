@@ -890,12 +890,12 @@ journal = \@charlb {\@reportseries} \@reportnopre \@reportno \@charrb,^^J%
 \newcommand{\citeself}{
   \renewcommand{\newaffiliation}[2]{
     \renewcommand{\addrsep}{, }
-    \unskip\footnote{##2}
+    \ifhmode\unskip\fi\footnote{##2}
     \newcounter{##1}
     \setcounter{##1}{\value{footnote}}
   }
   \renewcommand{\useaffiliation}[1]{
-    \unskip\footnotemark[\unskip\value{##1}]
+    \ifhmode\unskip\fi\footnotemark[\value{##1}]
   }
   \begin{refsection}[\jobname-self.bib]
   \renewcommand*{\multinamedelim}{\addsemicolon\space}
@@ -903,7 +903,7 @@ journal = \@charlb {\@reportseries} \@reportnopre \@reportno \@charrb,^^J%
   \renewcommand*{\bibinitdelim}{}
   \AtNextCite{\defcounter{maxnames}{99}}
   \vspace{11pt}
-  \textbf{\citename{this}[affiliation]{author} (\citefield{this}{year}).\ \citefield{this}{title}.}
+  \raggedright\textbf{\citename{this}[affiliation]{author} (\citefield{this}{year}).\ \citefield{this}{title}.}
 
   \textbf{\emph{\citefield{this}{journaltitle}}. \pageref{LastPage}\ p.}
   \end{refsection}
