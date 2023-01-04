@@ -292,7 +292,7 @@
 
 % Update the author macro so that there is no period after the authors, for authors without initials, in the bibliography
 % Patches https://github.com/plk/biblatex-apa/blob/v6.8/tex/latex/biblatex-apa/bbx/apa.bbx
-% \xpatchbibmacro{author}{\newunit\newblock}{}{}{Patch of author macro failed}
+\xpatchbibmacro{author}{\newunit\newblock}{}{}{Patch of author macro failed}
 
 % Turn extra commas inserted by name:apa:family-given into semicolons
 \xpatchbibmacro{name:apa:family-given}{\apablx@ifrevnameappcomma{\addcomma}}{\apablx@ifrevnameappcomma{\addsemicolon}}{}{Patch of name:apa:family-given macro failed}
