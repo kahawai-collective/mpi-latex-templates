@@ -411,7 +411,7 @@
 \newcommand{\@reportwallpaper}{AEBR_cover.pdf}
 \newcommand{\@issn}{1179-6480}
 \newcommand{\@reportseries}{New Zealand Aquatic Environment and Biodiversity Report}
-\newcommand{\@reportnopre}{No.}
+\newcommand{\@reportnopre}{No.\~}
 %</mpi-aebr>
 %<*mpi-far>
 \newcommand{\@reportwallpaper}{FAR_cover.pdf}
@@ -794,7 +794,7 @@ options = \@charlb skipbib \@charrb,^^J%
 year = \@charlb \@date \@charrb,^^J%
 title = \@charlb \@title \@charrb,^^J%
 author = \@charlb \@author \@charrb,^^J%
-journal = \@charlb {\@reportseries} {\@reportnopre} \@reportno \@charrb,^^J%
+journal = \@charlb {\@reportseries} \@reportnopre \@reportno \@charrb,^^J%
 \@charrb
 }
 \newwrite\tempfile
@@ -827,7 +827,8 @@ journal = \@charlb {\@reportseries} {\@reportnopre} \@reportno \@charrb,^^J%
 % This needs to include author affiliations as footnotes and so requires a
 % specific name format and modified apaauthor bibmacro
 %    \begin{macrocode}
-%<*mpi-aebr|mpi-far|mpi-plenary>
+%<*mpi-aebr|mpi-far>
+\usepackage{fnpct}
 \DeclareNameFormat{affiliation}{%
   \ifuniquenametemplatename{affiliation}
     {\usebibmacro{name:affiliation:family-given}%
