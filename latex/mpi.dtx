@@ -405,22 +405,25 @@
 %
 %
 % AEBR and FAR documents require ISSN, ISBN and report numbers. All of these must have
-% sensible defaults before they are finished.
+% sensible defaults before they are finished. For AEBRs the report number has a prefix No.
 %    \begin{macrocode}
 %<*mpi-aebr>
 \newcommand{\@reportwallpaper}{AEBR_cover.pdf}
 \newcommand{\@issn}{1179-6480}
 \newcommand{\@reportseries}{New Zealand Aquatic Environment and Biodiversity Report}
+\newcommand{\@reportnopre}{No.}
 %</mpi-aebr>
 %<*mpi-far>
 \newcommand{\@reportwallpaper}{FAR_cover.pdf}
 \newcommand{\@issn}{1179-5352}
 \newcommand{\@reportseries}{New Zealand Fisheries Assessment Report}
+\newcommand{\@reportnopre}{}
 %</mpi-far>
 %<*mpi-plenary>
 \newcommand{\@reportwallpaper}{PLENARY.jpg}
 \newcommand{\@issn}{1179-5352}
 \newcommand{\@reportseries}{}
+\newcommand{\@reportnopre}{}
 %</mpi-plenary>
 %<*mpi-aebr|mpi-far|mpi-plenary>
 \newcommand{\issn}[1]{\renewcommand{\@issn}{#1}}
@@ -429,6 +432,7 @@
 \newcommand{\@reportno}{??}
 \newcommand{\reportno}[1]{\renewcommand{\@reportno}{#1}}
 \newcommand{\reportseries}[1]{\renewcommand{\@reportseries}{#1}}
+\newcommand{\reportnopre}[1]{\renewcommand{\@reportnopre}{#1}}
 \newcommand{\reportwallpaper}[1]{\renewcommand{\@reportpaper}{#1}}
 %</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
@@ -531,7 +535,7 @@
 %
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far>
-  {\@reportseries} {\@reportno}
+  {\@reportseries} {\@reportnopre} {\unskip\@reportno}
   \vfill
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}
@@ -790,7 +794,7 @@ options = \@charlb skipbib \@charrb,^^J%
 year = \@charlb \@date \@charrb,^^J%
 title = \@charlb \@title \@charrb,^^J%
 author = \@charlb \@author \@charrb,^^J%
-journal = \@charlb {\@reportseries} \@reportno \@charrb,^^J%
+journal = \@charlb {\@reportseries} \@reportnopre \unskip\@reportno \@charrb,^^J%
 \@charrb
 }
 \newwrite\tempfile
