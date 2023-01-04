@@ -1,3 +1,9 @@
+mpi-latex-templates (1.52) jammy; urgency=medium
+
+  * No period after the authors, for authors without initials
+
+ -- David Middleton <david@pisces.nz>  Wed, 04 Jan 2023 16:14:37 +1300
+
 mpi-latex-templates (1.51) jammy; urgency=medium
 
   * Add comma between author names on front cover
