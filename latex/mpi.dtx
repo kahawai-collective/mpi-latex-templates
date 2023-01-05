@@ -535,7 +535,7 @@
 %
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far>
-  {\@reportseries} {\@reportnopre} {\@reportno}
+  {\@reportseries} \@reportnopre {\@reportno}
   \vfill
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}
@@ -904,7 +904,7 @@ journal = \@charlb {\@reportseries} \@reportnopre \@reportno \@charrb,^^J%
   \renewcommand*{\bibinitdelim}{}
   \AtNextCite{\defcounter{maxnames}{99}}
   \vspace{11pt}
-  \frenchspacing\textbf{\citename{this}[affiliation]{author} (\citefield{this}{year}).\ \citefield{this}{title}.}
+  \textbf{\citename{this}[affiliation]{author}\@(\citefield{this}{year}).\ \citefield{this}{title}.}
 
   \textbf{\emph{\citefield{this}{journaltitle}}. \pageref{LastPage}\ p.}
   \end{refsection}
