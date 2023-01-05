@@ -1,3 +1,10 @@
+mpi-latex-templates (1.53) jammy; urgency=medium
+
+  * Add the No. prefix for AEBRs
+  * Fix spacing in citation at start of summary
+
+ -- David Middleton <david@pisces.nz>  Thu, 05 Jan 2023 13:11:01 +1300
+
 mpi-latex-templates (1.52) jammy; urgency=medium
 
   * No period after the authors, for authors without initials
