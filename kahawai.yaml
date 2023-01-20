@@ -1,1 +1,1 @@
-docker: ubuntu/texlive-r
+docker: ubuntu/texlive-r-jammy
