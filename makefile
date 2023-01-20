@@ -13,7 +13,7 @@ RUN ?= docker run -it --rm --net=host --user=$$(id -u):$$(id -g) -e RUN= -e TEXI
 #
 all: package/.build
 
-%.tex: %.rnw
+examples/%.tex: examples/%.rnw
 	Rscript --vanilla -e "library(knitr);opts_chunk\$$set(warning=F, message = FALSE,echo=F,results='asis',fig.lp='fig:',fig.path='images/'); knit('$(<F)',output='$(@F)')"
 
 examples/%.pdf: examples/%.tex examples/mpi-tables.tex examples/test.bib latex/mpi.pdf graphics/FAR.jpg latex/affiliation.dbx clean_examples
