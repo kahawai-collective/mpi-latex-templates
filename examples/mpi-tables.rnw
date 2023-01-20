@@ -1,0 +1,85 @@
+\documentclass{mpi-far}
+
+<<init, echo=FALSE, warning=FALSE, message=FALSE>>=
+library(tidyverse)
+library(kableExtra)
+
+options(knitr.kable.NA = '')
+
+@
+
+
+\title{Table formats}{Table formatting in FARs and AEBRs}
+\subtitle{A report for testing purposes}
+
+\date{2023}
+\reportmonth{January}
+
+\author{given=John A. G., family=Smith, affiliation=\newaffiliation{repro}{Reproducible University\addrsep{}City\addrsep{}Country}, nametemplates=affiliation \and
+        given=Jane E., family=Smith, affiliation=\newaffiliation{uni}{Unique University\addrsep{}Another\addrsep{}Planet}, nametemplates=affiliation \and
+        given=Adam, family=Smith, affiliation=\useaffiliation{repro}, nametemplates=affiliation}
+
+
+% The lipsum package is used to generate filler text. This won't be
+% needed in your actual report.
+\usepackage{lipsum}
+
+
+\isbn{XX-XXXXX-XX}
+\reportno{XX}
+
+\addbibresource{test.bib}
+
+% The document begins here
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\summary
+\citeself
+
+\lipsum[1]
+\clearpage
+
+
+\section{Introduction}
+
+%filler text
+\lipsum[1]
+
+
+\section{Methods}
+
+\subsection{Details}
+
+\lipsum[2]
+
+\section{Results}
+
+Some additional results are in \autoref{app:the_appendix}.
+
+\section{Discussion}
+
+\subsection{A first level subsection}
+\subsubsection{A second level subsection}
+
+Test out the font of  numbers in text mode (1, 2, 3, 4) and in math mode $1,\ 2,\ 3,\ 4$, and:
+$$
+1,\ 2,\ 3,\ 4 .
+$$
+
+\lipsum[3]
+
+
+\paragraph{A minor heading}
+\lipsum[5]
+
+
+% Bibliography should be printed starting on a new page.
+\clearpage
+\printbibliography
+
+%End of document
+\end{document}
