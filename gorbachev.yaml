@@ -1,2 +1,2 @@
-docker: docker.dragonfly.co.nz/texlive-r-22.04
+docker: docker.dragonfly.co.nz/dragonfly-reports-22.04
 allows: [ docker ]
