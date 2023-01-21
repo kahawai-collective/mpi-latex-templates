@@ -73,7 +73,7 @@
 % \maketitle
 %
 % \begin{abstract}
-%  This is a set of classes that are used to format \LaTeX documents according the
+%  This is a set of classes that are used to format \LaTeX{} documents according the
 %  Ministry for Primary Industries formatting requirements. There are three document
 %  classes provided: ``mpi-aebr'', for formatting Aquatic Environment and Biodiversity
 %  Reports, ``mpi-far'', for formatting Fisheries Assessment Reports and ``mpi-plenary``
@@ -129,6 +129,7 @@
 % \begin{itemize}
 % \item Aquatic Environment and Biodiversity Report
 % \item Fisheries Assessment Report
+% \item Fisheries Assessment Plenary
 % \end{itemize}
 %
 % The basic structure is the same as the base latex article class
@@ -155,8 +156,22 @@
 %
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far|mpi-plenary>
-\RequirePackage[math]{mathspec}
+\RequirePackage{mathspec}
 \setallmainfonts{Times New Roman}
+\setsansfont[Mapping=tex-text,
+  ItalicFont = {Arial Italic},
+  BoldFont = {Arial Bold},
+  BoldItalicFont = {Arial Bold Italic}]{Arial}
+\setmathsf[Mapping=tex-text,
+    Numbers=Monospaced,
+    ItalicFont     = {Times New Roman Italic},
+    BoldFont       = {Times New Roman Bold},
+    BoldItalicFont = {Times New Roman Bold Italic}]{Times New Roman}
+\setmathtt[Mapping=tex-text,
+    Numbers=Monospaced,
+    ItalicFont     = {Times New Roman Italic},
+    BoldFont       = {Times New Roman Bold},
+    BoldItalicFont = {Times New Roman Bold Italic}]{Times New Roman}
 %</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
 %
