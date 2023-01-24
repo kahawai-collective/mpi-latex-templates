@@ -224,6 +224,7 @@
     \renewcommand{\footrulewidth}{0.3pt}
     \renewcommand{\headrulewidth}{0pt}
   }
+\savegeometry{defaultgeo}  
 %</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
 %
@@ -447,7 +448,7 @@
 %
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far|mpi-plenary>
-  \renewcommand{\@date}{\the\year}
+\renewcommand{\@date}{\the\year}
 \newcommand{\reportmonth}[1]{\renewcommand{\@month}{#1}}
 \newcommand{\@month}{MMM}
 %</mpi-aebr|mpi-far|mpi-plenary>
@@ -807,7 +808,7 @@ Please cite this report as:
     }
     {\clearpage
      \KOMAoptions{paper=portrait,DIV=current}%switch to portrait
-     \restoregeometry
+     \loadgeometry{defaultgeo}
      \fancyhfoffset{0pt}% <- recalculate head and foot width for fancyhdr
     }
 %</mpi-aebr|mpi-far|mpi-plenary>
