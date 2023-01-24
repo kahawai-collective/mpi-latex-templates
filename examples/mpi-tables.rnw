@@ -129,7 +129,7 @@ print(test_tab_land)
 
 Checking that portrait pages are set properly again
 
-\lipsum[1]
+\lipsum[1:10]
 
 % Bibliography should be printed starting on a new page.
 \clearpage
