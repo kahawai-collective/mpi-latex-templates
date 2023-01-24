@@ -798,8 +798,7 @@ Please cite this report as:
 %<*mpi-aebr|mpi-far|mpi-plenary>
 \RequirePackage[usegeometry]{typearea}
 \newenvironment{flandscape}
-    {\savegeometry{defaultgeo}
-     \clearpage
+    {\clearpage
      \KOMAoptions{paper=landscape,DIV=current}%switch to landscape
      \newgeometry{% geometry settings for landscape
        left=0.8125in, right=1in, top=2.5cm, bottom=1.25in, footskip=0.875in
@@ -808,7 +807,7 @@ Please cite this report as:
     }
     {\clearpage
      \KOMAoptions{paper=portrait,DIV=current}%switch to portrait
-     \loadgeometry{defaultgeo}
+     \restoregeometry
      \fancyhfoffset{0pt}% <- recalculate head and foot width for fancyhdr
     }
 %</mpi-aebr|mpi-far|mpi-plenary>
