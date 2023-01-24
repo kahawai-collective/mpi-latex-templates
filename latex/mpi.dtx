@@ -797,9 +797,9 @@ Please cite this report as:
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far|mpi-plenary>
 \RequirePackage[usegeometry]{typearea}
-\savegeometry{defaultgeo}
 \newenvironment{flandscape}
-    {\clearpage
+    {\savegeometry{defaultgeo}
+     \clearpage
      \KOMAoptions{paper=landscape,DIV=current}%switch to landscape
      \newgeometry{% geometry settings for landscape
        left=0.8125in, right=1in, top=2.5cm, bottom=1.25in, footskip=0.875in
