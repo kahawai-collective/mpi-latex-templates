@@ -125,6 +125,12 @@ print(test_tab_land)
 @
 \end{flandscape}
 
+\section{Discussion}
+
+Checking that portrait pages are set properly again
+
+\lipsum[1]
+
 % Bibliography should be printed starting on a new page.
 \clearpage
 \printbibliography
