@@ -2,6 +2,7 @@ mpi-latex-templates (1.54) jammy; urgency=medium
 
   * Use mathspec to set maths in Times New Roman
   * Tidy the bibliography section (code/text sepatation)
+  * Add commonly used packages and set booktab rules so kable tables conform to FNZ requirements
 
  -- David Middleton <david@pisces.nz>  Sun, 22 Jan 2023 10:26:43 +1300
 
