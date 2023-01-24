@@ -1,6 +1,6 @@
 \documentclass{mpi-far}
 
-\title{Table formats}{Table formatting in FARs and AEBRs}
+\title{Table formats}{Table formatting in reproducible FARs and AEBRs}
 \subtitle{A report for testing purposes}
 
 \date{2023}
@@ -60,29 +60,36 @@ A normal (portrait page) table is illustrated in \autoref{tab:portrait_table}. K
 
 <<portrait_table, echo=TRUE, results='asis'>>=
 
-  example_df <- mtcars %>%
-                  mutate(disp = disp * 10) %>%
-                  select(MPG = mpg,
-                         Cylinders = cyl,
-                         Displacement = disp,
-                         Horsepower = hp) %>%
-                  rownames_to_column(var = "Model")
+% Set up an illustrative dataframe. 
+% The displacement is scaled up to illustrate thouseands formatting.
+% The dplyr select() and rename() functions are commonly used to set
+% appropriate column names.
+example_df <- mtcars %>%
+                mutate(disp = disp * 10) %>%
+                select(MPG = mpg,
+                       Cylinders = cyl,
+                       Displacement = disp,
+                       Horsepower = hp) %>%
+                rownames_to_column(var = "Model")
 
-  test_tab <- example_df %>%
-    kbl(booktabs = TRUE, linesep = "",
-        format.args = list(big.mark = '\u202F'),
-        align = "lrrrr",
-        caption = "Checking that a kable table is formatted according to FNZ requirements.") %>%
-    add_header_above(c(" " = 2, "Engine" = 3),
-                     line = TRUE, align = "r") %>%
-    kable_styling(font_size = 10,
-                  latex_options = "hold_position")
+% The LaTeX formatting is done using functions from kableExtra
+test_tab <- example_df %>%
+  kbl(booktabs = TRUE, linesep = "",
+      format.args = list(big.mark = '\u202F'),
+      align = "lrrrr",
+      caption = "Checking that a kable table is formatted 
+                 according to FNZ requirements.") %>%
+  add_header_above(c(" " = 2, "Engine" = 3),
+                   line = TRUE, align = "r") %>%
+  kable_styling(font_size = 10,
+                latex_options = "hold_position")
 
-  print(test_tab)
+print(test_tab)
 @
 
-For wide tables, a landscape page can be used. The \texttt{kableExtra} package provides a \texttt{landscape()} function.
+For wide tables, a landscape page can be used. The \texttt{kableExtra} package provides a \texttt{landscape()} function. However, this only rotates the table; MPI require a `full-landscape' page to be used with the footer rotated too. This is implemented using the \texttt{flandscape} environment provided by the \texttt{mpi-latex-templates} package.
 
+\begin{flandscape}
 <<landscape_table, echo=TRUE, results='asis'>>=
 
   example_df_long <- mtcars %>%
@@ -110,12 +117,11 @@ For wide tables, a landscape page can be used. The \texttt{kableExtra} package p
     add_header_above(c(" " = 3, "Engine" = 5, " " = 2, "Transmission" = 2),
                      line = TRUE, align = "r") %>%
     kable_styling(font_size = 10,
-                  latex_options = "hold_position") %>%
-    landscape()
+                  latex_options = "hold_position")
 
   print(test_tab_land)
 @
-
+\end{flandscape}
 
 % Bibliography should be printed starting on a new page.
 \clearpage
