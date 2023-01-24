@@ -69,7 +69,7 @@ Following the \texttt{kableExtra} documentation the \texttt{mtcars} dataset, ava
                          Cylinders = cyl,
                          Displacement = disp,
                          "Horse Power" = hp) %>%
-                  rownames_to_column(var = "Model") %>%
+                  rownames_to_column(var = "Model")
 
   test_tab <- example_df %>%
     kbl(booktabs = TRUE, linesep = "",
