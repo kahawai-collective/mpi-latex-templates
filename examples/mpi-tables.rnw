@@ -56,7 +56,7 @@ Following the \texttt{kableExtra} documentation the \texttt{mtcars} dataset, ava
 
 \section{Results}
 
-<<portrait_table, results='asis'>>=
+<<portrait_table, echo=TRUE, results='asis'>>=
 
   example_df <- mtcars %>%
                   mutate(disp = disp * 10) %>%
@@ -116,20 +116,6 @@ Following the \texttt{kableExtra} documentation the \texttt{mtcars} dataset, ava
 
 
 \section{Discussion}
-
-\subsection{A first level subsection}
-\subsubsection{A second level subsection}
-
-Test out the font of  numbers in text mode (1, 2, 3, 4) and in math mode $1,\ 2,\ 3,\ 4$, and:
-$$
-1,\ 2,\ 3,\ 4 .
-$$
-
-\lipsum[3]
-
-
-\paragraph{A minor heading}
-\lipsum[5]
 
 
 % Bibliography should be printed starting on a new page.
