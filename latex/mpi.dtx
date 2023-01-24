@@ -256,7 +256,7 @@
 %    \end{macrocode}
 %
 % Newer versions of biblatex have better support for different sort keys
-% on citations and bibliography. Until then, override \printbibliography
+% on citations and bibliography. Until then, override \\printbibliography
 %
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far|mpi-plenary>
@@ -295,10 +295,14 @@
 %</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
 %
-% Have a maximum of two authors in citation commands:
+% [DISABLED] Have a maximum of two authors in citation commands:
+%    \begin{macrocode}
+%<*mpi-aebr|mpi-far|mpi-plenary>
 % Patches https://github.com/plk/biblatex-apa/blob/v6.8/tex/latex/biblatex-apa/cbx/apa.cbx
 % \xpatchnameformat{labelname}{\ifciteseen}{\ifnumcomp{\value{listtotal}}{>}{2}}{}{Patch of labelname failed}
-
+%</mpi-aebr|mpi-far|mpi-plenary>
+%    \end{macrocode}
+%
 % Redefine the nameyeardelim command, to put a space between the authors and the year in citations
 % in citations, updates https://github.com/plk/biblatex-apa/blob/v6.8/tex/latex/biblatex-apa/cbx/apa.cbx
 %    \begin{macrocode}
@@ -308,15 +312,17 @@
 %</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
 %
-% Update the author macro so that there is no period after the authors, for authors without initials, in the bibliography
+% [DISABLED] Update the author macro so that there is no period after the authors, for authors without initials, in the bibliography
 % Patches https://github.com/plk/biblatex-apa/blob/v6.8/tex/latex/biblatex-apa/bbx/apa.bbx
-% \xpatchbibmacro{author}{\newunit\newblock}{}{}{Patch of author macro failed}
-
-% Turn extra commas inserted by name:apa:family-given into semicolons
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far|mpi-plenary>
-\xpatchbibmacro{name:apa:family-given}{\apablx@ifrevnameappcomma{\addcomma}}{\apablx@ifrevnameappcomma{\addsemicolon}}{}{Patch of name:apa:family-given macro failed}
+% \xpatchbibmacro{author}{\newunit\newblock}{}{}{Patch of author macro failed}
 %</mpi-aebr|mpi-far|mpi-plenary>
+%    \end{macrocode}
+%
+% Turn extra commas inserted by name:apa:family-given into semicolons
+%    \begin{macrocode}
+%<mpi-aebr|mpi-far|mpi-plenary>\xpatchbibmacro{name:apa:family-given}{\apablx@ifrevnameappcomma{\addcomma}}{\apablx@ifrevnameappcomma{\addsemicolon}}{}{Patch of name:apa:family-given macro failed}
 %    \end{macrocode}
 %
 % Not sure what this one is doing!
@@ -333,9 +339,7 @@
 %
 % Add location+publisher to book
 %    \begin{macrocode}
-%<*mpi-aebr|mpi-far|mpi-plenary>
-\xpatchbibdriver{book}{\printlist{publisher}}{\usebibmacro{location+publisher}}{}{Patch of book driver failed}
-%</mpi-aebr|mpi-far|mpi-plenary>
+%<mpi-aebr|mpi-far|mpi-plenary>\xpatchbibdriver{book}{\printlist{publisher}}{\usebibmacro{location+publisher}}{}{Patch of book driver failed}
 %    \end{macrocode}
 %
 % Change the order of the publisher and the location, so it is `publisher, location` rather than `location: publisher`, in the bibliography:
@@ -364,8 +368,8 @@
 % Italicise the "In:" in collections in the bibliography:
 %    \begin{macrocode}
 %<mpi-aebr|mpi-far|mpi-plenary>\xpatchbibmacro{in}{\bibcpstring{in}\setunit{\space}}{\mkbibemph{\bibcpstring{in}}\addcolon\setunit{\space}}{}{Patch of 'in' macro failed}
-
-
+%    \end{macrocode}
+%
 % No comma after the journal title in the bibliography:
 %    \begin{macrocode}
 %<mpi-aebr|mpi-far|mpi-plenary>\xpatchbibmacro{journal+issuetitle}{\addcomma}{}{}{}
