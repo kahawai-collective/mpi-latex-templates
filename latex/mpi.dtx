@@ -224,7 +224,6 @@
     \renewcommand{\footrulewidth}{0.3pt}
     \renewcommand{\headrulewidth}{0pt}
   }
-\savegeometry{defaultgeo}  
 %</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
 %
@@ -806,10 +805,9 @@ Please cite this report as:
      }%
      \fancyhfoffset{0pt}% recalculate head and foot width for fancyhdr
     }
-    {\KOMAoptions{paper=portrait,DIV=current}%switch to portrait
-     \loadgeometry{defaultgeo}
-     \fancyhfoffset{0pt}% <- recalculate head and foot width for fancyhdr
-     \clearpage
+    {\clearpage
+     \KOMAoptions{paper=portrait,DIV=current}%switch to portrait
+     \pagestyle{plain}
     }
 %</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
