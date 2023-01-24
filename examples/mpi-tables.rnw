@@ -44,16 +44,17 @@ The examples below illustrate the production of properly formatted tables.
 \section{Methods}
 
 <<init, echo=TRUE, warning=FALSE, message=FALSE>>=
+# Load required packages
 library(tidyverse)
 library(kableExtra)
 
+# Define how NAs are displayed
 options(knitr.kable.NA = '')
-
 @
 
-\section{Results}
+Following the \texttt{kableExtra} documentation the \texttt{mtcars} dataset, available in base R, is used for testing. Most data frames used in analysis will need columns to be renamed for use in tables; this is conveniently done using \texttt{tidyverse} functions and is often done as part of the table-producing code block.
 
-Following the \texttt{kableExtra} documentation the \texttt{mtcars} dataset, available in base R, is used for testing.
+\section{Results}
 
 <<portrait_table, results='asis'>>=
 
@@ -62,7 +63,7 @@ Following the \texttt{kableExtra} documentation the \texttt{mtcars} dataset, ava
                   select(MPG = mpg,
                          Cylinders = cyl,
                          Displacement = disp,
-                         "Horse Power" = hp) %>%
+                         Horsepower = hp) %>%
                   rownames_to_column(var = "Model")
 
   test_tab <- example_df %>%
@@ -76,6 +77,39 @@ Following the \texttt{kableExtra} documentation the \texttt{mtcars} dataset, ava
                   latex_options = "hold_position")
 
   print(test_tab)
+@
+
+
+<<landscape_table, results='asis'>>=
+
+  example_df_long <- mtcars %>%
+                  mutate(disp = disp * 10,
+                         vs = ifelse(vs == 0, 'V-shaped', 'straight),
+                         am = ifelse(am == 0, 'automatic', 'manual)) %>%
+                  select("1/4 mile time" = qsec,
+                         MPG = mpg,
+                         Cylinders = cyl,
+                         Carburetors = carb,
+                         Displacement = disp,
+                         Horsepower = hp
+                         Shape = vs,
+                         "Rear axle ratio" = drat,
+                         Weight = wt,
+                         Type = am,
+                         "Forward gears" = gear) %>%
+                  rownames_to_column(var = "Model")
+
+  test_tab_land <- example_df_long %>%
+    kbl(booktabs = TRUE, linesep = "",
+        format.args = list(big.mark = '\u202F'),
+        align = "lrrrr",
+        caption = "Checking that a kable table is formatted according to FNZ requirements.") %>%
+    add_header_above(c(" " = 3, "Engine" = 5, " " = 2, "Transmission" = 2),
+                     line = TRUE, align = "r") %>%
+    kable_styling(font_size = 10,
+                  latex_options = "hold_position")
+
+  print(test_tab_land)
 @
 
 
