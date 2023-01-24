@@ -58,7 +58,34 @@ options(knitr.kable.NA = '')
 
 \section{Results}
 
-Some additional results are in \autoref{app:the_appendix}.
+Following the \texttt{kableExtra} documentation the \texttt{mtcars} dataset, available in base R, is used for testing.
+
+
+<<current_limits, results='asis')>>=
+
+  example_df <- mtcars %>%
+                  mutate(disp = disp * 10) %>%
+                  select(MPG = mpg,
+                         Cylinders = cyl,
+                         Displacement = disp,
+                         "Horse Power" = hp) %>%
+                  rownames_to_column(var = "Model") %>%
+
+  test_tab <- example_df %>%
+    kbl(booktabs = TRUE, linesep = "",
+        format.args = list(big.mark = '\u202F'),
+        align = "lrrrr",
+        caption = "Checking that a kable table is formatted according to FNZ requirements.") %>%
+    add_header_above(c(" " = 2, "Engine" = 3),
+                     line = TRUE, align = "r") %>%
+    kable_styling(font_size = 10,
+                  latex_options = "HOLD_position")
+
+  print(test_tab)
+@
+
+
+
 
 \section{Discussion}
 
