@@ -84,8 +84,8 @@ Following the \texttt{kableExtra} documentation the \texttt{mtcars} dataset, ava
 
   example_df_long <- mtcars %>%
                   mutate(disp = disp * 10,
-                         vs = ifelse(vs == 0, 'V-shaped', 'straight),
-                         am = ifelse(am == 0, 'automatic', 'manual)) %>%
+                         vs = ifelse(vs == 0, 'V-shaped', 'straight'),
+                         am = ifelse(am == 0, 'automatic', 'manual')) %>%
                   select("1/4 mile time" = qsec,
                          MPG = mpg,
                          Cylinders = cyl,
