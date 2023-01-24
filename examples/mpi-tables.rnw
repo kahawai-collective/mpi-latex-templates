@@ -60,10 +60,10 @@ A normal (portrait page) table is illustrated in \autoref{tab:portrait_table}. K
 
 <<portrait_table, echo=TRUE, results='asis'>>=
 
-% Set up an illustrative dataframe. 
-% The displacement is scaled up to illustrate thouseands formatting.
-% The dplyr select() and rename() functions are commonly used to set
-% appropriate column names.
+# Set up an illustrative dataframe. 
+# The displacement is scaled up to illustrate thouseands formatting.
+# The dplyr select() and rename() functions are commonly used to set
+# appropriate column names.
 example_df <- mtcars %>%
                 mutate(disp = disp * 10) %>%
                 select(MPG = mpg,
@@ -72,7 +72,7 @@ example_df <- mtcars %>%
                        Horsepower = hp) %>%
                 rownames_to_column(var = "Model")
 
-% The LaTeX formatting is done using functions from kableExtra
+# The LaTeX formatting is done using functions from kableExtra
 test_tab <- example_df %>%
   kbl(booktabs = TRUE, linesep = "",
       format.args = list(big.mark = '\u202F'),
@@ -92,34 +92,38 @@ For wide tables, a landscape page can be used. The \texttt{kableExtra} package p
 \begin{flandscape}
 <<landscape_table, echo=TRUE, results='asis'>>=
 
-  example_df_long <- mtcars %>%
-                  mutate(disp = disp * 10,
-                         vs = ifelse(vs == 0, 'V-shaped', 'straight'),
-                         am = ifelse(am == 0, 'automatic', 'manual')) %>%
-                  select("1/4 mile time" = qsec,
-                         MPG = mpg,
-                         Cylinders = cyl,
-                         Carburetors = carb,
-                         Displacement = disp,
-                         Horsepower = hp,
-                         Shape = vs,
-                         "Rear axle ratio" = drat,
-                         Weight = wt,
-                         Type = am,
-                         "Forward gears" = gear) %>%
-                  rownames_to_column(var = "Model")
+# Create a wider table
+example_df_long <- mtcars %>%
+                mutate(disp = disp * 10,
+                       vs = ifelse(vs == 0, 'V-shaped', 'straight'),
+                       am = ifelse(am == 0, 'automatic', 'manual')) %>%
+                select("1/4 mile time" = qsec,
+                       MPG = mpg,
+                       Cylinders = cyl,
+                       Carburetors = carb,
+                       Displacement = disp,
+                       Horsepower = hp,
+                       Shape = vs,
+                       "Rear axle ratio" = drat,
+                       Weight = wt,
+                       Type = am,
+                       "Forward gears" = gear) %>%
+                rownames_to_column(var = "Model")
 
-  test_tab_land <- example_df_long %>%
-    kbl(booktabs = TRUE, linesep = "",
-        format.args = list(big.mark = '\u202F'),
-        align = "lrrrr",
-        caption = "Checking that a kable table is formatted according to FNZ requirements.") %>%
-    add_header_above(c(" " = 3, "Engine" = 5, " " = 2, "Transmission" = 2),
-                     line = TRUE, align = "r") %>%
-    kable_styling(font_size = 10,
-                  latex_options = "hold_position")
+# Use kable as normal for printing the table.
+# The trick is that this code block is contained in a full-landscape environment
+# \begin{flandscape} ... \end{flandscape}
+test_tab_land <- example_df_long %>%
+  kbl(booktabs = TRUE, linesep = "",
+      format.args = list(big.mark = '\u202F'),
+      align = "lrrrr",
+      caption = "Checking that a landscape table is formatted according to FNZ requirements.") %>%
+  add_header_above(c(" " = 3, "Engine" = 5, " " = 2, "Transmission" = 2),
+                   line = TRUE, align = "r") %>%
+  kable_styling(font_size = 10,
+                latex_options = "hold_position")
 
-  print(test_tab_land)
+print(test_tab_land)
 @
 \end{flandscape}
 
