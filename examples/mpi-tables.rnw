@@ -75,7 +75,8 @@ Following the \texttt{kableExtra} documentation the \texttt{mtcars} dataset, ava
     kbl(booktabs = TRUE, linesep = "",
         format.args = list(big.mark = '\u202F'),
         align = "lrrrr",
-        caption = "Checking that a kable table is formatted according to FNZ requirements.") %>%
+        caption = "Checking that a kable table is formatted according to FNZ requirements.",
+        toprule = "", bottomrule = "") %>%
     add_header_above(c(" " = 2, "Engine" = 3),
                      line = TRUE, align = "r") %>%
     kable_styling(font_size = 10,
