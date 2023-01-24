@@ -61,7 +61,7 @@ options(knitr.kable.NA = '')
 Following the \texttt{kableExtra} documentation the \texttt{mtcars} dataset, available in base R, is used for testing.
 
 
-<<current_limits, results='asis')>>=
+<<current_limits, results='asis'>>=
 
   example_df <- mtcars %>%
                   mutate(disp = disp * 10) %>%
