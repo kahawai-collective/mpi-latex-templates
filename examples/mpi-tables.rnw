@@ -56,6 +56,8 @@ Following the \texttt{kableExtra} documentation the \texttt{mtcars} dataset, ava
 
 \section{Results}
 
+A normal (portrait page) table is illustrated in \autoref{tab:portrait_table}. Key features are the use of 10pt font, and the only rule being under a grouped header.
+
 <<portrait_table, echo=TRUE, results='asis'>>=
 
   example_df <- mtcars %>%
@@ -79,8 +81,9 @@ Following the \texttt{kableExtra} documentation the \texttt{mtcars} dataset, ava
   print(test_tab)
 @
 
+For wide tables, a landscape page can be used. The \texttt{kableExtra} package provides a \texttt{landscape()} function.
 
-<<landscape_table, results='asis'>>=
+<<landscape_table, echo=TRUE, results='asis'>>=
 
   example_df_long <- mtcars %>%
                   mutate(disp = disp * 10,
@@ -107,15 +110,11 @@ Following the \texttt{kableExtra} documentation the \texttt{mtcars} dataset, ava
     add_header_above(c(" " = 3, "Engine" = 5, " " = 2, "Transmission" = 2),
                      line = TRUE, align = "r") %>%
     kable_styling(font_size = 10,
-                  latex_options = "hold_position")
+                  latex_options = "hold_position") %>%
+    landscape()
 
   print(test_tab_land)
 @
-
-
-
-
-\section{Discussion}
 
 
 % Bibliography should be printed starting on a new page.
