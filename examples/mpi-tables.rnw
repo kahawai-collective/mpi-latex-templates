@@ -76,7 +76,6 @@ example_df <- mtcars %>%
 test_tab <- example_df %>%
   kbl(booktabs = TRUE, linesep = "",
       format.args = list(big.mark = '\u202F'),
-      align = "lrrrr",
       caption = "Checking that a kable table is formatted 
                  according to FNZ requirements.") %>%
   add_header_above(c(" " = 2, "Engine" = 3),
@@ -87,7 +86,7 @@ test_tab <- example_df %>%
 print(test_tab)
 @
 
-For wide tables, a landscape page can be used. The \texttt{kableExtra} package provides a \texttt{landscape()} function. However, this only rotates the table; MPI require a `full-landscape' page to be used with the footer rotated too. This is implemented using the \texttt{flandscape} environment provided by the \texttt{mpi-latex-templates} package.
+For wide tables, a landscape page can be used. The \texttt{kableExtra} package provides a \texttt{landscape()} function. However, this only rotates the table; MPI require a `full-landscape' page to be used with the footer rotated too. This is implemented using the \texttt{flandscape} environment provided by the \texttt{mpi-latex-templates} package, and illustrated for \autoref{tab:landscape_table}.
 
 \begin{flandscape}
 <<landscape_table, echo=TRUE, results='asis'>>=
@@ -116,7 +115,6 @@ example_df_long <- mtcars %>%
 test_tab_land <- example_df_long %>%
   kbl(booktabs = TRUE, linesep = "",
       format.args = list(big.mark = '\u202F'),
-      align = "lrrrr",
       caption = "Checking that a landscape table is formatted according to FNZ requirements.") %>%
   add_header_above(c(" " = 3, "Engine" = 5, " " = 2, "Transmission" = 2),
                    line = TRUE, align = "r") %>%
