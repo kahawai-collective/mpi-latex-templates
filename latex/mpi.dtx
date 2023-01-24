@@ -790,20 +790,39 @@ Please cite this report as:
 %    \end{macrocode}
 %
 %  \section{Additional Packages}
-% The hyperref package must be the last one loaded, so we load it here.
-% We also load booktabs as that is expected to be used for all tables.
+% We also various table-related packages, guided by the kableExtra requirements, 
+% and set up the booktabs rules so kable tables conform to FNZ requirements.
 %
 %    \begin{macrocode}
 %<*common>
 \RequirePackage{booktabs}
-\RequirePackage{hyperref}
+\setlength\heavyrulewidth{0ex}
+\setlength\lightrulewidth{0ex}
+\RequirePackage{longtable}
+\RequirePackage{float}
+\RequirePackage{pdflscape}
+\RequirePackage{makecell}
+\RequirePackage{xcolor}
+\RequirePackage{colortbl}
+\RequirePackage{multirow}
 %</common>
 %    \end{macrocode}
 %
-%    Hyperref should be used, but the links should not be coloured or have boxes around
-% them.
+% The SIunitx package is helpful for numbers and units.
+% FNZ specify no space between numbers and a percent symbol
 %    \begin{macrocode}
 %<*common>
+\RequirePackage{siunitx}
+\sisetup{detect-all}
+\DeclareSIUnit[quantity-product = ]\percent{\char`\%}
+%</common>
+%    \end{macrocode}
+%
+%    Hyperref must be the last package loaded. 
+%    Links should not be coloured or have boxes around them.
+%    \begin{macrocode}
+%<*common>
+\RequirePackage{hyperref}
 \hypersetup{
   colorlinks=true,
   urlcolor=black,
