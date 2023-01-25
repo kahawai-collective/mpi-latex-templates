@@ -796,20 +796,27 @@ Please cite this report as:
 % See https://github.com/dragonfly-science/mpi-latex-templates/issues/26
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far|mpi-plenary>
-\RequirePackage[usegeometry]{typearea}
+\fancypagestyle{lscapefoot}{%
+\fancyhf{} % clear all header and footer fields
+\fancyfoot[LE]{%
+\begin{textblock*}{1.0\textheight}[0,1](190mm,271mm){\rotatebox{90}{\rule{247mm}{0.4pt}}}\end{textblock*}
+\begin{textblock*}{0.7\textwidth}[0,1](192mm,271mm){\rotatebox{90}{\sffamily\scriptsize\thepage\ {\normalsize$\bullet$}\ \footertitle}}\end{textblock*}
+\begin{textblock*}{0.3\textwidth}(192mm,24mm){\rotatebox{90}{\sffamily\scriptsize Fisheries New Zealand}}\end{textblock*}}
+\fancyfoot[LO]{%
+\begin{textblock*}{1.0\textheight}[0,1](190mm,271mm){\rotatebox{90}{\rule{247mm}{0.4pt}}}\end{textblock*}
+\begin{textblock*}{0.3\textwidth}[0,1](192mm,271mm){\rotatebox{90}{\sffamily\scriptsize Fisheries New Zealand}}\end{textblock*}
+\begin{textblock*}{0.7\textwidth}(192mm,24mm){\rotatebox{90}{\sffamily\scriptsize\footertitle\ {\normalsize$\bullet$}\ \thepage}}\end{textblock*}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}}
 \newenvironment{flandscape}
-    {\clearpage
-     \KOMAoptions{paper=landscape,DIV=current}%switch to landscape
-     \newgeometry{% geometry settings for landscape
-       left=0.8125in, right=1in, top=2.5cm, bottom=1.25in, footskip=0.875in
-     }%
-     \fancyhfoffset{0pt}% recalculate head and foot width for fancyhdr
+    {\newgeometry{hmargin=2.5cm,vmargin=2.5cm}
+     \thispagestyle{lscapefoot}
+     \pagestyle{lscapefoot}
+     \begin{landscape}
     }
-    {\clearpage
-     \KOMAoptions{paper=portrait,DIV=current}%switch to portrait
+    {\end{landscape}
      \restoregeometry
      \pagestyle{plain}
-     \fancyhfoffset{0pt}\\
     }
 %</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
