@@ -13,6 +13,7 @@ RUN ?= docker run -it --rm --net=host --user=$$(id -u):$$(id -g) -e RUN= -e TEXI
 #
 all: package/.build
 
+.SECONDARY: 
 examples/%.tex: examples/%.rnw
 	cd examples && Rscript --vanilla -e "library(knitr);opts_chunk\$$set(warning=F, message = FALSE,echo=F,results='asis',fig.lp='fig:',fig.path='images/'); knit('$(<F)',output='$(@F)')"
 
