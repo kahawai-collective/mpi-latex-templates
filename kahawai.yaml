@@ -1,0 +1,2 @@
+docker: ubuntu/gorbachev-base-jammy
+allows: [DOCKER]

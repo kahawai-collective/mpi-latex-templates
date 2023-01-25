@@ -1,15 +1,6 @@
 \documentclass{mpi-far}
 
-<<init, echo=FALSE, warning=FALSE, message=FALSE>>=
-library(tidyverse)
-library(kableExtra)
-
-options(knitr.kable.NA = '')
-
-@
-
-
-\title{Table formats}{Table formatting in FARs and AEBRs}
+\title{Table formats}{Table formatting in reproducible FARs and AEBRs}
 \subtitle{A report for testing purposes}
 
 \date{2023}
@@ -39,43 +30,106 @@ options(knitr.kable.NA = '')
 
 \summary
 \citeself
+This report illustrates the use of \texttt{kable} in \texttt{knitr} files to produce tables that meet the Fisheries New Zealand formatting requirements.
 
-\lipsum[1]
 \clearpage
-
-
 \section{Introduction}
 
-%filler text
-\lipsum[1]
+The \texttt{mpi-far.tex} and \texttt{mpi-far.tex} examples illustrate how to use the Dragonfly \texttt{mpi-latex-templates} package to produce Fisheries Assessment Reports and Aquatic Environment and Biodiversity Reports, respectively. Those examples are pure \LaTeX{}; however, most reproducible reports will be generated from \texttt{knitr} files with embedded R code.
 
+Tables are conveniently produced and formatted using the \texttt{kable} function and \texttt{kableExtra} package. The \texttt{mpi-latex-templates} have been set up with many of the required \LaTeX{} packages, and configuration of table dividing lines (which are used sparingly in tables in MPI reports).
+
+The examples below illustrate the production of properly formatted tables.
 
 \section{Methods}
 
-\subsection{Details}
+<<init, echo=TRUE, warning=FALSE, message=FALSE>>=
+# Load required packages
+library(tidyverse)
+library(kableExtra)
 
-\lipsum[2]
+# Define how NAs are displayed
+options(knitr.kable.NA = '')
+@
+
+Following the \texttt{kableExtra} documentation the \texttt{mtcars} dataset, available in base R, is used for testing. Most data frames used in analysis will need columns to be renamed for use in tables; this is conveniently done using \texttt{tidyverse} functions and is often done as part of the table-producing code block.
 
 \section{Results}
 
-Some additional results are in \autoref{app:the_appendix}.
+A normal (portrait page) table is illustrated in \autoref{tab:portrait_table}. Key features are the use of 10pt font, and the only rule being under a grouped header.
+
+<<portrait_table, echo=TRUE, results='asis'>>=
+
+# Set up an illustrative dataframe. 
+# The displacement is scaled up to illustrate thouseands formatting.
+# The dplyr select() and rename() functions are commonly used to set
+# appropriate column names.
+example_df <- mtcars %>%
+                mutate(disp = disp * 10) %>%
+                select(MPG = mpg,
+                       Cylinders = cyl,
+                       Displacement = disp,
+                       Horsepower = hp) %>%
+                rownames_to_column(var = "Model")
+
+# The LaTeX formatting is done using functions from kableExtra
+test_tab <- example_df %>%
+  kbl(booktabs = TRUE, linesep = "",
+      format.args = list(big.mark = '\u202F'),
+      caption = "Checking that a kable table is formatted 
+                 according to FNZ requirements.") %>%
+  add_header_above(c(" " = 2, "Engine" = 3),
+                   line = TRUE, align = "r") %>%
+  kable_styling(font_size = 10,
+                latex_options = "hold_position")
+
+print(test_tab)
+@
+
+For wide tables, a landscape page can be used. The \texttt{kableExtra} package provides a \texttt{landscape()} function. However, this only rotates the table; MPI require a `full-landscape' page to be used with the footer rotated too. This is implemented using the \texttt{flandscape} environment provided by the \texttt{mpi-latex-templates} package, and illustrated for \autoref{tab:landscape_table}.
+
+\begin{flandscape}
+<<landscape_table, echo=TRUE, results='asis'>>=
+
+# Create a wider table
+example_df_long <- mtcars %>%
+                mutate(disp = disp * 10,
+                       vs = ifelse(vs == 0, 'V-shaped', 'straight'),
+                       am = ifelse(am == 0, 'automatic', 'manual')) %>%
+                select("1/4 mile time" = qsec,
+                       MPG = mpg,
+                       Cylinders = cyl,
+                       Carburetors = carb,
+                       Displacement = disp,
+                       Horsepower = hp,
+                       Shape = vs,
+                       "Rear axle ratio" = drat,
+                       Weight = wt,
+                       Type = am,
+                       "Forward gears" = gear) %>%
+                rownames_to_column(var = "Model")
+
+# Use kable as normal for printing the table.
+# The trick is that this code block is contained in a full-landscape environment
+# \begin{flandscape} ... \end{flandscape}
+test_tab_land <- example_df_long %>%
+  kbl(booktabs = TRUE, linesep = "",
+      format.args = list(big.mark = '\u202F'),
+      caption = "Checking that a landscape table is formatted according to FNZ requirements.") %>%
+  add_header_above(c(" " = 3, "Engine" = 5, " " = 2, "Transmission" = 2),
+                   line = TRUE, align = "r") %>%
+  kable_styling(font_size = 10,
+                latex_options = "hold_position")
+
+print(test_tab_land)
+@
+\end{flandscape}
 
 \section{Discussion}
 
-\subsection{A first level subsection}
-\subsubsection{A second level subsection}
+Checking that portrait pages are set properly again
 
-Test out the font of  numbers in text mode (1, 2, 3, 4) and in math mode $1,\ 2,\ 3,\ 4$, and:
-$$
-1,\ 2,\ 3,\ 4 .
-$$
-
-\lipsum[3]
-
-
-\paragraph{A minor heading}
-\lipsum[5]
-
+\lipsum[1-10]
 
 % Bibliography should be printed starting on a new page.
 \clearpage

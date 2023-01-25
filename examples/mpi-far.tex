@@ -116,10 +116,16 @@ Some additional results are in \autoref{app:the_appendix}.
 \subsection{A first level subsection}
 \subsubsection{A second level subsection}
 
-Test out the font of  numbers in text mode (1, 2, 3, 4) and in math mode $1,\ 2,\ 3,\ 4$, and:
+Test out the font of numbers in text mode (1, 2, 3, 4) and in math mode $1,\ 2,\ 3,\ 4$, and:
 $$
 1,\ 2,\ 3,\ 4 .
 $$
+
+Also test how inline maths is typeset for \(B_{MSY}\) and \(B_0\). And some example equations:
+
+\begin{equation}
+  p_l = \frac{ \sum_{j=1}^{k} N_{ljm} }{ \sum_{j=1}^{k} (N_{ljm} + N_{jc}) }
+\end{equation}
 
 \lipsum[3]
 
@@ -186,9 +192,12 @@ Appendix citations
   \item Textcite: \textcite{roe_necropsy_2007}
 \end{itemize}
 
+Table contents must be in 10pt
+
 \begin{table}[h]
 \caption{Appendix table}
 \begin{center}
+\fontsize{10}{12}\selectfont
 \begin{tabular}{rr}
 One & Two \\ \addlinespace
 1 & 2
@@ -201,6 +210,7 @@ One & Two \\ \addlinespace
 \begin{table}[h]
 \caption{Table in second appendix}
 \begin{center}
+\fontsize{10}{12}\selectfont
 \begin{tabular}{rr}
 Three & Four \\ \addlinespace
 3 & 4

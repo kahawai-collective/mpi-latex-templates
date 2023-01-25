@@ -13,10 +13,11 @@ RUN ?= docker run -it --rm --net=host --user=$$(id -u):$$(id -g) -e RUN= -e TEXI
 #
 all: package/.build
 
+.SECONDARY: 
 examples/%.tex: examples/%.rnw
 	cd examples && Rscript --vanilla -e "library(knitr);opts_chunk\$$set(warning=F, message = FALSE,echo=F,results='asis',fig.lp='fig:',fig.path='images/'); knit('$(<F)',output='$(@F)')"
 
-examples/%.pdf: examples/%.tex examples/test.bib latex/mpi.pdf graphics/FAR.jpg latex/affiliation.dbx clean_examples
+examples/%.pdf: examples/%.tex examples/mpi-tables.tex examples/test.bib latex/mpi.pdf graphics/FAR.jpg latex/affiliation.dbx clean_examples
 	$(RUN) bash -c "cd examples && xelatex $(*) && biber $(*) && xelatex $(*) && xelatex $(*)"
 
 latex/mpi.pdf: latex/mpi.dtx latex/mpi.ins latex/affiliation.dbx clean_latex
@@ -24,7 +25,7 @@ latex/mpi.pdf: latex/mpi.dtx latex/mpi.ins latex/affiliation.dbx clean_latex
 	$(RUN) bash -c "cd latex && xelatex mpi.dtx"
 
 .PRECIOUS: package/.build
-package/.build: examples/mpi-far.pdf examples/mpi-plenary.pdf examples/mpi-far-draft.pdf examples/mpi-aebr.pdf
+package/.build: examples/mpi-far.pdf examples/mpi-plenary.pdf examples/mpi-far-draft.pdf examples/mpi-aebr.pdf examples/mpi-tables.pdf
 	$(RUN) bash -c "cd package && debuild -us -uc && mv ../mpi-latex*{.dsc,.changes,.build,tar.xz} . && touch .build"
 
 .PHONY: clean

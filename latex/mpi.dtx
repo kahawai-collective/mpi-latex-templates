@@ -68,17 +68,17 @@
 %
 % \GetFileInfo{mpi.dtx}
 %
-% \title{Formatting Ministry for Primary Industries reports}
+% \title{Formatting Fisheries New Zealand reports}
 % \author{Dragonfly Science}
 % \maketitle
 %
 % \begin{abstract}
-%  This is a set of classes that are used to format \LaTeX documents according the
-%  Ministry for Primary Industries formatting requirements. There are three document
+%  This is a set of classes that are used to format \LaTeX{} documents according to the
+%  Fisheries New Zealand formatting requirements. There are three document
 %  classes provided: ``mpi-aebr'', for formatting Aquatic Environment and Biodiversity
 %  Reports, ``mpi-far'', for formatting Fisheries Assessment Reports and ``mpi-plenary``
-%  for MPI Plenary Documents. Using these packages allows for producing publication
-%  ready documents.
+%  for stock assessment Plenary Documents. Using these packages allows the production of 
+%  publication ready documents.
 % \end{abstract}
 % \clearpage
 % \tableofcontents
@@ -129,6 +129,7 @@
 % \begin{itemize}
 % \item Aquatic Environment and Biodiversity Report
 % \item Fisheries Assessment Report
+% \item Fisheries Assessment Plenary
 % \end{itemize}
 %
 % The basic structure is the same as the base latex article class
@@ -155,20 +156,13 @@
 %
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far|mpi-plenary>
-\RequirePackage{fontspec}
-\setmainfont[Mapping=tex-text,
-    ItalicFont     = {Times New Roman Italic},
-    BoldFont       = {Times New Roman Bold},
-    BoldItalicFont = {Times New Roman Bold Italic}]{Times New Roman}
+\RequirePackage{amsmath}
+\RequirePackage{mathspec}
+\setallmainfonts{Times New Roman}
 \setsansfont[Mapping=tex-text,
   ItalicFont = {Arial Italic},
   BoldFont = {Arial Bold},
   BoldItalicFont = {Arial Bold Italic}]{Arial}
-\setmathrm[Mapping=tex-text,
-    Numbers=Monospaced,
-    ItalicFont     = {Times New Roman Italic},
-    BoldFont       = {Times New Roman Bold},
-    BoldItalicFont = {Times New Roman Bold Italic}]{Times New Roman}
 \setmathsf[Mapping=tex-text,
     Numbers=Monospaced,
     ItalicFont     = {Times New Roman Italic},
@@ -231,7 +225,7 @@
     \renewcommand{\headrulewidth}{0pt}
   }
 %</mpi-aebr|mpi-far|mpi-plenary>
-%   \end{macrocode}
+%    \end{macrocode}
 %
 % \section{Bibliography}
 %
@@ -258,9 +252,14 @@
 \newcommand{\citet}{\textcite}
 \newcommand{\citep}{\parencite}
 \renewcommand{\cite}{\textcite}
-
+%</mpi-aebr|mpi-far|mpi-plenary>
+%    \end{macrocode}
+%
 % Newer versions of biblatex have better support for different sort keys
-% on citations and bibliography. Until then, override \printbibliography
+% on citations and bibliography. Until then, override \\printbibliography
+%
+%    \begin{macrocode}
+%<*mpi-aebr|mpi-far|mpi-plenary>
 \let\oldprintbibliography\printbibliography
 \renewcommand*\printbibliography{
   \endrefcontext
@@ -268,48 +267,84 @@
     \oldprintbibliography
   \end{refcontext}
 }
-
+%</mpi-aebr|mpi-far|mpi-plenary>
+%    \end{macrocode}
+%
 % Use a comma between multiple citations:
-\renewcommand*{\multicitedelim}{,\addspace}
+%    \begin{macrocode}
+%<mpi-aebr|mpi-far|mpi-plenary>\renewcommand*{\multicitedelim}{,\addspace}
+%    \end{macrocode}
+%
 % Use a semicolon between multiple names in text citations:
+%    \begin{macrocode}
+%<*mpi-aebr|mpi-far|mpi-plenary>
 \renewcommand*{\multinamedelim}{\addcomma\addspace}
 \renewcommand*{\finalnamedelim}{\addspace\&\addspace}
+%</mpi-aebr|mpi-far|mpi-plenary>
+%    \end{macrocode}
+%
 % in bibliography:
+%    \begin{macrocode}
+%<*mpi-aebr|mpi-far|mpi-plenary>
 \DeclareDelimFormat[bib,biblist]{finalnamedelim}{\addsemicolon\addspace}
 \AtBeginBibliography{%
   \renewcommand*{\bibinitdelim}{}%
   \renewcommand*{\revsdnamedelim}{}%
   \renewcommand*{\bibpagespunct}{\addcolon\addspace}%
 }
-
-% Have a maximum of two authors in citation commands:
+%</mpi-aebr|mpi-far|mpi-plenary>
+%    \end{macrocode}
+%
+% [DISABLED] Have a maximum of two authors in citation commands:
+%    \begin{macrocode}
+%<*mpi-aebr|mpi-far|mpi-plenary>
 % Patches https://github.com/plk/biblatex-apa/blob/v6.8/tex/latex/biblatex-apa/cbx/apa.cbx
 % \xpatchnameformat{labelname}{\ifciteseen}{\ifnumcomp{\value{listtotal}}{>}{2}}{}{Patch of labelname failed}
-
+%</mpi-aebr|mpi-far|mpi-plenary>
+%    \end{macrocode}
+%
 % Redefine the nameyeardelim command, to put a space between the authors and the year in citations
 % in citations, updates https://github.com/plk/biblatex-apa/blob/v6.8/tex/latex/biblatex-apa/cbx/apa.cbx
+%    \begin{macrocode}
+%<*mpi-aebr|mpi-far|mpi-plenary>
 \DeclareDelimFormat[bib]{nameyeardelim}{\space\nopunct}
 \renewcommand*{\nameyeardelim}{\space}
-
-% Update the author macro so that there is no period after the authors, for authors without initials, in the bibliography
+%</mpi-aebr|mpi-far|mpi-plenary>
+%    \end{macrocode}
+%
+% [DISABLED] Update the author macro so that there is no period after the authors, for authors without initials, in the bibliography
 % Patches https://github.com/plk/biblatex-apa/blob/v6.8/tex/latex/biblatex-apa/bbx/apa.bbx
+%    \begin{macrocode}
+%<*mpi-aebr|mpi-far|mpi-plenary>
 % \xpatchbibmacro{author}{\newunit\newblock}{}{}{Patch of author macro failed}
-
+%</mpi-aebr|mpi-far|mpi-plenary>
+%    \end{macrocode}
+%
 % Turn extra commas inserted by name:apa:family-given into semicolons
-\xpatchbibmacro{name:apa:family-given}{\apablx@ifrevnameappcomma{\addcomma}}{\apablx@ifrevnameappcomma{\addsemicolon}}{}{Patch of name:apa:family-given macro failed}
-
+%    \begin{macrocode}
+%<mpi-aebr|mpi-far|mpi-plenary>\xpatchbibmacro{name:apa:family-given}{\apablx@ifrevnameappcomma{\addcomma}}{\apablx@ifrevnameappcomma{\addsemicolon}}{}{Patch of name:apa:family-given macro failed}
+%    \end{macrocode}
+%
 % Not sure what this one is doing!
+%    \begin{macrocode}
+%<*mpi-aebr|mpi-far|mpi-plenary>
 \xpatchbibmacro{date+extradate}{%
   \printtext[parens]%
   }{%
     \setunit{\addperiod\space}%
       \printtext%
       }{}{}
-
+%</mpi-aebr|mpi-far|mpi-plenary>
+%    \end{macrocode}
+%
 % Add location+publisher to book
-\xpatchbibdriver{book}{\printlist{publisher}}{\usebibmacro{location+publisher}}{}{Patch of book driver failed}
-
+%    \begin{macrocode}
+%<mpi-aebr|mpi-far|mpi-plenary>\xpatchbibdriver{book}{\printlist{publisher}}{\usebibmacro{location+publisher}}{}{Patch of book driver failed}
+%    \end{macrocode}
+%
 % Change the order of the publisher and the location, so it is `publisher, location` rather than `location: publisher`, in the bibliography:
+%    \begin{macrocode}
+%<*mpi-aebr|mpi-far|mpi-plenary>
 \xpatchbibmacro{location+publisher}{%
   \printlist{location}%
   \setunit*{\addcomma\space}%
@@ -317,38 +352,53 @@
   \printlist{publisher}%
   \setunit*{\addcomma\space}%
   \printlist{location}}{}{Patch of location+publisher macro failed}
-
+%</mpi-aebr|mpi-far|mpi-plenary>
+%    \end{macrocode}
+%
 % Do not italisise the title of books or collections in the bibliography:
+%    \begin{macrocode}
+%<*mpi-aebr|mpi-far|mpi-plenary>
 \DeclareFieldFormat{booktitle}{#1} %Overriding definition in biblatex.def
 \DeclareFieldFormat{maintitle}{#1} %Overriding definition in biblatex.def
 \DeclareFieldFormat[thesis]{title}{#1}
 \DeclareFieldFormat[unpublished]{title}{#1}
-
-% Italicise the "In:" in collections in the bibliography:
-\xpatchbibmacro{in}{\bibcpstring{in}\setunit{\space}}{\mkbibemph{\bibcpstring{in}}\addcolon\setunit{\space}}{}{Patch of 'in' macro failed}
-
-% No comma after the journal title in the bibliography:
-\xpatchbibmacro{journal+issuetitle}{\addcomma}{}{}{}
-
-% Italicise the number in articles
-\DeclareFieldFormat[article]{number}{\mkbibemph{\mkbibparens{\apanum{#1}}}}
-
-% Space between the volume and the number in articles
-\xpatchbibmacro{journal+issuetitle}{\printfield{number}}{\setunit{\addspace}\printfield{number}}{}{}
-
-% Always finish with a period
-% \renewbibmacro*{apa:finpunct}{\addperiod} % finpunct is gone
-
-
-% Add full stop after title for theses
-\DeclareFieldFormat[thesis]{title}{#1\addperiod}
-
-% Gets rid of parentheses around page number
-\DeclareFieldFormat{addendum}{{#1}}
-
 %</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
 %
+% Italicise the "In:" in collections in the bibliography:
+%    \begin{macrocode}
+%<mpi-aebr|mpi-far|mpi-plenary>\xpatchbibmacro{in}{\bibcpstring{in}\setunit{\space}}{\mkbibemph{\bibcpstring{in}}\addcolon\setunit{\space}}{}{Patch of 'in' macro failed}
+%    \end{macrocode}
+%
+% No comma after the journal title in the bibliography:
+%    \begin{macrocode}
+%<mpi-aebr|mpi-far|mpi-plenary>\xpatchbibmacro{journal+issuetitle}{\addcomma}{}{}{}
+%    \end{macrocode}
+%
+% Italicise the number in articles
+%    \begin{macrocode}
+%<mpi-aebr|mpi-far|mpi-plenary>\DeclareFieldFormat[article]{number}{\mkbibemph{\mkbibparens{\apanum{#1}}}}
+%    \end{macrocode}
+%
+% Space between the volume and the number in articles
+%    \begin{macrocode}
+%<mpi-aebr|mpi-far|mpi-plenary>\xpatchbibmacro{journal+issuetitle}{\printfield{number}}{\setunit{\addspace}\printfield{number}}{}{}
+%    \end{macrocode}
+%
+% Always finish with a period
+%    \begin{macrocode}
+%<mpi-aebr|mpi-far|mpi-plenary>\renewbibmacro*{apa:finpunct}{\addperiod} % finpunct is gone
+%    \end{macrocode}
+%
+% Add full stop after title for theses
+%    \begin{macrocode}
+%<mpi-aebr|mpi-far|mpi-plenary>\DeclareFieldFormat[thesis]{title}{#1\addperiod}
+%    \end{macrocode}
+%
+% Gets rid of parentheses around page number
+%    \begin{macrocode}
+%<mpi-aebr|mpi-far|mpi-plenary>\DeclareFieldFormat{addendum}{{#1}}
+%    \end{macrocode}
 %
 % \section{Title page}
 %
@@ -397,7 +447,7 @@
 %
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far|mpi-plenary>
-  \renewcommand{\@date}{\the\year}
+\renewcommand{\@date}{\the\year}
 \newcommand{\reportmonth}[1]{\renewcommand{\@month}{#1}}
 \newcommand{\@month}{MMM}
 %</mpi-aebr|mpi-far|mpi-plenary>
@@ -739,21 +789,73 @@ Please cite this report as:
 %</common>
 %    \end{macrocode}
 %
+% \section{Full landscape pages}
+%
+% Fisheries New Zealand require that footers are rotated on landscape pages.
+% This is achieved by defining a new full landscape environment (flandscape).
+% See https://github.com/dragonfly-science/mpi-latex-templates/issues/26
+%    \begin{macrocode}
+%<*mpi-aebr|mpi-far|mpi-plenary>
+\RequirePackage{pdflscape}
+\fancypagestyle{lscapefoot}{%
+\fancyhf{} % clear all header and footer fields
+\fancyfoot[LE]{%
+\begin{textblock*}{1.0\textheight}[0,1](190mm,271mm){\rotatebox{90}{\rule{247mm}{0.4pt}}}\end{textblock*}
+\begin{textblock*}{0.7\textwidth}[0,1](192mm,271mm){\rotatebox{90}{\sffamily\scriptsize\thepage\ {\normalsize$\bullet$}\ \footertitle}}\end{textblock*}
+\begin{textblock*}{0.3\textwidth}(192mm,24mm){\rotatebox{90}{\sffamily\scriptsize Fisheries New Zealand}}\end{textblock*}}
+\fancyfoot[LO]{%
+\begin{textblock*}{1.0\textheight}[0,1](190mm,271mm){\rotatebox{90}{\rule{247mm}{0.4pt}}}\end{textblock*}
+\begin{textblock*}{0.3\textwidth}[0,1](192mm,271mm){\rotatebox{90}{\sffamily\scriptsize Fisheries New Zealand}}\end{textblock*}
+\begin{textblock*}{0.7\textwidth}(192mm,24mm){\rotatebox{90}{\sffamily\scriptsize\footertitle\ {\normalsize$\bullet$}\ \thepage}}\end{textblock*}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}}
+\newenvironment{flandscape}
+    {\newgeometry{hmargin=2.5cm,vmargin=2.5cm}
+     \thispagestyle{lscapefoot}
+     \pagestyle{lscapefoot}
+     \begin{landscape}
+    }
+    {\end{landscape}
+     \restoregeometry
+     \pagestyle{plain}
+    }
+%</mpi-aebr|mpi-far|mpi-plenary>
+%    \end{macrocode}
+%
+%
 %  \section{Additional Packages}
-% The hyperref package must be the last one loaded, so we load it here.
-% We also load booktabs as that is expected to be used for all tables.
+% We also various table-related packages, guided by the kableExtra requirements, 
+% and set up the booktabs rules so kable tables conform to FNZ requirements.
 %
 %    \begin{macrocode}
 %<*common>
 \RequirePackage{booktabs}
-\RequirePackage{hyperref}
+\setlength\heavyrulewidth{0ex}
+\setlength\lightrulewidth{0ex}
+\RequirePackage{longtable}
+\RequirePackage{float}
+\RequirePackage{makecell}
+\RequirePackage{xcolor}
+\RequirePackage{colortbl}
+\RequirePackage{multirow}
 %</common>
 %    \end{macrocode}
 %
-%    Hyperref should be used, but the links should not be coloured or have boxes around
-% them.
+% The SIunitx package is helpful for numbers and units.
+% FNZ specify no space between numbers and a percent symbol
 %    \begin{macrocode}
 %<*common>
+\RequirePackage{siunitx}
+\sisetup{detect-all}
+\DeclareSIUnit[quantity-product = ]\percent{\char`\%}
+%</common>
+%    \end{macrocode}
+%
+%    Hyperref must be the last package loaded. 
+%    Links should not be coloured or have boxes around them.
+%    \begin{macrocode}
+%<*common>
+\RequirePackage{hyperref}
 \hypersetup{
   colorlinks=true,
   urlcolor=black,
