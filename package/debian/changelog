@@ -1,3 +1,9 @@
+mpi-latex-templates (1.56) jammy; urgency=medium
+
+  * en-dash after Crown Copyright
+
+ -- David Middleton <david@pisces.nz>  Wed, 17 Jan 2024 12:02:43 +1300
+
 mpi-latex-templates (1.55) jammy; urgency=medium
 
   * Don't use typearea to implement the flandscape environment
