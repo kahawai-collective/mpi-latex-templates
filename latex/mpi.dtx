@@ -450,7 +450,6 @@
 \renewcommand{\@date}{\the\year}
 \newcommand{\reportmonth}[1]{\renewcommand{\@month}{#1}}
 \newcommand{\@month}{MMM}
-\newcommand{\@plainlanguagesummary}{xxx}
 %</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
 %
@@ -486,6 +485,10 @@
 \newcommand{\reportnopre}[1]{\renewcommand{\@reportnopre}{#1}}
 \newcommand{\reportwallpaper}[1]{\renewcommand{\@reportpaper}{#1}}
 %</mpi-aebr|mpi-far|mpi-plenary>
+%<*mpi-aebr|mpi-far>
+\newcommand{\@plainlanguagesummary}{Different test text}
+\newcommand{\plainlanguagesummary}[1]{\renewcommand{\@plainlanguagesummary}{#1}}
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 % The report also has a customisable citation note that goes at the end of the
@@ -746,7 +749,7 @@ Please cite this report as:
 %<*mpi-aebr|mpi-far>
 \g@addto@macro\@cfttocfinish{\sffamily\textbf{Plain language summary}
 
-\rmfamily Some test text\cleardoublepage}
+\rmfamily \plainlanguagesummary\cleardoublepage}
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
