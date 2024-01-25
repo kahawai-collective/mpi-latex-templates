@@ -450,6 +450,7 @@
 \renewcommand{\@date}{\the\year}
 \newcommand{\reportmonth}[1]{\renewcommand{\@month}{#1}}
 \newcommand{\@month}{MMM}
+\newcommand{\@plainlanguagesummary}{xxx}
 %</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
 %
@@ -738,6 +739,14 @@ Please cite this report as:
 \g@addto@macro\@cfttocfinish{\cleardoublepage}
 \tocloftpagestyle{empty}
 %</mpi-aebr|mpi-far|mpi-plenary>
+%    \end{macrocode}
+%
+% From January 2024, AEBRs and FARs require a Plain language summary between the TOC and Exec. Summary
+%    \begin{macrocode}
+%<*mpi-aebr|mpi-far>
+\subsection*{Plain language summary}
+\plainlanguagesummary
+%</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
 % Section lines should be sans serif.
