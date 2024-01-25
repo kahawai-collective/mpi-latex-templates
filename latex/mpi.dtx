@@ -730,10 +730,12 @@ Please cite this report as:
 %</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
 %
-% The table of contents should have it's own page. And since it is printed it should
-% clear a double page. It should be called the TABLE OF CONTENTS.
+% The table of contents should have it's own page.  It should be called the TABLE OF CONTENTS.
+% The Plenary is formatted as if it is printed and so clears a double page.
+% From January 2024, AEBRs and FARs require a Plain language summary between the TOC and Exec. Summary
+%
 %    \begin{macrocode}
-%<*mpi-aebr|mpi-far|mpi-plenary>
+%<*mpi-plenary>
 \RequirePackage{tocloft}
 \renewcommand{\cfttoctitlefont}{\bfseries\sffamily}
 \addto\captionsenglish{%
@@ -741,15 +743,17 @@ Please cite this report as:
 }
 \g@addto@macro\@cfttocfinish{\cleardoublepage}
 \tocloftpagestyle{empty}
-%</mpi-aebr|mpi-far|mpi-plenary>
-%    \end{macrocode}
-%
-% From January 2024, AEBRs and FARs require a Plain language summary between the TOC and Exec. Summary
-%    \begin{macrocode}
+%</mpi-plenary>
 %<*mpi-aebr|mpi-far>
-\g@addto@macro\@cfttocfinish{\sffamily\textbf{Plain language summary}
+\RequirePackage{tocloft}
+\renewcommand{\cfttoctitlefont}{\bfseries\sffamily}
+\addto\captionsenglish{%
+  \renewcommand{\contentsname}{TABLE OF CONTENTS}
+}
+\g@addto@macro\@cfttocfinish{\clearpage\sffamily\textbf{Plain language summary}
 
 \rmfamily {\@plainlanguagesummary} \cleardoublepage}
+\tocloftpagestyle{empty}
 %</mpi-aebr|mpi-far>
 %    \end{macrocode}
 %
