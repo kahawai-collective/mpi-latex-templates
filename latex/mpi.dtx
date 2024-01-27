@@ -508,13 +508,26 @@
 % author and title.
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far|mpi-plenary>
+\DeclareNameFormat{pdfname}{\usebibmacro{name:given-family}%
+   {\namepartfamily}%
+   {\namepartgiveni}%
+   {\namepartprefix}%
+   {\namepartsuffix}}
+\newcommand{\getpdfauthors}{
+  \begin{refsection}[\jobname-self.bib]
+  \renewcommand*{\multinamedelim}{, }
+  \renewcommand*{\finalnamedelim}{}%
+  \AtNextCite{\defcounter{maxnames}{99}}
+  \citename{this}[pdfname]{author}
+  \end{refsection}
+}
   \frenchspacing
   {
     \renewcommand{\and}{ and }
     \hypersetup{
       pdfinfo={
         Title={\footertitle},
-        Author={\@author}
+        Author={\getpdfauthors}
       }
     }
   }
