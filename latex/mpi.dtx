@@ -504,23 +504,6 @@
 %<mpi-aebr|mpi-far|mpi-plenary>\renewcommand{\maketitle}{
 %    \end{macrocode}
 %
-% We start by generating metadata for the pdf. We need to at least set the pdf
-% author and title.
-%    \begin{macrocode}
-%<*mpi-aebr|mpi-far|mpi-plenary>
-  \frenchspacing
-  \RequirePackage{xstring}
-  {
-    \renewcommand{\and}{ and }
-    \hypersetup{
-      pdfinfo={
-        Title={\footertitle},
-        Author={\StrSubstitute{\@author}{given=}{}}
-      }
-    }
-  }
-%</mpi-aebr|mpi-far|mpi-plenary>
-%    \end{macrocode}
 %
 % The first page is fully covered by the special title image used by AEBRs.
 %
@@ -922,6 +905,12 @@ journal = \@charlb {\@reportseries} \@reportnopre \@reportno \@charrb,^^J%
 \immediate\openout\tempfile=\jobname-self.bib
 \immediate\write\tempfile{\text}
 \immediate\closeout\tempfile
+}
+\hypersetup{
+  pdfinfo={
+    Title={\footertitle},
+    Author={\@author}
+  }
 }
 }
 %</mpi-aebr|mpi-far|mpi-plenary>
