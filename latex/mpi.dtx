@@ -504,6 +504,22 @@
 %<mpi-aebr|mpi-far|mpi-plenary>\renewcommand{\maketitle}{
 %    \end{macrocode}
 %
+% We start by generating metadata for the pdf. We need to at least set the pdf
+% author and title.
+%    \begin{macrocode}
+%<*mpi-aebr|mpi-far|mpi-plenary>
+  \frenchspacing
+  {
+    \renewcommand{\and}{ and }
+    \hypersetup{
+      pdfinfo={
+        Title={\footertitle},
+        Author={\@author}
+      }
+    }
+  }
+%</mpi-aebr|mpi-far|mpi-plenary>
+%    \end{macrocode}
 %
 % The first page is fully covered by the special title image used by AEBRs.
 %
@@ -874,7 +890,7 @@ Please cite this report as:
 % In order to automatically generate the citation using biblatex, we
 % write out a generated bib file that contains an entry for the current document.
 % This must happen at the end of the prelude, so that the title and so on are defined.
-% Note that new lines have to be suppressed while doing this, and |\emph|,
+% Note that new lines have the be suppressed while doing this, and |\emph|,
 % |\newaffiliation|, |\useaffiliation| and |\addrsep| commands
 % need to print out the command rather than actually be evaluated. As such these
 % are the only LaTeX command supported in the author/title.
@@ -905,12 +921,6 @@ journal = \@charlb {\@reportseries} \@reportnopre \@reportno \@charrb,^^J%
 \immediate\openout\tempfile=\jobname-self.bib
 \immediate\write\tempfile{\text}
 \immediate\closeout\tempfile
-}
-\hypersetup{
-  pdfinfo={
-    Title={\footertitle},
-    Author={\@author}
-  }
 }
 }
 %</mpi-aebr|mpi-far|mpi-plenary>
