@@ -509,12 +509,13 @@
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far|mpi-plenary>
   \frenchspacing
+  \RequirePackage{xstring}
   {
     \renewcommand{\and}{ and }
     \hypersetup{
       pdfinfo={
         Title={\footertitle},
-        Author={\@author}}
+        Author={\StrSubstitute{\@author}{given=}{}}
       }
     }
   }
