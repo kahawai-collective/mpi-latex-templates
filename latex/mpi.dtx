@@ -508,21 +508,13 @@
 % author and title.
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far|mpi-plenary>
-\DeclareNameFormat{pdfname}{\usebibmacro{name:given-family}%
-   {\namepartfamily}%
-   {\namepartgiveni}%
-   {\namepartprefix}%
-   {\namepartsuffix}}
-\newcommand{\getpdfauthors}{
-  \citename{this}[pdfname]{author}
-}
   \frenchspacing
   {
     \renewcommand{\and}{ and }
     \hypersetup{
       pdfinfo={
         Title={\footertitle},
-        Author={\getpdfauthors}
+        Author={\@author}
       }
     }
   }
