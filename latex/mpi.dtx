@@ -197,7 +197,7 @@
 % \section{Headings}
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far|mpi-plenary>
-\RequirePackage{titlesec}
+\RequirePackage[nobottomtitles]{titlesec}
 \titleformat{\section}{\normalfont\bfseries\sffamily\uppercase}{}{0em}{\thesection.\hspace{0.8em}}
 \titleformat{name=\section,numberless}{\normalfont\bfseries\sffamily\uppercase}{}{0em}{}
 \titleformat{\subsection}{\normalfont\bfseries\sffamily}{}{0em}{\thesubsection\hspace{0.8em}}
@@ -890,10 +890,10 @@ Please cite this report as:
 % In order to automatically generate the citation using biblatex, we
 % write out a generated bib file that contains an entry for the current document.
 % This must happen at the end of the prelude, so that the title and so on are defined.
-% Note that new lines have the be suppressed while doing this, and |\emph|,
+% Note that new lines have to be suppressed while doing this, and |\emph|, |\nobreakspace|,
 % |\newaffiliation|, |\useaffiliation| and |\addrsep| commands
-% need to print out the command rather than actually be evaluated. As such these
-% are the only LaTeX command supported in the author/title.
+% need to print out the command rather than actually be evaluated. As such, these
+% are the only LaTeX commands supported in the author/title.
 %
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far|mpi-plenary>
