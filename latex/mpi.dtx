@@ -385,11 +385,6 @@
 %<mpi-aebr|mpi-far|mpi-plenary>\xpatchbibmacro{journal+issuetitle}{\printfield{number}}{\setunit{\addspace}\printfield{number}}{}{}
 %    \end{macrocode}
 %
-% Always finish with a period
-%    \begin{macrocode}
-%<mpi-aebr|mpi-far|mpi-plenary>\renewbibmacro*{apa:finpunct}{\addperiod} % finpunct is gone
-%    \end{macrocode}
-%
 % Add full stop after title for theses
 %    \begin{macrocode}
 %<mpi-aebr|mpi-far|mpi-plenary>\DeclareFieldFormat[thesis]{title}{#1\addperiod}
