@@ -901,11 +901,11 @@ Please cite this report as:
 \newcommand{\newaffiliation}[2]{}
 \newcommand{\useaffiliation}[1]{}
 \newcommand{\addrsep}{}
-\newcommand{\passthru}[1]{}
+\newcommand{\nbsp}{}
 \AtBeginDocument{
 {
 \renewcommand{\and}{ and }
-\renewcommand{\passthru}[1]{#1}
+\renewcommand{\nbsp}{~}
 \renewcommand{\emph}[1]{\@backslashchar emph\@charlb #1\@charrb}
 \renewcommand{\newaffiliation}[2]{\@backslashchar newaffiliation\@charlb #1\@charrb\@charlb #2\@charrb}
 \renewcommand{\useaffiliation}[1]{\@backslashchar useaffiliation\@charlb #1\@charrb}
@@ -1013,6 +1013,7 @@ journal = \@charlb {\@reportseries} \@reportnopre \@reportno \@charrb,^^J%
 \newcommand{\citeself}{
   \renewcommand{\newaffiliation}[2]{
     \renewcommand{\addrsep}{, }
+    \renewcommand{\nbsp}{~}
     \ifhmode\unskip\fi\footnote{##2}
     \newcounter{##1}
     \setcounter{##1}{\value{footnote}}
