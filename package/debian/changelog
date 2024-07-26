@@ -1,3 +1,9 @@
+mpi-latex-templates (1.59) jammy; urgency=medium
+
+  * Allow \nobreakspace in title
+
+ -- David Middleton <david@pisces.nz>  Fri, 26 July 2024 17:53:22 +1200
+
 mpi-latex-templates (1.58) jammy; urgency=medium
 
   * Add [nobottomtitles] option for titlesec
