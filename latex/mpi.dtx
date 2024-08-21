@@ -605,10 +605,10 @@
    {\namepartsuffix}}
 \newcommand{\getauthors}{
   \begin{refsection}[\jobname-self.bib]
+  \renewrobustcmd*{\bibnamedelimi}{}
   \renewcommand*{\multinamedelim}{,\\}
   \renewcommand*{\finalnamedelim}{,\\}%
   \AtNextCite{\defcounter{maxnames}{99}}
-  \frenchspacing
   \citename{this}[titlename]{author}
   \end{refsection}
 }
