@@ -1,3 +1,9 @@
+mpi-latex-templates (1.60) jammy; urgency=medium
+
+  * Set \bibinitdelim for authors on title page
+
+ -- David Middleton <david@pisces.nz>  Fri, 23 August 2024 09:48:17 +1200
+
 mpi-latex-templates (1.59) jammy; urgency=medium
 
   * Allow \nobreakspace in title
