@@ -1,3 +1,9 @@
+mpi-latex-templates (1.61) jammy; urgency=medium
+
+  * Define \nffamily and use Arial Narrow for footers (as well as the AEBR cover)
+
+ -- David Middleton <david@pisces.nz>  Wed, 04 September 2024 16:08:38 +1200
+
 mpi-latex-templates (1.60) jammy; urgency=medium
 
   * Set \bibinitdelim for authors on title page
