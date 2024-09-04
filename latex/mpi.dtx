@@ -173,6 +173,7 @@
     ItalicFont     = {Times New Roman Italic},
     BoldFont       = {Times New Roman Bold},
     BoldItalicFont = {Times New Roman Bold Italic}]{Times New Roman}
+\newfontfamily\nffamily{Arial Narrow}
 %</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
 %
@@ -218,9 +219,9 @@
 
 \fancypagestyle{plain}{
     \fancyhf{}
-    \fancyfoot[LO,RE]{\sffamily\scriptsize Fisheries New Zealand}
-    \fancyfoot[LE]{\sffamily\scriptsize\thepage\ {\normalsize$\bullet$}\ \footertitle}
-    \fancyfoot[RO]{\sffamily\scriptsize\footertitle\ {\normalsize$\bullet$}\ \thepage}
+    \fancyfoot[LO,RE]{\nffamily\scriptsize Fisheries New Zealand}
+    \fancyfoot[LE]{\nffamily\scriptsize\thepage\ {\normalsize$\bullet$}\ \footertitle}
+    \fancyfoot[RO]{\nffamily\scriptsize\footertitle\ {\normalsize$\bullet$}\ \thepage}
     \renewcommand{\footrulewidth}{0.3pt}
     \renewcommand{\headrulewidth}{0pt}
   }
