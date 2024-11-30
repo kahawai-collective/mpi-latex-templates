@@ -1,2 +1,2 @@
-docker: ubuntu/gorbachev-base-jammy
+docker: ubuntu/texlive-r-noble:2024-11-30
 allows: [DOCKER]
