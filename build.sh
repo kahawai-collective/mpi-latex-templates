@@ -3,7 +3,7 @@ set -ex
 export RUN=
 export TEXINPUTS=.///:..//latex//:..//graphics//:
 
-./package/debian/mpi-latex-templates.postinst
+bash /package/debian/mpi-latex-templates.postinst
 
 make
 cp mpi-latex-templates*.deb /output/
