@@ -1,2 +1,2 @@
-docker: ubuntu/texlive-r-noble:2024-11-30
+docker: ubuntu/texlive-r-jammy
 allows: [DOCKER]
