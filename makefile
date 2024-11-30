@@ -25,7 +25,7 @@ latex/mpi.pdf: latex/mpi.dtx latex/mpi.ins latex/affiliation.dbx clean_latex
 	$(RUN) bash -c "cd latex && xelatex mpi.dtx"
 
 .PRECIOUS: package/.build
-package/.build: examples/mpi-far.pdf #examples/mpi-plenary.pdf examples/mpi-far-draft.pdf examples/mpi-aebr.pdf examples/mpi-tables.pdf
+package/.build: #examples/mpi-far.pdf examples/mpi-plenary.pdf examples/mpi-far-draft.pdf examples/mpi-aebr.pdf examples/mpi-tables.pdf
 	$(RUN) bash -c "cd package && debuild -us -uc && mv ../mpi-latex*{.dsc,.changes,.build,tar.xz} . && touch .build"
 
 .PHONY: clean

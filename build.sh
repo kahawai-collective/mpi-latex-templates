@@ -3,6 +3,7 @@ set -ex
 export RUN=
 export TEXINPUTS=.///:..//latex//:..//graphics//:
 
+# Run the same hacks that happen on package installation
 bash ./package/debian/mpi-latex-templates.postinst
 
 make
