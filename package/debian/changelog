@@ -1,3 +1,10 @@
+mpi-latex-templates (1.645) noble; urgency=medium
+
+  * Incorporate left justification changes into noble build
+
+ -- David Middleton <david@pisces.nz>  Fri, 08 Aug 2025 17:33:54 +1200
+
+
 mpi-latex-templates (1.62) noble; urgency=medium
 
   * Noble build
