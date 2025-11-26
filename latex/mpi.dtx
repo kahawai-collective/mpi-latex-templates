@@ -778,7 +778,10 @@ Please cite this report as:
 %
 % Captions are all bold.
 %    \begin{macrocode}
-%<mpi-aebr|mpi-far|mpi-plenary>\usepackage[format=hang,font={small,bf},justification=raggedright,labelsep=colon,singlelinecheck=false]{caption}
+%<*mpi-aebr|mpi-far|mpi-plenary>
+\usepackage[format=hang,font={small,bf},justification=raggedright,labelsep=coloniq,singlelinecheck=false]{caption}
+\DeclareCaptionLabelSeparator{coloniq}{:\quad}
+%</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
 %
 % We adjust the fptop and fpbot lengths to so that floats which are on a page on their own are
