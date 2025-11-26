@@ -1,9 +1,14 @@
+mpi-latex-templates (1.646) noble; urgency=medium
+
+  * Hanging indent on captions
+
+ -- David Middleton <david@pisces.nz>  Wed, 26 Nov 2025 21:31:44 +1300
+
 mpi-latex-templates (1.645) noble; urgency=medium
 
   * Incorporate left justification changes into noble build
 
  -- David Middleton <david@pisces.nz>  Fri, 08 Aug 2025 17:33:54 +1200
-
 
 mpi-latex-templates (1.62) noble; urgency=medium
 
