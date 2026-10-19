@@ -249,6 +249,7 @@
 \setdefaultlanguage[variant=newzealand]{english}
 \RequirePackage[style=apa,
     backend=biber,
+    giveninits=true,
     uniquename=false,
     uniquelist=false,
     sorting=ynt, % Override apa sort; switch back below for the bibliography
@@ -607,7 +608,7 @@
 %<*mpi-aebr|mpi-far|mpi-plenary>
 \DeclareNameFormat{titlename}{\usebibmacro{name:given-family}%
    {\namepartfamily}%
-   {\namepartgiveni}%
+   {\namepartgiven}%
    {\namepartprefix}%
    {\namepartsuffix}}
 \newcommand{\getauthors}{
@@ -966,21 +967,21 @@ journal = \@charlb {\@reportseries} \@reportnopre \@reportno \@charrb,^^J%
     {\usebibmacro{name:affiliation:family-given}%
        {\namepartfamily}%
        {\namepartgiven}%
-       {\namepartgiveni}%
+       {\namepartgiven}%
        {\namepartprefix}%
        {\namepartsuffix}%
        {\namepartaffiliation}}
     {\usebibmacro{name:apa:family-given}%
        {\namepartfamily}%
        {\namepartgiven}%
-       {\namepartgiveni}%
+       {\namepartgiven}%
        {\namepartprefix}%
        {\namepartsuffix}}%
   \usebibmacro{name:andothers}}
 \DeclareUniquenameTemplate[affiliation]{
    \namepart{family}%
    \namepart{given}%
-   \namepart{giveni}%
+   \namepart{given}%
    \namepart{prefix}%
    \namepart{suffix}%
    \namepart{affiliation}}
