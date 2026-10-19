@@ -1,3 +1,9 @@
+mpi-latex-templates (1.65) resolute; urgency=medium
+
+  * Resolute build
+
+ -- David Middleton <david@pisces.nz>  Mon, 19 Oct 2026 13:57:13 +1300
+
 mpi-latex-templates (1.646) noble; urgency=medium
 
   * Hanging indent on captions
