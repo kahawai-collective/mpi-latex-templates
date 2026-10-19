@@ -287,7 +287,11 @@
 %    \begin{macrocode}
 %<*mpi-aebr|mpi-far|mpi-plenary>
 \renewcommand*{\multinamedelim}{\addcomma\addspace}
-\renewcommand*{\finalnamedelim}{\addspace\&\addspace}
+%\renewcommand*{\finalnamedelim}{\addspace\&\addspace}
+\DeclareDelimFormat[textcite]{finalnamedelim}{%
+  \ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}%
+  \addspace\&\space
+}
 %</mpi-aebr|mpi-far|mpi-plenary>
 %    \end{macrocode}
 %
