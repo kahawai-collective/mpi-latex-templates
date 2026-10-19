@@ -1,2 +1,2 @@
-docker: ubuntu/texlive-r-resolute:2026-08-11
+docker: ubuntu/texlive-r-resolute:2026-10-19
 allows: [DOCKER]
