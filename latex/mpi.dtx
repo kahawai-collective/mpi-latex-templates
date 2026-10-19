@@ -982,6 +982,12 @@ journal = \@charlb {\@reportseries} \@reportnopre \@reportno \@charrb,^^J%
    \namepart{prefix}%
    \namepart{suffix}%
    \namepart{affiliation}}
+\DeclareNamehashTemplate[affiliation]{
+   \namepart[hashscope=full]{family}%
+   \namepart[hashscope=full]{given}%
+   \namepart[hashscope=full]{prefix}%
+   \namepart[hashscope=full]{suffix}%
+   \namepart[hashscope=full]{affiliation}}
 
 % Modified from name:apa:family-given
 \newbibmacro*{name:affiliation:family-given}[6]{%
